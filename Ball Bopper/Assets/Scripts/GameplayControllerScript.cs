@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameplayControllerScript : MonoBehaviour
 {
@@ -17,11 +18,23 @@ public class GameplayControllerScript : MonoBehaviour
     [SerializeField]
     private GameObject ballGameObject = null;
 
+    [SerializeField]
+    private Text counterTextObject = null;
+
     /// Public Variables
     public float maxPushForce = 600.0f;
 
     /// Private Variables
     private float falloffDistance = 5.0f;
+     
+    float pointCounter = 0;
+
+    // Adds the amount to the pointCounter
+    void modifyPoints(int amount)
+    {
+        pointCounter += amount;
+        counterTextObject.text = pointCounter.ToString();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +48,7 @@ public class GameplayControllerScript : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 touchPosition = RetrieveMousePosition();
-            Debug.Log("Touch occured at: <" + touchPosition.x + ", " + touchPosition.y + ">");
+            // Debug.Log("Touch occured at: <" + touchPosition.x + ", " + touchPosition.y + ">");
 
             Vector2 forceDirection = -1 * (touchPosition - ballGameObject.GetComponent<Transform>().position);
             float distance = forceDirection.magnitude;
@@ -45,7 +58,11 @@ public class GameplayControllerScript : MonoBehaviour
 
             ballGameObject.GetComponent<Rigidbody2D>().AddForce(forceDirection * forceStrengthMultiplier * maxPushForce);
 
-            Debug.Log("Force of " + forceStrengthMultiplier * maxPushForce + " applied");
+            // Don't forget to remove this, this is for testing
+            modifyPoints(1);
+
+            // Debug.Log("Force of " + forceStrengthMultiplier * maxPushForce + " applied");
         }
     }
+
 }
