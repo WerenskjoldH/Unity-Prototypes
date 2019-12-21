@@ -18,10 +18,13 @@ public class PointBallScript : MonoBehaviour
     {
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
 
-
+        if (string.Compare(col.gameObject.name, "BottomBoundary") == 0)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
 
         gameplayController.GetComponent<GameplayControllerScript>().modifyPoints(pointWorth);
-
     }
 
     // Update is called once per frame

@@ -44,7 +44,7 @@ public class GameplayControllerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !PauseMenuScript.isPaused)
         {
             Vector3 touchPosition = RetrieveMousePosition();
             // Debug.Log("Touch occured at: <" + touchPosition.x + ", " + touchPosition.y + ">");
