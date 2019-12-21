@@ -15,8 +15,7 @@ public class GameplayControllerScript : MonoBehaviour
     #endregion
 
     /// Pre-assigned Variables
-    [SerializeField]
-    private GameObject ballGameObject = null;
+    public GameObject ballGameObject = null;
 
     [SerializeField]
     private Text counterTextObject = null;
@@ -30,7 +29,7 @@ public class GameplayControllerScript : MonoBehaviour
     float pointCounter = 0;
 
     // Adds the amount to the pointCounter
-    void modifyPoints(int amount)
+    public void modifyPoints(int amount)
     {
         pointCounter += amount;
         counterTextObject.text = pointCounter.ToString();
@@ -52,16 +51,12 @@ public class GameplayControllerScript : MonoBehaviour
 
             Vector2 forceDirection = -1 * (touchPosition - ballGameObject.GetComponent<Transform>().position);
             float distance = forceDirection.magnitude;
+
             forceDirection.Normalize();
 
             float forceStrengthMultiplier = Mathf.Exp(-(distance / falloffDistance));
 
             ballGameObject.GetComponent<Rigidbody2D>().AddForce(forceDirection * forceStrengthMultiplier * maxPushForce);
-
-            // Don't forget to remove this, this is for testing
-            modifyPoints(1);
-
-            // Debug.Log("Force of " + forceStrengthMultiplier * maxPushForce + " applied");
         }
     }
 

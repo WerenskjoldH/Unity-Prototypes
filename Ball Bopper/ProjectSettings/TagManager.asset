@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Boundary
   - Ball
+  - Interactable
   layers:
   - Default
   - TransparentFX
