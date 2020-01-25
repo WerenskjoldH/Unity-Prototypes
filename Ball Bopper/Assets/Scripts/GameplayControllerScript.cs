@@ -16,6 +16,7 @@ public class GameplayControllerScript : MonoBehaviour
 
     /// Pre-assigned Variables
     public GameObject ballGameObject = null;
+    public GameObject pointBallGameObject = null;
 
     [SerializeField]
     private Text counterTextObject = null;
@@ -28,6 +29,16 @@ public class GameplayControllerScript : MonoBehaviour
      
     float pointCounter = 0;
 
+    float timeToSpawn = 0;
+    float maxSpawnTime = 4;
+    float timeCounter = 0;
+
+    // Spawning range is  [-spawnWidth, spawnWidth]
+    float spawnWidth = 2.7f;
+    // Specify lower and upper bounds
+    float spawnHeightTop = 2.5f;
+    float spawnHeightBottom = -0.5f;
+
     // Adds the amount to the pointCounter
     public void modifyPoints(int amount)
     {
@@ -38,25 +49,37 @@ public class GameplayControllerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Wait four seconds to spawn first ball
+        timeToSpawn = 4;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !PauseMenuScript.isPaused)
-        {
-            Vector3 touchPosition = RetrieveMousePosition();
-            // Debug.Log("Touch occured at: <" + touchPosition.x + ", " + touchPosition.y + ">");
+        if (!PauseMenuScript.isPaused) {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Vector3 touchPosition = RetrieveMousePosition();
+                // Debug.Log("Touch occured at: <" + touchPosition.x + ", " + touchPosition.y + ">");
 
-            Vector2 forceDirection = -1 * (touchPosition - ballGameObject.GetComponent<Transform>().position);
-            float distance = forceDirection.magnitude;
+                Vector2 forceDirection = -1 * (touchPosition - ballGameObject.GetComponent<Transform>().position);
+                float distance = forceDirection.magnitude;
 
-            forceDirection.Normalize();
+                forceDirection.Normalize();
 
-            float forceStrengthMultiplier = Mathf.Exp(-(distance / falloffDistance));
+                float forceStrengthMultiplier = Mathf.Exp(-(distance / falloffDistance));
 
-            ballGameObject.GetComponent<Rigidbody2D>().AddForce(forceDirection * forceStrengthMultiplier * maxPushForce);
+                ballGameObject.GetComponent<Rigidbody2D>().AddForce(forceDirection * forceStrengthMultiplier * maxPushForce);
+            }
+
+            if (timeCounter >= timeToSpawn)
+            {
+                Instantiate(pointBallGameObject, new Vector3(Random.Range(-spawnWidth, spawnWidth), Random.Range(-spawnHeightBottom, spawnHeightTop), 0), Quaternion.identity);
+                timeToSpawn = Random.Range(0.3f, maxSpawnTime);
+                timeCounter = 0;
+            }
+            else
+                timeCounter += Time.deltaTime;
         }
     }
 
