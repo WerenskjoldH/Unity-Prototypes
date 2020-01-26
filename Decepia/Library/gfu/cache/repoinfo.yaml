@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 1
-  lastUpdatedAtString: 2019-09-02T15:56:06.865+09:00
-  initializedAtString: 2019-09-02T15:56:06.865+09:00
+  lastUpdatedAtString: 2020-01-26T22:35:56.919+09:00
+  initializedAtString: 2020-01-26T22:35:56.919+09:00
   currentGitRemote:
     name: origin
-    url: https://github.com/WerenskjoldH/Decepia.git
+    url: https://github.com/WerenskjoldH/Unity-Prototypes.git
     login: 
     user: 
     host: 
@@ -30,9 +30,9 @@ MonoBehaviour:
     name: master
     remote:
       name: origin
-      url: https://github.com/WerenskjoldH/Decepia.git
+      url: https://github.com/WerenskjoldH/Unity-Prototypes.git
     trackingBranch: master
   currentConfigRemote:
     name: origin
-    url: https://github.com/WerenskjoldH/Decepia.git
+    url: https://github.com/WerenskjoldH/Unity-Prototypes.git
   currentHead: 

@@ -13,102 +13,162 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 6
-  lastUpdatedAtString: 2019-09-02T15:56:07.775+09:00
-  initializedAtString: 2019-09-02T15:56:07.775+09:00
+  lastUpdatedAtString: 2020-01-26T22:44:42.483+09:00
+  initializedAtString: 2020-01-26T22:35:57.539+09:00
   entries:
-  - path: Assets\Materials\Environment\Snow.meta
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Decepia\Assets\Materials\Environment\Snow.meta
-    projectPath: Assets\Materials\Environment\Snow.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 5
-  - path: Assets\Objects\Clutter.meta
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Decepia\Assets\Objects\Clutter.meta
-    projectPath: Assets\Objects\Clutter.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 5
-  - path: Packages\manifest.json
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Decepia\Packages\manifest.json
-    projectPath: Packages\manifest.json
+  - path: Decepia\Assets\Scenes\SampleScene.unity
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Assets\Scenes\SampleScene.unity
+    projectPath: Assets\Scenes\SampleScene.unity
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: ProjectSettings\AudioManager.asset
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Decepia\ProjectSettings\AudioManager.asset
-    projectPath: ProjectSettings\AudioManager.asset
+  - path: Decepia\Assets\Textures\Clutter\Streetlight\Materials.meta
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Assets\Textures\Clutter\Streetlight\Materials.meta
+    projectPath: Assets\Textures\Clutter\Streetlight\Materials.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Assets\Textures\Clutter\Streetlight\Materials\Streetlight_uvs_textured.mat
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Assets\Textures\Clutter\Streetlight\Materials\Streetlight_uvs_textured.mat
+    projectPath: Assets\Textures\Clutter\Streetlight\Materials\Streetlight_uvs_textured.mat
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Assets\Textures\Clutter\Streetlight\Materials\Streetlight_uvs_textured.mat.meta
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Assets\Textures\Clutter\Streetlight\Materials\Streetlight_uvs_textured.mat.meta
+    projectPath: Assets\Textures\Clutter\Streetlight\Materials\Streetlight_uvs_textured.mat.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Library\ArtifactDB
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\ArtifactDB
+    projectPath: Library\ArtifactDB
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: ProjectSettings\ClusterInputManager.asset
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Decepia\ProjectSettings\ClusterInputManager.asset
-    projectPath: ProjectSettings\ClusterInputManager.asset
+  - path: Decepia\Library\Artifacts\Legacy\76\76cd9471669e38441bd4e39dd968effa
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\Artifacts\Legacy\76\76cd9471669e38441bd4e39dd968effa
+    projectPath: Library\Artifacts\Legacy\76\76cd9471669e38441bd4e39dd968effa
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Library\Artifacts\Legacy\76\76cd9471669e38441bd4e39dd968effa.info
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\Artifacts\Legacy\76\76cd9471669e38441bd4e39dd968effa.info
+    projectPath: Library\Artifacts\Legacy\76\76cd9471669e38441bd4e39dd968effa.info
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Library\Artifacts\Legacy\86\8602f6640d1c2c74c9f32d02837acfa4
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\Artifacts\Legacy\86\8602f6640d1c2c74c9f32d02837acfa4
+    projectPath: Library\Artifacts\Legacy\86\8602f6640d1c2c74c9f32d02837acfa4
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: ProjectSettings\EditorBuildSettings.asset
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Decepia\ProjectSettings\EditorBuildSettings.asset
-    projectPath: ProjectSettings\EditorBuildSettings.asset
+  - path: Decepia\Library\Artifacts\Legacy\86\8602f6640d1c2c74c9f32d02837acfa4.info
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\Artifacts\Legacy\86\8602f6640d1c2c74c9f32d02837acfa4.info
+    projectPath: Library\Artifacts\Legacy\86\8602f6640d1c2c74c9f32d02837acfa4.info
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: ProjectSettings\GraphicsSettings.asset
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Decepia\ProjectSettings\GraphicsSettings.asset
-    projectPath: ProjectSettings\GraphicsSettings.asset
+  - path: Decepia\Library\Artifacts\Legacy\95\95606ed45b48d8d4fb66556262c23f38
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\Artifacts\Legacy\95\95606ed45b48d8d4fb66556262c23f38
+    projectPath: Library\Artifacts\Legacy\95\95606ed45b48d8d4fb66556262c23f38
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: ProjectSettings\InputManager.asset
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Decepia\ProjectSettings\InputManager.asset
-    projectPath: ProjectSettings\InputManager.asset
+  - path: Decepia\Library\Artifacts\Legacy\95\95606ed45b48d8d4fb66556262c23f38.info
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\Artifacts\Legacy\95\95606ed45b48d8d4fb66556262c23f38.info
+    projectPath: Library\Artifacts\Legacy\95\95606ed45b48d8d4fb66556262c23f38.info
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: ProjectSettings\NavMeshAreas.asset
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Decepia\ProjectSettings\NavMeshAreas.asset
-    projectPath: ProjectSettings\NavMeshAreas.asset
+  - path: Decepia\Library\Artifacts\Legacy\c0\c0657b7dfa10e9e4cba105f2f4d87056
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\Artifacts\Legacy\c0\c0657b7dfa10e9e4cba105f2f4d87056
+    projectPath: Library\Artifacts\Legacy\c0\c0657b7dfa10e9e4cba105f2f4d87056
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Library\Artifacts\Legacy\c0\c0657b7dfa10e9e4cba105f2f4d87056.info
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\Artifacts\Legacy\c0\c0657b7dfa10e9e4cba105f2f4d87056.info
+    projectPath: Library\Artifacts\Legacy\c0\c0657b7dfa10e9e4cba105f2f4d87056.info
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Library\CurrentMaximizeLayout.dwlt
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\CurrentMaximizeLayout.dwlt
+    projectPath: Library\CurrentMaximizeLayout.dwlt
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Library\EditorInstance.json
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\EditorInstance.json
+    projectPath: Library\EditorInstance.json
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Library\gfu\cache\gitlocks.yaml
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\gfu\cache\gitlocks.yaml
+    projectPath: Library\gfu\cache\gitlocks.yaml
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: ProjectSettings\PresetManager.asset
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Decepia\ProjectSettings\PresetManager.asset
-    projectPath: ProjectSettings\PresetManager.asset
+  - path: Decepia\Library\gfu\cache\gitstatusentries.yaml
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\gfu\cache\gitstatusentries.yaml
+    projectPath: Library\gfu\cache\gitstatusentries.yaml
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: ProjectSettings\ProjectVersion.txt
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Decepia\ProjectSettings\ProjectVersion.txt
-    projectPath: ProjectSettings\ProjectVersion.txt
+  - path: Decepia\Library\gfu\cache\gittrackingstatus.yaml
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\gfu\cache\gittrackingstatus.yaml
+    projectPath: Library\gfu\cache\gittrackingstatus.yaml
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: ProjectSettings\QualitySettings.asset
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Decepia\ProjectSettings\QualitySettings.asset
-    projectPath: ProjectSettings\QualitySettings.asset
+  - path: Decepia\Library\gfu\cache\repoinfo.yaml
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\gfu\cache\repoinfo.yaml
+    projectPath: Library\gfu\cache\repoinfo.yaml
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: ProjectSettings\TagManager.asset
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Decepia\ProjectSettings\TagManager.asset
-    projectPath: ProjectSettings\TagManager.asset
+  - path: Decepia\Library\SourceAssetDB
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\SourceAssetDB
+    projectPath: Library\SourceAssetDB
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: ProjectSettings\TimeManager.asset
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Decepia\ProjectSettings\TimeManager.asset
-    projectPath: ProjectSettings\TimeManager.asset
+  - path: Decepia\Library\StateCache\Hierarchy\dac21a-mainStage.json
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\StateCache\Hierarchy\dac21a-mainStage.json
+    projectPath: Library\StateCache\Hierarchy\dac21a-mainStage.json
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: ProjectSettings\UnityConnectSettings.asset
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Decepia\ProjectSettings\UnityConnectSettings.asset
-    projectPath: ProjectSettings\UnityConnectSettings.asset
+  - path: Decepia\Library\StateCache\SceneView\308abc-mainStage.json
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\StateCache\SceneView\308abc-mainStage.json
+    projectPath: Library\StateCache\SceneView\308abc-mainStage.json
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: ProjectSettings\VFXManager.asset
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Decepia\ProjectSettings\VFXManager.asset
-    projectPath: ProjectSettings\VFXManager.asset
+  - path: Decepia\Temp\__Backupscenes\0.backup
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\__Backupscenes\0.backup
+    projectPath: Temp\__Backupscenes\0.backup
     originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\ExportedBlenderFBXFile.fbx
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\ExportedBlenderFBXFile.fbx
+    projectPath: Temp\ExportedBlenderFBXFile.fbx
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\ProcessJobs\e9a6970f79cd12d8b075e7d72f1b07cb.bakert
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\ProcessJobs\e9a6970f79cd12d8b075e7d72f1b07cb.bakert
+    projectPath: Temp\ProcessJobs\e9a6970f79cd12d8b075e7d72f1b07cb.bakert
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityLockfile
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityLockfile
+    projectPath: Temp\UnityLockfile
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
