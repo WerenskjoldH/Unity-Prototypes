@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 1
-  lastUpdatedAtString: 2020-01-26T22:35:56.919+09:00
-  initializedAtString: 2020-01-26T22:35:56.919+09:00
+  lastUpdatedAtString: 2020-02-02T15:52:43.999+09:00
+  initializedAtString: 2020-02-02T15:00:47.955+09:00
   currentGitRemote:
     name: origin
     url: https://github.com/WerenskjoldH/Unity-Prototypes.git

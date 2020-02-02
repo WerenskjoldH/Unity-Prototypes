@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 6
-  lastUpdatedAtString: 2020-01-26T22:44:42.483+09:00
-  initializedAtString: 2020-01-26T22:35:57.539+09:00
+  lastUpdatedAtString: 2020-02-02T16:44:51.573+09:00
+  initializedAtString: 2020-02-02T15:00:49.332+09:00
   entries:
   - path: Decepia\Assets\Scenes\SampleScene.unity
     fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Assets\Scenes\SampleScene.unity
@@ -22,21 +22,45 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: Decepia\Assets\Textures\Clutter\Streetlight\Materials.meta
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Assets\Textures\Clutter\Streetlight\Materials.meta
-    projectPath: Assets\Textures\Clutter\Streetlight\Materials.meta
+  - path: Decepia\Assets\Scripts\Monster.meta
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Assets\Scripts\Monster.meta
+    projectPath: Assets\Scripts\Monster.meta
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Decepia\Assets\Textures\Clutter\Streetlight\Materials\Streetlight_uvs_textured.mat
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Assets\Textures\Clutter\Streetlight\Materials\Streetlight_uvs_textured.mat
-    projectPath: Assets\Textures\Clutter\Streetlight\Materials\Streetlight_uvs_textured.mat
+  - path: Decepia\Assets\Scripts\Monster\CameraSway.cs
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Assets\Scripts\Monster\CameraSway.cs
+    projectPath: Assets\Scripts\Monster\CameraSway.cs
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Decepia\Assets\Textures\Clutter\Streetlight\Materials\Streetlight_uvs_textured.mat.meta
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Assets\Textures\Clutter\Streetlight\Materials\Streetlight_uvs_textured.mat.meta
-    projectPath: Assets\Textures\Clutter\Streetlight\Materials\Streetlight_uvs_textured.mat.meta
+  - path: Decepia\Assets\Scripts\Monster\CameraSway.cs.meta
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Assets\Scripts\Monster\CameraSway.cs.meta
+    projectPath: Assets\Scripts\Monster\CameraSway.cs.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Assets\Scripts\Monster\FollowPlayer.cs
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Assets\Scripts\Monster\FollowPlayer.cs
+    projectPath: Assets\Scripts\Monster\FollowPlayer.cs
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Assets\Scripts\Monster\FollowPlayer.cs.meta
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Assets\Scripts\Monster\FollowPlayer.cs.meta
+    projectPath: Assets\Scripts\Monster\FollowPlayer.cs.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Assets\Scripts\Player\CameraSwap.cs
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Assets\Scripts\Player\CameraSwap.cs
+    projectPath: Assets\Scripts\Player\CameraSwap.cs
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Assets\Scripts\Player\CameraSwap.cs.meta
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Assets\Scripts\Player\CameraSwap.cs.meta
+    projectPath: Assets\Scripts\Player\CameraSwap.cs.meta
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
@@ -46,51 +70,51 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: Decepia\Library\Artifacts\Legacy\76\76cd9471669e38441bd4e39dd968effa
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\Artifacts\Legacy\76\76cd9471669e38441bd4e39dd968effa
-    projectPath: Library\Artifacts\Legacy\76\76cd9471669e38441bd4e39dd968effa
+  - path: Decepia\Library\Artifacts\Legacy\8b\8b042d5215a491647a8a092d592ff5eb
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\Artifacts\Legacy\8b\8b042d5215a491647a8a092d592ff5eb
+    projectPath: Library\Artifacts\Legacy\8b\8b042d5215a491647a8a092d592ff5eb
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Decepia\Library\Artifacts\Legacy\76\76cd9471669e38441bd4e39dd968effa.info
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\Artifacts\Legacy\76\76cd9471669e38441bd4e39dd968effa.info
-    projectPath: Library\Artifacts\Legacy\76\76cd9471669e38441bd4e39dd968effa.info
+  - path: Decepia\Library\Artifacts\Legacy\8b\8b042d5215a491647a8a092d592ff5eb.info
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\Artifacts\Legacy\8b\8b042d5215a491647a8a092d592ff5eb.info
+    projectPath: Library\Artifacts\Legacy\8b\8b042d5215a491647a8a092d592ff5eb.info
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Decepia\Library\Artifacts\Legacy\86\8602f6640d1c2c74c9f32d02837acfa4
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\Artifacts\Legacy\86\8602f6640d1c2c74c9f32d02837acfa4
-    projectPath: Library\Artifacts\Legacy\86\8602f6640d1c2c74c9f32d02837acfa4
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Decepia\Library\Artifacts\Legacy\86\8602f6640d1c2c74c9f32d02837acfa4.info
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\Artifacts\Legacy\86\8602f6640d1c2c74c9f32d02837acfa4.info
-    projectPath: Library\Artifacts\Legacy\86\8602f6640d1c2c74c9f32d02837acfa4.info
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Decepia\Library\Artifacts\Legacy\95\95606ed45b48d8d4fb66556262c23f38
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\Artifacts\Legacy\95\95606ed45b48d8d4fb66556262c23f38
-    projectPath: Library\Artifacts\Legacy\95\95606ed45b48d8d4fb66556262c23f38
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Decepia\Library\Artifacts\Legacy\95\95606ed45b48d8d4fb66556262c23f38.info
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\Artifacts\Legacy\95\95606ed45b48d8d4fb66556262c23f38.info
-    projectPath: Library\Artifacts\Legacy\95\95606ed45b48d8d4fb66556262c23f38.info
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Decepia\Library\Artifacts\Legacy\c0\c0657b7dfa10e9e4cba105f2f4d87056
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\Artifacts\Legacy\c0\c0657b7dfa10e9e4cba105f2f4d87056
-    projectPath: Library\Artifacts\Legacy\c0\c0657b7dfa10e9e4cba105f2f4d87056
+  - path: Decepia\Library\Artifacts\Legacy\a6\a6474d426813c4947b2ddfc22bfe30aa
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\Artifacts\Legacy\a6\a6474d426813c4947b2ddfc22bfe30aa
+    projectPath: Library\Artifacts\Legacy\a6\a6474d426813c4947b2ddfc22bfe30aa
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Decepia\Library\Artifacts\Legacy\c0\c0657b7dfa10e9e4cba105f2f4d87056.info
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\Artifacts\Legacy\c0\c0657b7dfa10e9e4cba105f2f4d87056.info
-    projectPath: Library\Artifacts\Legacy\c0\c0657b7dfa10e9e4cba105f2f4d87056.info
+  - path: Decepia\Library\Artifacts\Legacy\a6\a6474d426813c4947b2ddfc22bfe30aa.info
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\Artifacts\Legacy\a6\a6474d426813c4947b2ddfc22bfe30aa.info
+    projectPath: Library\Artifacts\Legacy\a6\a6474d426813c4947b2ddfc22bfe30aa.info
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Library\Artifacts\Legacy\d2\d2b15c746392bdd4baddc37e1dd51c2a
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\Artifacts\Legacy\d2\d2b15c746392bdd4baddc37e1dd51c2a
+    projectPath: Library\Artifacts\Legacy\d2\d2b15c746392bdd4baddc37e1dd51c2a
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Library\Artifacts\Legacy\d2\d2b15c746392bdd4baddc37e1dd51c2a.info
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\Artifacts\Legacy\d2\d2b15c746392bdd4baddc37e1dd51c2a.info
+    projectPath: Library\Artifacts\Legacy\d2\d2b15c746392bdd4baddc37e1dd51c2a.info
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Library\Artifacts\Legacy\dd\dd96aaaa05792824bb01bf966b609384
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\Artifacts\Legacy\dd\dd96aaaa05792824bb01bf966b609384
+    projectPath: Library\Artifacts\Legacy\dd\dd96aaaa05792824bb01bf966b609384
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Library\Artifacts\Legacy\dd\dd96aaaa05792824bb01bf966b609384.info
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\Artifacts\Legacy\dd\dd96aaaa05792824bb01bf966b609384.info
+    projectPath: Library\Artifacts\Legacy\dd\dd96aaaa05792824bb01bf966b609384.info
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
@@ -98,11 +122,17 @@ MonoBehaviour:
     fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\CurrentMaximizeLayout.dwlt
     projectPath: Library\CurrentMaximizeLayout.dwlt
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
+    indexStatus: 0
+    workTreeStatus: 3
   - path: Decepia\Library\EditorInstance.json
     fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\EditorInstance.json
     projectPath: Library\EditorInstance.json
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Library\gfu\cache\branches.yaml
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\gfu\cache\branches.yaml
+    projectPath: Library\gfu\cache\branches.yaml
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
@@ -112,6 +142,12 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
+  - path: Decepia\Library\gfu\cache\gitlog.yaml
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\gfu\cache\gitlog.yaml
+    projectPath: Library\gfu\cache\gitlog.yaml
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
   - path: Decepia\Library\gfu\cache\gitstatusentries.yaml
     fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\gfu\cache\gitstatusentries.yaml
     projectPath: Library\gfu\cache\gitstatusentries.yaml
@@ -124,9 +160,81 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
+  - path: Decepia\Library\gfu\cache\gituser.yaml
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\gfu\cache\gituser.yaml
+    projectPath: Library\gfu\cache\gituser.yaml
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
   - path: Decepia\Library\gfu\cache\repoinfo.yaml
     fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\gfu\cache\repoinfo.yaml
     projectPath: Library\gfu\cache\repoinfo.yaml
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: Decepia\Library\InspectorExpandedItems.asset
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\InspectorExpandedItems.asset
+    projectPath: Library\InspectorExpandedItems.asset
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: Decepia\Library\ScriptAssemblies\Assembly-CSharp.dll
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\ScriptAssemblies\Assembly-CSharp.dll
+    projectPath: Library\ScriptAssemblies\Assembly-CSharp.dll
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: Decepia\Library\ScriptAssemblies\Assembly-CSharp-Editor.dll
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\ScriptAssemblies\Assembly-CSharp-Editor.dll
+    projectPath: Library\ScriptAssemblies\Assembly-CSharp-Editor.dll
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: Decepia\Library\ShaderCache\1\175b523f30fea8205dd6bd3bbf0308ba.bin
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\ShaderCache\1\175b523f30fea8205dd6bd3bbf0308ba.bin
+    projectPath: Library\ShaderCache\1\175b523f30fea8205dd6bd3bbf0308ba.bin
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Library\ShaderCache\2\28f6fcefca71494a0e32ab7154e49db1.bin
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\ShaderCache\2\28f6fcefca71494a0e32ab7154e49db1.bin
+    projectPath: Library\ShaderCache\2\28f6fcefca71494a0e32ab7154e49db1.bin
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Library\ShaderCache\7\7834db58aadb06eec24e2d365dff7598.bin
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\ShaderCache\7\7834db58aadb06eec24e2d365dff7598.bin
+    projectPath: Library\ShaderCache\7\7834db58aadb06eec24e2d365dff7598.bin
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Library\ShaderCache\e\ea180a04aef8f0f87227af4e53ee0128.bin
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\ShaderCache\e\ea180a04aef8f0f87227af4e53ee0128.bin
+    projectPath: Library\ShaderCache\e\ea180a04aef8f0f87227af4e53ee0128.bin
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Library\ShaderCache\EditorEncounteredVariants
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\ShaderCache\EditorEncounteredVariants
+    projectPath: Library\ShaderCache\EditorEncounteredVariants
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: Decepia\Library\shadercompiler-UnityShaderCompiler.exe1.log
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\shadercompiler-UnityShaderCompiler.exe1.log
+    projectPath: Library\shadercompiler-UnityShaderCompiler.exe1.log
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: Decepia\Library\shadercompiler-UnityShaderCompiler.exe2.log
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\shadercompiler-UnityShaderCompiler.exe2.log
+    projectPath: Library\shadercompiler-UnityShaderCompiler.exe2.log
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: Decepia\Library\shadercompiler-UnityShaderCompiler.exe3.log
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Library\shadercompiler-UnityShaderCompiler.exe3.log
+    projectPath: Library\shadercompiler-UnityShaderCompiler.exe3.log
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -148,15 +256,45 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: Decepia\Temp\__Backupscenes\0.backup
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\__Backupscenes\0.backup
-    projectPath: Temp\__Backupscenes\0.backup
+  - path: Decepia\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+    projectPath: obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Decepia\Temp\ExportedBlenderFBXFile.fbx
-    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\ExportedBlenderFBXFile.fbx
-    projectPath: Temp\ExportedBlenderFBXFile.fbx
+  - path: Decepia\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+    projectPath: obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\obj\Debug\Assembly-CSharp-Editor.csproj.CoreCompileInputs.cache
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\obj\Debug\Assembly-CSharp-Editor.csproj.CoreCompileInputs.cache
+    projectPath: obj\Debug\Assembly-CSharp-Editor.csproj.CoreCompileInputs.cache
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\obj\Debug\Assembly-CSharp-Editor.csprojAssemblyReference.cache
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\obj\Debug\Assembly-CSharp-Editor.csprojAssemblyReference.cache
+    projectPath: obj\Debug\Assembly-CSharp-Editor.csprojAssemblyReference.cache
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\obj\Debug\Assembly-CSharp-Editor-firstpass.csproj.CoreCompileInputs.cache
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\obj\Debug\Assembly-CSharp-Editor-firstpass.csproj.CoreCompileInputs.cache
+    projectPath: obj\Debug\Assembly-CSharp-Editor-firstpass.csproj.CoreCompileInputs.cache
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\obj\Debug\Assembly-CSharp-Editor-firstpass.csprojAssemblyReference.cache
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\obj\Debug\Assembly-CSharp-Editor-firstpass.csprojAssemblyReference.cache
+    projectPath: obj\Debug\Assembly-CSharp-Editor-firstpass.csprojAssemblyReference.cache
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\__Backupscenes\0.backup
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\__Backupscenes\0.backup
+    projectPath: Temp\__Backupscenes\0.backup
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
@@ -169,6 +307,210 @@ MonoBehaviour:
   - path: Decepia\Temp\UnityLockfile
     fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityLockfile
     projectPath: Temp\UnityLockfile
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-031cc520e26fbe84595401a86a434fb4
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-031cc520e26fbe84595401a86a434fb4
+    projectPath: Temp\UnityTempFile-031cc520e26fbe84595401a86a434fb4
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-073fb3cfc79a6a147ae340ad49d749c9
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-073fb3cfc79a6a147ae340ad49d749c9
+    projectPath: Temp\UnityTempFile-073fb3cfc79a6a147ae340ad49d749c9
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-09aca671b4359cc4b8535a0639b83936
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-09aca671b4359cc4b8535a0639b83936
+    projectPath: Temp\UnityTempFile-09aca671b4359cc4b8535a0639b83936
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-13e203d04ac73f54bbe14141dff6e225
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-13e203d04ac73f54bbe14141dff6e225
+    projectPath: Temp\UnityTempFile-13e203d04ac73f54bbe14141dff6e225
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-1647359728d446d4c860fe31b6144ec2
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-1647359728d446d4c860fe31b6144ec2
+    projectPath: Temp\UnityTempFile-1647359728d446d4c860fe31b6144ec2
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-22ea55d4df5797e4987ea8cb11146104
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-22ea55d4df5797e4987ea8cb11146104
+    projectPath: Temp\UnityTempFile-22ea55d4df5797e4987ea8cb11146104
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-4419fc8423b17fc43b8b3fc7188b7a73
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-4419fc8423b17fc43b8b3fc7188b7a73
+    projectPath: Temp\UnityTempFile-4419fc8423b17fc43b8b3fc7188b7a73
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-5d4829690d4ec6145a2bcd9dd82c72b5
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-5d4829690d4ec6145a2bcd9dd82c72b5
+    projectPath: Temp\UnityTempFile-5d4829690d4ec6145a2bcd9dd82c72b5
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-5f0b581806b3d3c499f5b7e228bbcc71
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-5f0b581806b3d3c499f5b7e228bbcc71
+    projectPath: Temp\UnityTempFile-5f0b581806b3d3c499f5b7e228bbcc71
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-6167dd71ff5547545b443f7608048b54
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-6167dd71ff5547545b443f7608048b54
+    projectPath: Temp\UnityTempFile-6167dd71ff5547545b443f7608048b54
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-6679dfed47293d14fa4b7fd05a6f38c1
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-6679dfed47293d14fa4b7fd05a6f38c1
+    projectPath: Temp\UnityTempFile-6679dfed47293d14fa4b7fd05a6f38c1
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-6a6c32a463c80e648b48086b417b293e
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-6a6c32a463c80e648b48086b417b293e
+    projectPath: Temp\UnityTempFile-6a6c32a463c80e648b48086b417b293e
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-6ad9c1fb13bfe1c41b1039a59897a6eb
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-6ad9c1fb13bfe1c41b1039a59897a6eb
+    projectPath: Temp\UnityTempFile-6ad9c1fb13bfe1c41b1039a59897a6eb
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-6eb4abcd64ee5924e949594623ffb0e5
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-6eb4abcd64ee5924e949594623ffb0e5
+    projectPath: Temp\UnityTempFile-6eb4abcd64ee5924e949594623ffb0e5
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-864e09b958d97334c8d5e6bc41cd8c44
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-864e09b958d97334c8d5e6bc41cd8c44
+    projectPath: Temp\UnityTempFile-864e09b958d97334c8d5e6bc41cd8c44
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-8c8dff28873404543b95b33c5c8d0ac6
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-8c8dff28873404543b95b33c5c8d0ac6
+    projectPath: Temp\UnityTempFile-8c8dff28873404543b95b33c5c8d0ac6
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-a25c1209a2ebc08498c5dbcb34b48086
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-a25c1209a2ebc08498c5dbcb34b48086
+    projectPath: Temp\UnityTempFile-a25c1209a2ebc08498c5dbcb34b48086
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-a2693cafde6803547ad0e58469b11280
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-a2693cafde6803547ad0e58469b11280
+    projectPath: Temp\UnityTempFile-a2693cafde6803547ad0e58469b11280
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-a3b6c624e190ef84499861dc6d961d4d
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-a3b6c624e190ef84499861dc6d961d4d
+    projectPath: Temp\UnityTempFile-a3b6c624e190ef84499861dc6d961d4d
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-a436db5842628304b9766943dc1d40c5
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-a436db5842628304b9766943dc1d40c5
+    projectPath: Temp\UnityTempFile-a436db5842628304b9766943dc1d40c5
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-a9098556efd229b48bbc323db1b8f34f
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-a9098556efd229b48bbc323db1b8f34f
+    projectPath: Temp\UnityTempFile-a9098556efd229b48bbc323db1b8f34f
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-ac8bd23d437b62a40be32d65c36d3fed
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-ac8bd23d437b62a40be32d65c36d3fed
+    projectPath: Temp\UnityTempFile-ac8bd23d437b62a40be32d65c36d3fed
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-adb2d2c8287c47d4aa605100423bc811
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-adb2d2c8287c47d4aa605100423bc811
+    projectPath: Temp\UnityTempFile-adb2d2c8287c47d4aa605100423bc811
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-b2c5bfd60c889864aa45f13f3003ad06
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-b2c5bfd60c889864aa45f13f3003ad06
+    projectPath: Temp\UnityTempFile-b2c5bfd60c889864aa45f13f3003ad06
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-b8be6b0329e435c4ea7af2a4bee897c8
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-b8be6b0329e435c4ea7af2a4bee897c8
+    projectPath: Temp\UnityTempFile-b8be6b0329e435c4ea7af2a4bee897c8
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-ba305a5d6a9a1fc4fb89b1aef96c073f
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-ba305a5d6a9a1fc4fb89b1aef96c073f
+    projectPath: Temp\UnityTempFile-ba305a5d6a9a1fc4fb89b1aef96c073f
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-c4505de3bd14b424e8f6f71ef3357264
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-c4505de3bd14b424e8f6f71ef3357264
+    projectPath: Temp\UnityTempFile-c4505de3bd14b424e8f6f71ef3357264
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-d5b9e060ba9efe4408e34e4cd245857f
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-d5b9e060ba9efe4408e34e4cd245857f
+    projectPath: Temp\UnityTempFile-d5b9e060ba9efe4408e34e4cd245857f
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-df1e937e779b51241b6f4200625f3aef
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-df1e937e779b51241b6f4200625f3aef
+    projectPath: Temp\UnityTempFile-df1e937e779b51241b6f4200625f3aef
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-edca329d378de394389458996fa6a07a
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-edca329d378de394389458996fa6a07a
+    projectPath: Temp\UnityTempFile-edca329d378de394389458996fa6a07a
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-f067b76ec04132440977e7255be66f47
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-f067b76ec04132440977e7255be66f47
+    projectPath: Temp\UnityTempFile-f067b76ec04132440977e7255be66f47
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-f4eed502bb8d6d648a5b60138f517125
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-f4eed502bb8d6d648a5b60138f517125
+    projectPath: Temp\UnityTempFile-f4eed502bb8d6d648a5b60138f517125
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-f5c9ee7abd561034ea2ff4f1c30fd025
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-f5c9ee7abd561034ea2ff4f1c30fd025
+    projectPath: Temp\UnityTempFile-f5c9ee7abd561034ea2ff4f1c30fd025
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Decepia\Temp\UnityTempFile-f747625b3cd5e61408f73605ae43fbc5
+    fullPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Decepia\Temp\UnityTempFile-f747625b3cd5e61408f73605ae43fbc5
+    projectPath: Temp\UnityTempFile-f747625b3cd5e61408f73605ae43fbc5
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
