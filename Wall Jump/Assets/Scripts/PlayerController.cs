@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         {
             gameObject.GetComponent<LineRenderer>().enabled = false;
             gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-            gameObject.GetComponent<Rigidbody2D>().AddForce( 100.0f * (mousePos - transform.position));
+            gameObject.GetComponent<Rigidbody2D>().AddForce( launchPower * (mousePos - transform.position));
         }
     }
 }
