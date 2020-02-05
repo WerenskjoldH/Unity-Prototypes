@@ -689,7 +689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchPower: 75
   jumpCounterScript: {fileID: 551754653}
-  totalAllowedJumps: 3
+  totalJumpsAllowed: 3
 --- !u!212 &1455894323
 SpriteRenderer:
   m_ObjectHideFlags: 0
