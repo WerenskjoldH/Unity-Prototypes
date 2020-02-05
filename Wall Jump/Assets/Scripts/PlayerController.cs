@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public float launchPower = 1000.0f;
+
     bool stuckToSurface = false;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Collidable")
         {
+            Debug.Log("Hit");
             stuckToSurface = true;
             gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         }
@@ -35,6 +38,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             gameObject.GetComponent<LineRenderer>().enabled = false;
+            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+            gameObject.GetComponent<Rigidbody2D>().AddForce( 100.0f * (mousePos - transform.position));
         }
     }
 }

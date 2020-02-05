@@ -242,7 +242,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &1450328140
 BoxCollider2D:
@@ -435,7 +435,7 @@ LineRenderer:
         outWeight: 0
       - serializedVersion: 3
         time: 1
-        value: 1
+        value: 0.61956596
         inSlope: 0.091423094
         outSlope: 0.091423094
         tangentMode: 0
@@ -448,7 +448,7 @@ LineRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 1}
-      key1: {r: 0.01886791, g: 0.01886791, b: 0.01886791, a: 1}
+      key1: {r: 0.13333334, g: 0.1254902, b: 0.20392157, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -510,6 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bbaad00ee727ad4784a2d129d712e6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  launchPower: 1000
 --- !u!212 &1455894323
 SpriteRenderer:
   m_ObjectHideFlags: 0
