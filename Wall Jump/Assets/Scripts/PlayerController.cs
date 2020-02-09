@@ -12,6 +12,11 @@ public class PlayerController : MonoBehaviour
 
     int totalJumpsMade = 0;
     bool stuckToSurface = false;
+
+    public bool IsStuckToSurface()
+    {
+        return stuckToSurface;
+    }
     
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -61,7 +66,6 @@ public class PlayerController : MonoBehaviour
                 gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
                 Vector2 differenceVector = (mousePos - transform.position);
                 Vector2 launchForce = launchPower * Mathf.Min(differenceVector.magnitude, maxLaunchMult) * differenceVector.normalized;
-                Debug.Log(launchForce.magnitude);
                 gameObject.GetComponent<Rigidbody2D>().AddForce(launchForce);
             }
         }
