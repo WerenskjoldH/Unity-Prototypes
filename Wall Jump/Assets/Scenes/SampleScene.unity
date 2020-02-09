@@ -687,7 +687,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bbaad00ee727ad4784a2d129d712e6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchPower: 75
+  launchPower: 200
+  maxLaunchMult: 3
   jumpCounterScript: {fileID: 551754653}
   totalJumpsAllowed: 3
 --- !u!212 &1455894323
