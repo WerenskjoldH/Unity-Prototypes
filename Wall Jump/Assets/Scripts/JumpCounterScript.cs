@@ -6,7 +6,9 @@ public class JumpCounterScript : MonoBehaviour
 {
     public float placementWidth = 1.0f;
     public float placementHeight = 0.5f;
+    public float lerpSpeedMultiplier = 20.0f;
     public GameObject counterObjectPrefab;
+    public GameObject playerObject;
 
     List<GameObject> jumpCounterObjects;
     int numberOfJumps;
@@ -53,5 +55,10 @@ public class JumpCounterScript : MonoBehaviour
     private void Start()
     {
         jumpCounterObjects = new List<GameObject>();
+    }
+
+    private void Update()
+    {
+        transform.position = Vector3.Lerp(transform.position, playerObject.transform.position, lerpSpeedMultiplier * Time.deltaTime);
     }
 }
