@@ -235,7 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placementWidth: 1
   placementHeight: 0.5
-  lerpSpeedMultiplier: 4
+  lerpSpeedMultiplier: 20
   counterObjectPrefab: {fileID: 4401054883360243049, guid: 3c753ee8d276e064aaa2e4a1bd1d5cd2,
     type: 3}
   playerObject: {fileID: 1455894318}
