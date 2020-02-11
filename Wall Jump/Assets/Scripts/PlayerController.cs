@@ -12,18 +12,31 @@ public class PlayerController : MonoBehaviour
 
     int totalJumpsMade = 0;
     bool stuckToSurface = false;
+    Collision2D lastCollision = null;
 
     public bool IsStuckToSurface()
     {
         return stuckToSurface;
     }
-    
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Collidable")
+        lastCollision = collision;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider == lastCollision.collider)
+            lastCollision = null;
+    }
+
+    private void CollisionStick(Collision2D collision)
+    {
+        if(collision != null && collision.gameObject.tag == "Collidable")
         {
+            Debug.Log("Stick Triggered");
             stuckToSurface = true;
+            lastCollision = collision;
             totalJumpsMade = 0;
             jumpCounterScript.ResetJumps();
             gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
@@ -45,8 +58,6 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetMouseButton(0))
             {
-                stuckToSurface = false;
-
                 Vector3 powerLine = (mousePos - transform.position);
                 float powerLineMagnitude = Mathf.Min(powerLine.magnitude, maxLaunchMult);
                 powerLine.Normalize();
@@ -60,14 +71,24 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetMouseButtonUp(0))
             {
+                stuckToSurface = false;
                 totalJumpsMade++;
                 jumpCounterScript.ReduceJumps();
+
                 gameObject.GetComponent<LineRenderer>().enabled = false;
+
                 gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
                 Vector2 differenceVector = (mousePos - transform.position);
                 Vector2 launchForce = launchPower * Mathf.Min(differenceVector.magnitude, maxLaunchMult) * differenceVector.normalized;
                 gameObject.GetComponent<Rigidbody2D>().AddForce(launchForce);
+                
+
             }
+        }
+
+        if (Input.GetMouseButton(1) && !stuckToSurface)
+        {
+            CollisionStick(lastCollision);
         }
     }
 }
