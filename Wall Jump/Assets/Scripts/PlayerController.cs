@@ -52,6 +52,11 @@ public class PlayerController : MonoBehaviour
         jumpCounterScript.SetNumberOfJumps(totalJumpsAllowed);
     }
 
+    private void FixedUpdate()
+    {
+       
+    }
+
     void Update()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -85,8 +90,6 @@ public class PlayerController : MonoBehaviour
                 Vector2 differenceVector = (mousePos - transform.position);
                 Vector2 launchForce = launchPower * Mathf.Min(differenceVector.magnitude, maxLaunchMult) * differenceVector.normalized;
                 gameObject.GetComponent<Rigidbody2D>().AddForce(launchForce);
-                
-
             }
         }
 
