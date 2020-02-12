@@ -39,7 +39,10 @@ public class PlayerController : MonoBehaviour
             lastCollision = collision;
             totalJumpsMade = 0;
             jumpCounterScript.ResetJumps();
-            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            FixedJoint2D joint = gameObject.GetComponent<FixedJoint2D>();
+            joint.enabled = true;
+            joint.connectedAnchor = collision.transform.InverseTransformPoint(gameObject.transform.position);
+            joint.connectedBody = collision.rigidbody;
         }
     }
 
@@ -77,7 +80,8 @@ public class PlayerController : MonoBehaviour
 
                 gameObject.GetComponent<LineRenderer>().enabled = false;
 
-                gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+                gameObject.GetComponent<FixedJoint2D>().enabled = false;
+
                 Vector2 differenceVector = (mousePos - transform.position);
                 Vector2 launchForce = launchPower * Mathf.Min(differenceVector.magnitude, maxLaunchMult) * differenceVector.normalized;
                 gameObject.GetComponent<Rigidbody2D>().AddForce(launchForce);

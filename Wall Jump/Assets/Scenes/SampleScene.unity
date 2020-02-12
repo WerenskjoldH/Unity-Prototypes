@@ -557,6 +557,7 @@ GameObject:
   - component: {fileID: 1450328141}
   - component: {fileID: 1450328140}
   - component: {fileID: 1450328139}
+  - component: {fileID: 1450328143}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Collidable
@@ -675,6 +676,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 125}
+--- !u!114 &1450328143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450328138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1da26c376bfdbb348a2f81990e2b604a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1455894318
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,6 +702,7 @@ GameObject:
   - component: {fileID: 1455894321}
   - component: {fileID: 1455894320}
   - component: {fileID: 1455894319}
+  - component: {fileID: 1455894325}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -715,7 +729,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!120 &1455894320
 LineRenderer:
@@ -919,6 +933,24 @@ Transform:
   m_Father: {fileID: 1192589953}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!255 &1455894325
+FixedJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455894318}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_DampingRatio: 0
+  m_Frequency: 0
 --- !u!1 &1464099940
 GameObject:
   m_ObjectHideFlags: 0
