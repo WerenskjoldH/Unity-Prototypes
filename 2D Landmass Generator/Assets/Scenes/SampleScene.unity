@@ -166,13 +166,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapWidth: 100
   mapHeight: 100
-  noiseScale: 27.6
-  octaves: 4
-  persistance: 0.39
+  noiseScale: 25
+  octaves: 5
+  persistance: 0.5
   lacunarity: 2
-  seed: 0
+  seed: 23
   offset: {x: 0, y: 0}
   autoUpdateMap: 1
+  drawMode: 1
+  regions:
+  - name: Water Deep
+    height: 0.3
+    color: {r: 0.2783019, g: 0.7607843, b: 1, a: 0}
+  - name: Water Shallow
+    height: 0.4
+    color: {r: 0.2783019, g: 0.84644705, b: 1, a: 0}
+  - name: Sand
+    height: 0.45
+    color: {r: 0.9144154, g: 0.9245283, b: 0.5803922, a: 0}
+  - name: Grass
+    height: 0.55
+    color: {r: 0.28218538, g: 0.745283, b: 0.26366144, a: 0}
+  - name: Forest
+    height: 0.6
+    color: {r: 0.28218538, g: 0.57254905, b: 0.26366144, a: 0}
+  - name: Rock
+    height: 0.7
+    color: {r: 0.87058824, g: 0.745283, b: 0.23921569, a: 0}
+  - name: Mountain
+    height: 0.9
+    color: {r: 0.735849, g: 0.5372549, b: 0.2, a: 0}
+  - name: Snow
+    height: 1
+    color: {r: 1, g: 1, b: 1, a: 0}
 --- !u!4 &502854677
 Transform:
   m_ObjectHideFlags: 0
