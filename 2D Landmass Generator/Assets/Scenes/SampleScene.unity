@@ -170,7 +170,7 @@ MonoBehaviour:
   octaves: 5
   persistance: 0.5
   lacunarity: 2
-  seed: 23
+  seed: 28
   offset: {x: 0, y: 0}
   autoUpdateMap: 1
   drawMode: 1

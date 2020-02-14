@@ -6,6 +6,7 @@ using UnityEngine;
 public struct TerrainType
 {
     public string name;
+    [Range(0, 1)]
     public float height;
     public Color color;
 }
