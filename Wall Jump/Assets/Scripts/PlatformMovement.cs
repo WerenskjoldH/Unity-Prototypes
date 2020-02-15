@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class PlatformMovement : MonoBehaviour
 {
-    Transform startPosition;
+    Vector2 startPosition;
 
     void Start()
     {
-        startPosition = gameObject.transform;
+        startPosition = gameObject.transform.position;
     }
 
     void Update()
     {
-        Vector2 newPos = startPosition.position;
-        newPos.y = Mathf.Sin(Time.realtimeSinceStartup);
+        Vector2 newPos = startPosition;
+        newPos.y += Mathf.Sin(Time.realtimeSinceStartup);
         gameObject.transform.position = newPos;
     }
 }
