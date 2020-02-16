@@ -1270,7 +1270,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1192589952}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 1.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 551754654}
@@ -1461,7 +1461,7 @@ MonoBehaviour:
   maxLaunchMult: 3
   jumpCounterScript: {fileID: 551754653}
   parentObject: {fileID: 1192589952}
-  collisionParticleSystem: {fileID: 5656668735815210795, guid: 21539756b88372e448af4a0b6f8425df,
+  collisionParticleEffect: {fileID: 4341964945752832736, guid: 21539756b88372e448af4a0b6f8425df,
     type: 3}
   totalJumpsAllowed: 3
 --- !u!212 &1455894323
