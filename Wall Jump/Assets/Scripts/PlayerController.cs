@@ -7,12 +7,14 @@ public class PlayerController : MonoBehaviour
     // Both Launch Properties Use World Units
     public float launchPower = 50.0f;
     public float maxLaunchMult = 3.0f;
+    public int totalJumpsAllowed = 3;
     public JumpCounterScript jumpCounterScript;
     public GameObject parentObject;
     public ParticleSystem collisionParticleEffect;
-    public int totalJumpsAllowed = 3;
-
+    
     int totalJumpsMade = 0;
+    float grindTime = 0;
+    int grindParticleObjects = 0;
     bool stuckToSurface = false;
     Collision2D lastCollision = null;
 
@@ -37,12 +39,43 @@ public class PlayerController : MonoBehaviour
         lastCollision = collision;
     }
 
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+
+        // Grinding Particle Effect
+        if (!stuckToSurface && collision.relativeVelocity.magnitude > 3.0f && Input.GetMouseButton(0))
+        {
+            if (grindTime / 0.1f > grindParticleObjects)
+            {
+                Instantiate(collisionParticleEffect, transform.position, Quaternion.identity);
+                grindParticleObjects++;
+            }
+
+            if(totalJumpsMade > 0)
+            {
+                totalJumpsMade = 0;
+                jumpCounterScript.ResetJumps();
+            }
+
+            grindTime += Time.deltaTime;
+        }
+
+    }
+
     private void OnCollisionExit2D(Collision2D collision)
     {
         parentObject.transform.SetParent(null);
 
         if (collision.collider == lastCollision.collider)
             lastCollision = null;
+
+        if (grindTime > 0)
+        {
+            Debug.Log("Grinded for: " + grindTime + "Second(s)");
+            grindParticleObjects = 0;
+            grindTime = 0;
+        }
+        
     }
 
     private void CollisionStick(Collision2D collision)
