@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float maxLaunchMult = 3.0f;
     public JumpCounterScript jumpCounterScript;
     public GameObject parentObject;
+    public ParticleSystem collisionParticleEffect;
     public int totalJumpsAllowed = 3;
 
     int totalJumpsMade = 0;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         parentObject.transform.SetParent(collision.transform);
+        Instantiate(collisionParticleEffect, transform.position, Quaternion.identity);
         lastCollision = collision;
     }
 
