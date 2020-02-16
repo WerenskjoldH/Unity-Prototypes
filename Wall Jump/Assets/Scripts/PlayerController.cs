@@ -50,6 +50,11 @@ public class PlayerController : MonoBehaviour
     {
         gameObject.GetComponent<LineRenderer>().positionCount = 2;
         jumpCounterScript.SetNumberOfJumps(totalJumpsAllowed);
+
+        if(GetComponent<TrailRenderer>() != null)
+        {
+            GetComponent<TrailRenderer>().startWidth = gameObject.GetComponent<SpriteRenderer>().size.y;
+        }
     }
 
     private void FixedUpdate()
