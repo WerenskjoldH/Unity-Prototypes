@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float launchPower = 50.0f;
     public float maxLaunchMult = 3.0f;
     public JumpCounterScript jumpCounterScript;
+    public GameObject parentObject;
     public int totalJumpsAllowed = 3;
 
     int totalJumpsMade = 0;
@@ -21,18 +22,20 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        parentObject.transform.SetParent(collision.transform);
         lastCollision = collision;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        parentObject.transform.SetParent(null);
         if (collision.collider == lastCollision.collider)
             lastCollision = null;
     }
 
     private void CollisionStick(Collision2D collision)
     {
-        if(collision != null && collision.gameObject.tag == "Collidable")
+        if (collision != null && collision.gameObject.tag == "Collidable")
         {
             Debug.Log("Stick Triggered");
             stuckToSurface = true;
