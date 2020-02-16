@@ -24,13 +24,23 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         parentObject.transform.SetParent(collision.transform);
-        Instantiate(collisionParticleEffect, transform.position, Quaternion.identity);
+
+        // Can probably make this more juicy in the future
+        if (collision.relativeVelocity.magnitude > 14)
+        {
+            Instantiate(collisionParticleEffect, transform.position, Quaternion.identity);
+            Instantiate(collisionParticleEffect, transform.position, Quaternion.identity);
+        }
+        else if (collision.relativeVelocity.magnitude > 8)
+            Instantiate(collisionParticleEffect, transform.position, Quaternion.identity);
+
         lastCollision = collision;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         parentObject.transform.SetParent(null);
+
         if (collision.collider == lastCollision.collider)
             lastCollision = null;
     }
@@ -39,7 +49,6 @@ public class PlayerController : MonoBehaviour
     {
         if (collision != null && collision.gameObject.tag == "Collidable")
         {
-            Debug.Log("Stick Triggered");
             stuckToSurface = true;
             lastCollision = collision;
             totalJumpsMade = 0;
@@ -57,9 +66,8 @@ public class PlayerController : MonoBehaviour
         jumpCounterScript.SetNumberOfJumps(totalJumpsAllowed);
 
         if(GetComponent<TrailRenderer>() != null)
-        {
             GetComponent<TrailRenderer>().startWidth = gameObject.GetComponent<SpriteRenderer>().size.y;
-        }
+        
     }
 
     void Update()
