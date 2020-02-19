@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     // Both Launch Properties Use World Units
     public float launchPower = 50.0f;
     public float maxLaunchMult = 3.0f;
+    public float requiredGrindTimeToRefillJumps = 0.1f;
     public int totalJumpsAllowed = 3;
     public JumpCounterScript jumpCounterScript;
     public GameObject parentObject;
@@ -51,7 +52,7 @@ public class PlayerController : MonoBehaviour
                 grindParticleObjects++;
             }
 
-            if(totalJumpsMade > 0)
+            if(totalJumpsMade > 0 && grindTime >= requiredGrindTimeToRefillJumps)
             {
                 totalJumpsMade = 0;
                 jumpCounterScript.ResetJumps();

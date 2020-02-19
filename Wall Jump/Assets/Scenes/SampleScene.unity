@@ -1459,6 +1459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchPower: 150
   maxLaunchMult: 3
+  requiredGrindTimeToRefillJumps: 0.1
   totalJumpsAllowed: 3
   jumpCounterScript: {fileID: 551754653}
   parentObject: {fileID: 1192589952}
