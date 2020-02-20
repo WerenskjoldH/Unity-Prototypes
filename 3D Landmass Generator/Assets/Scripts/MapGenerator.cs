@@ -20,7 +20,7 @@ public class MapGenerator : MonoBehaviour
         MESH
     }
 
-    const int mapChunkSize = 241;
+    public const int mapChunkSize = 241;
     // LOD
     [Range(0,6)]
     public int levelOfDetail;
