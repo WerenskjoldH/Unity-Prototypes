@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     float grindTime = 0;
     int grindParticleObjects = 0;
     bool stuckToSurface = false;
+    bool jumpCancel = false;
     Collision2D lastCollision = null;
 
     public bool IsStuckToSurface()
@@ -109,7 +110,7 @@ public class PlayerController : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
 
-        if (totalJumpsMade < totalJumpsAllowed)
+        if (totalJumpsMade < totalJumpsAllowed && !jumpCancel)
         {
             if (Input.GetMouseButton(0))
             {
@@ -144,5 +145,13 @@ public class PlayerController : MonoBehaviour
         {
             CollisionStick(lastCollision);
         }
+
+        if (Input.GetMouseButton(0) && Input.GetMouseButtonDown(1))
+        {
+            jumpCancel = true;
+            gameObject.GetComponent<LineRenderer>().enabled = false;
+        }
+        else if (Input.GetMouseButtonUp(0))
+            jumpCancel = false;
     }
 }

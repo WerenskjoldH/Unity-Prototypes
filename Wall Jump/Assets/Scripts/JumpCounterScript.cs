@@ -10,7 +10,7 @@ public class JumpCounterScript : MonoBehaviour
     public GameObject counterObjectPrefab;
     public GameObject playerObject;
 
-    List<GameObject> jumpCounterObjects;
+    List<GameObject> jumpCounterObjects = new List<GameObject>();
     int numberOfJumps;
     int jumpsUsed = 0;
 
@@ -54,7 +54,6 @@ public class JumpCounterScript : MonoBehaviour
 
     private void Start()
     {
-        jumpCounterObjects = new List<GameObject>();
     }
 
     private void Update()
