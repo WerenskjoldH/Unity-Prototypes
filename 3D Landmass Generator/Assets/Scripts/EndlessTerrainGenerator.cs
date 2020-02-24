@@ -8,6 +8,7 @@ public class EndlessTerrainGenerator : MonoBehaviour
     public Transform viewer;
 
     public static Vector2 viewerPosition;
+    static MapGenerator mapGenerator;
     int chunkSize;
     int chunksVisibleInDistance;
 
@@ -18,6 +19,7 @@ public class EndlessTerrainGenerator : MonoBehaviour
     {
         chunkSize = MapGenerator.mapChunkSize - 1;
         chunksVisibleInDistance = Mathf.RoundToInt(maxViewDistance / chunkSize);
+        mapGenerator = FindObjectOfType<MapGenerator>();
     }
 
     private void Update()
@@ -77,6 +79,13 @@ public class EndlessTerrainGenerator : MonoBehaviour
             meshObject.transform.localScale = Vector3.one * size / 10f;
             meshObject.transform.parent = parent;
             SetVisible(false);
+
+            mapGenerator.RequestMapData(OnMapDataReceived);
+        }
+
+        void OnMapDataReceived(MapData mapData)
+        {
+            print("Received");
         }
 
         public void UpdateTerrainChunk()
