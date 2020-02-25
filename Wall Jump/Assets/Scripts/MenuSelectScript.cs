@@ -21,6 +21,7 @@ public class MenuSelectScript : MonoBehaviour
 
         if (!selected && intersect)
         {
+            Debug.Log("selected");
             uiText.text = "-" + uiText.text + "-";
             selected = true;
         }
