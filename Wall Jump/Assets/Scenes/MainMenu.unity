@@ -1503,12 +1503,12 @@ PrefabInstance:
     - target: {fileID: 743418871055332657, guid: 377653e1cbddf3d41b751d7ba16f0d4a,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 122.5
+      value: 145.8
       objectReference: {fileID: 0}
     - target: {fileID: 743418871055332657, guid: 377653e1cbddf3d41b751d7ba16f0d4a,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 712.7
+      value: 875.4
       objectReference: {fileID: 0}
     - target: {fileID: 2178951527423770015, guid: 377653e1cbddf3d41b751d7ba16f0d4a,
         type: 3}
@@ -1633,14 +1633,12 @@ PrefabInstance:
     - target: {fileID: 7363587764238103364, guid: 377653e1cbddf3d41b751d7ba16f0d4a,
         type: 3}
       propertyPath: m_text
-      value: 'Quit
-
-'
+      value: Quit
       objectReference: {fileID: 0}
     - target: {fileID: 7363587764238103364, guid: 377653e1cbddf3d41b751d7ba16f0d4a,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7363587764238103364, guid: 377653e1cbddf3d41b751d7ba16f0d4a,
         type: 3}
@@ -2022,6 +2020,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MenuButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5689101937660288457, guid: 377653e1cbddf3d41b751d7ba16f0d4a,
+        type: 3}
+      propertyPath: defaultText
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6241856241252027053, guid: 377653e1cbddf3d41b751d7ba16f0d4a,
         type: 3}
