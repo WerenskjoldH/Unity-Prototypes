@@ -1,18 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class AnimatorFunctionsScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] MenuControllerScript menuController;
+    public TextMeshProUGUI uiText;
+    public string defaultText;
+
     void Start()
     {
-        
+        defaultText = uiText.text;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TextSelected()
     {
-        
+        Debug.Log("Hit");
+        uiText.text = "-" + defaultText + "-";
+    }
+
+    public void TextUnselected()
+    {
+        uiText.text = defaultText;
+    }
+
+    void PlaySound(AudioClip audioClip)
+    {
+        menuController.audioSource.PlayOneShot(audioClip);
     }
 }

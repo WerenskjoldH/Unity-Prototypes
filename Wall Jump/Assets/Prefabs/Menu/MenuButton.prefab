@@ -158,7 +158,6 @@ GameObject:
   - component: {fileID: 140473652884376111}
   - component: {fileID: 5064376723740867506}
   - component: {fileID: 5926325461077350657}
-  - component: {fileID: 5689101937660288457}
   m_Layer: 5
   m_Name: MenuButton
   m_TagString: Untagged
@@ -226,6 +225,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca924fef00a6ecc4e8226b873e3e877f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuController: {fileID: 0}
+  disableOnce: 0
+  uiText: {fileID: 7363587764238103364}
+  defaultText: 
 --- !u!114 &5926325461077350657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,20 +241,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2e32a86e1e00a4d8da1858fe993947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5689101937660288457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3903745540288871733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b07ca3942b7c27478982bfb8bad5a52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiText: {fileID: 7363587764238103364}
-  defaultText: 
+  menuButtonController: {fileID: 0}
+  animator: {fileID: 140473652884376111}
+  animatorFunctions: {fileID: 5064376723740867506}
+  thisIndex: 0
 --- !u!1 &4825209425552763830
 GameObject:
   m_ObjectHideFlags: 0
