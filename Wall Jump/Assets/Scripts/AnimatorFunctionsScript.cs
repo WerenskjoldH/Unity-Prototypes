@@ -16,7 +16,6 @@ public class AnimatorFunctionsScript : MonoBehaviour
 
     public void TextSelected()
     {
-        Debug.Log("Hit");
         uiText.text = "-" + defaultText + "-";
     }
 

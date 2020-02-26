@@ -5,11 +5,10 @@ using UnityEngine;
 public class MenuControllerScript : MonoBehaviour
 {
     public int index;
-    [SerializeField]
-    public bool keyDown;
-    [SerializeField]
     public int maxIndex;
     public AudioSource audioSource;
+
+    float prevKeyDown;
 
     private void Start()
     {
@@ -18,38 +17,21 @@ public class MenuControllerScript : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetAxis("Vertical") != 0)
+        if(Input.GetAxis("Vertical") != 0 && prevKeyDown == 0)
         {
-            if (!keyDown)
+            if(Input.GetAxis("Vertical") < 0)
             {
-                if(Input.GetAxis("Vertical") < 0)
-                {
-                    if (index < maxIndex)
-                    {
-                        index++;
-                    }
-                    else
-                    {
-                        index = 0;
-                    }
-                }
-                else if(Input.GetAxis("Vertical") > 0)
-                {
-                    if(index > 0)
-                    {
-                        index--;
-                    }
-                    else
-                    {
-                        index = maxIndex;
-                    }
-                }
-                keyDown = true;
+                index = index + 1;
+                if (index > maxIndex)
+                    index = 0;
+            }
+            else if(Input.GetAxis("Vertical") > 0)
+            {
+                index -= 1;
+                if (index < 0)
+                    index = maxIndex;
             }
         }
-        else
-        {
-            keyDown = false;
-        }
+        prevKeyDown = Input.GetAxis("Vertical");
     }
 }
