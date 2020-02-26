@@ -26,6 +26,8 @@ public class AnimatorFunctionsScript : MonoBehaviour
 
     void PlaySound(AudioClip audioClip)
     {
+        if (audioClip == null)
+            return;
         menuController.audioSource.PlayOneShot(audioClip);
     }
 }

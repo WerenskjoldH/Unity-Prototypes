@@ -892,12 +892,17 @@ PrefabInstance:
     - target: {fileID: 7363587764238103364, guid: 377653e1cbddf3d41b751d7ba16f0d4a,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7363587764238103364, guid: 377653e1cbddf3d41b751d7ba16f0d4a,
         type: 3}
       propertyPath: m_firstOverflowCharacterIndex
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7363587764238103364, guid: 377653e1cbddf3d41b751d7ba16f0d4a,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 377653e1cbddf3d41b751d7ba16f0d4a, type: 3}
@@ -1026,7 +1031,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 0
-  keyDown: 0
   maxIndex: 2
   audioSource: {fileID: 0}
 --- !u!1 &1346667698
