@@ -1,6 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.Events;
+
+
+[Serializable]
+public class SubmitFunction : UnityEvent { }
 
 public class MenuButtonScript : MonoBehaviour
 {
@@ -8,6 +14,7 @@ public class MenuButtonScript : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] AnimatorFunctionsScript animatorFunctions;
     [SerializeField] int thisIndex;
+    public SubmitFunction submitMethod;
 
     void Update()
     {
@@ -17,6 +24,8 @@ public class MenuButtonScript : MonoBehaviour
             if (Input.GetAxis("Submit") == 1)
             {
                 animator.SetBool("pressed", true);
+                if(submitMethod.GetPersistentEventCount() > 0)
+                    submitMethod.Invoke();
             }
             else if (animator.GetBool("pressed"))
             {

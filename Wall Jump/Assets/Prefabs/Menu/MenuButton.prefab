@@ -226,7 +226,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuController: {fileID: 0}
-  disableOnce: 0
   uiText: {fileID: 7363587764238103364}
   defaultText: 
 --- !u!114 &5926325461077350657
@@ -244,6 +243,20 @@ MonoBehaviour:
   menuButtonController: {fileID: 0}
   animator: {fileID: 140473652884376111}
   animatorFunctions: {fileID: 5064376723740867506}
+  submitMethod:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   thisIndex: 0
 --- !u!1 &4825209425552763830
 GameObject:

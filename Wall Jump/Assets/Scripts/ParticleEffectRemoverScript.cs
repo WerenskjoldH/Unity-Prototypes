@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParticleEffectRemover : MonoBehaviour
+public class ParticleEffectRemoverScript : MonoBehaviour
 {
     float timeBeforeDestroy = 0;
     private void Awake()
