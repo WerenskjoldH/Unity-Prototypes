@@ -24,8 +24,6 @@ public class MenuButtonScript : MonoBehaviour
             if (Input.GetAxis("Submit") == 1)
             {
                 animator.SetBool("pressed", true);
-                if(submitMethod.GetPersistentEventCount() > 0)
-                    submitMethod.Invoke();
             }
             else if (animator.GetBool("pressed"))
             {
@@ -36,5 +34,11 @@ public class MenuButtonScript : MonoBehaviour
         {
             animator.SetBool("selected", false);
         }
+    }
+
+    void InvokeSubmitMethod()
+    {
+        if (submitMethod.GetPersistentEventCount() > 0)
+            submitMethod.Invoke();
     }
 }
