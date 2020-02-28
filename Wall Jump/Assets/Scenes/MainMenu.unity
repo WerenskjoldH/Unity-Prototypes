@@ -1685,6 +1685,21 @@ PrefabInstance:
       propertyPath: menuButtonController
       value: 
       objectReference: {fileID: 1090069636}
+    - target: {fileID: 5926325461077350657, guid: 377653e1cbddf3d41b751d7ba16f0d4a,
+        type: 3}
+      propertyPath: submitMethod.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1090069637}
+    - target: {fileID: 5926325461077350657, guid: 377653e1cbddf3d41b751d7ba16f0d4a,
+        type: 3}
+      propertyPath: submitMethod.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926325461077350657, guid: 377653e1cbddf3d41b751d7ba16f0d4a,
+        type: 3}
+      propertyPath: submitMethod.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6241856241252027053, guid: 377653e1cbddf3d41b751d7ba16f0d4a,
         type: 3}
       propertyPath: m_SizeDelta.x

@@ -12,4 +12,10 @@ public class MainMenuButtonFunctionsScript : MonoBehaviour
         SceneManager.LoadScene(PlayButtonSceneName);
     }
 
+    public void QuitButton()
+    {
+        Debug.LogWarning("Game Closing...");
+        Application.Quit();
+    }
+
 }
