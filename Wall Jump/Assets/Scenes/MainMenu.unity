@@ -2371,6 +2371,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneTransitioner
       objectReference: {fileID: 0}
+    - target: {fileID: 8887680792093539552, guid: 96d3791e62feb5548a4a28cce95a6567,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 7352f2a18bee9b645b93b5bb94b6b0b4,
+        type: 2}
+    - target: {fileID: 8887680792093539554, guid: 96d3791e62feb5548a4a28cce95a6567,
+        type: 3}
+      propertyPath: m_Name
+      value: MainMenuTransition
+      objectReference: {fileID: 0}
     - target: {fileID: 8887680792093539583, guid: 96d3791e62feb5548a4a28cce95a6567,
         type: 3}
       propertyPath: m_Camera
