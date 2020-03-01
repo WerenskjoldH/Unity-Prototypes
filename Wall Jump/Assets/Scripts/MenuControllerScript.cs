@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MenuControllerScript : MonoBehaviour
 {
@@ -9,6 +11,13 @@ public class MenuControllerScript : MonoBehaviour
     public AudioSource audioSource;
 
     float prevKeyDown;
+    GraphicRaycaster graphicRaycaster;
+    MenuButtonScript selectedButton;
+
+    private void Awake()
+    {
+        graphicRaycaster = GetComponent<GraphicRaycaster>();
+    }
 
     private void Start()
     {
@@ -17,7 +26,28 @@ public class MenuControllerScript : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetAxis("Vertical") != 0 && prevKeyDown == 0)
+
+        PointerEventData pointerData = new PointerEventData(EventSystem.current);
+        List<RaycastResult> results = new List<RaycastResult>();
+
+        pointerData.position = Input.mousePosition;
+        this.graphicRaycaster.Raycast(pointerData, results);
+
+        if (selectedButton)
+            selectedButton.mouseHovering = false;
+        foreach (RaycastResult result in results)
+        {
+            MenuButtonScript resultScript = result.gameObject.GetComponentInParent<MenuButtonScript>();
+
+            if (resultScript)
+            {
+                index = resultScript.GetIndex();
+                resultScript.mouseHovering = true;
+                selectedButton = resultScript;
+            }
+        }
+
+        if (Input.GetAxis("Vertical") != 0 && prevKeyDown == 0)
         {
             if(Input.GetAxis("Vertical") < 0)
             {

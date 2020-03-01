@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 
 [Serializable]
@@ -15,13 +17,20 @@ public class MenuButtonScript : MonoBehaviour
     [SerializeField] AnimatorFunctionsScript animatorFunctions;
     [SerializeField] int thisIndex;
     public SubmitFunction submitMethod;
+    public bool mouseHovering = false;
+
+    public int GetIndex()
+    {
+        return thisIndex;
+    }
 
     void Update()
     {
+
         if (menuButtonController.index == thisIndex)
         {
             animator.SetBool("selected", true);
-            if (Input.GetAxis("Submit") == 1)
+            if (Input.GetAxis("Submit") == 1 || (mouseHovering && Input.GetMouseButtonDown(0)))
             {
                 animator.SetBool("pressed", true);
             }
