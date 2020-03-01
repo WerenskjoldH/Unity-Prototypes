@@ -26,7 +26,7 @@ public class MenuButtonScript : MonoBehaviour
 
     void Update()
     {
-
+        // Button Logic
         if (menuButtonController.index == thisIndex)
         {
             animator.SetBool("selected", true);
@@ -45,6 +45,7 @@ public class MenuButtonScript : MonoBehaviour
         }
     }
 
+    // Calls the delegates that have been added to fire when this button is pressed
     void InvokeSubmitMethod()
     {
         if (submitMethod.GetPersistentEventCount() > 0)

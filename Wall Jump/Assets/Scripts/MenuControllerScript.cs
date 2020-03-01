@@ -26,16 +26,18 @@ public class MenuControllerScript : MonoBehaviour
 
     private void Update()
     {
-
+        
+        // Mouse Selection Input
         PointerEventData pointerData = new PointerEventData(EventSystem.current);
-        List<RaycastResult> results = new List<RaycastResult>();
+        List<RaycastResult> raycastResults = new List<RaycastResult>();
 
         pointerData.position = Input.mousePosition;
-        this.graphicRaycaster.Raycast(pointerData, results);
+        this.graphicRaycaster.Raycast(pointerData, raycastResults);
 
         if (selectedButton)
             selectedButton.mouseHovering = false;
-        foreach (RaycastResult result in results)
+
+        foreach (RaycastResult result in raycastResults)
         {
             MenuButtonScript resultScript = result.gameObject.GetComponentInParent<MenuButtonScript>();
 
@@ -47,6 +49,7 @@ public class MenuControllerScript : MonoBehaviour
             }
         }
 
+        // Keyboard Selection Input
         if (Input.GetAxis("Vertical") != 0 && prevKeyDown == 0)
         {
             if(Input.GetAxis("Vertical") < 0)

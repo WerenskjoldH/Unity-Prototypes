@@ -2142,7 +2142,7 @@ PrefabInstance:
     - target: {fileID: 5926325461077350657, guid: 377653e1cbddf3d41b751d7ba16f0d4a,
         type: 3}
       propertyPath: submitMethod.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayButton
+      value: LevelSelectButton
       objectReference: {fileID: 0}
     - target: {fileID: 5926325461077350657, guid: 377653e1cbddf3d41b751d7ba16f0d4a,
         type: 3}

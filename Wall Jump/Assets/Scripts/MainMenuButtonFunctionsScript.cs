@@ -8,7 +8,7 @@ public class MainMenuButtonFunctionsScript : MonoBehaviour
     public string PlayButtonSceneName;
     public SceneTransitionerScript transitionerScript;
 
-    public void PlayButton()
+    public void LevelSelectButton()
     {
         transitionerScript.LoadLevel(PlayButtonSceneName);
     }
