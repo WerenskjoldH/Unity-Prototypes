@@ -707,6 +707,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1010178431 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8887680791672807753, guid: 96d3791e62feb5548a4a28cce95a6567,
+    type: 3}
+  m_PrefabInstance: {fileID: 8887680791243511278}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e98e42a39a0bd8d4f99b839ed639b494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1085176048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1047,6 +1059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayButtonSceneName: TestScene
+  transitionerScript: {fileID: 1010178431}
 --- !u!1 &1346667698
 GameObject:
   m_ObjectHideFlags: 0

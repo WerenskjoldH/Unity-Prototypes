@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 public class MainMenuButtonFunctionsScript : MonoBehaviour
 {
     public string PlayButtonSceneName;
+    public SceneTransitionerScript transitionerScript;
 
     public void PlayButton()
     {
-        SceneManager.LoadScene(PlayButtonSceneName);
+        transitionerScript.LoadLevel(PlayButtonSceneName);
     }
 
     public void QuitButton()
