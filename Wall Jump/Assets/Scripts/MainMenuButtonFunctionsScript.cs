@@ -5,12 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuButtonFunctionsScript : MonoBehaviour
 {
-    public string PlayButtonSceneName;
     public SceneTransitionerScript transitionerScript;
 
-    public void LevelSelectButton()
+    public void LevelSelectButton(string sceneName)
     {
-        transitionerScript.LoadLevel(PlayButtonSceneName);
+        transitionerScript.LoadLevel(sceneName);
     }
 
     public void QuitButton()
