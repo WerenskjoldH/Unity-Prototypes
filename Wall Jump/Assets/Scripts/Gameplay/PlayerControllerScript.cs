@@ -61,7 +61,7 @@ public class PlayerControllerScript : MonoBehaviour
 
             grindTime += Time.deltaTime;
         }
-
+        lastCollision = collision;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
