@@ -25,6 +25,11 @@ public class PlayerControllerScript : MonoBehaviour
         return stuckToSurface;
     }
 
+    public GameObject ObjectStuckTo()
+    {
+        return lastCollision.gameObject;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         parentObject.transform.SetParent(collision.transform);
