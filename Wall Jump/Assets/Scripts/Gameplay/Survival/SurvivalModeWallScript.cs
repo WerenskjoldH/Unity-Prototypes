@@ -16,6 +16,11 @@ public class SurvivalModeWallScript : MonoBehaviour
 
     int speedOfBlinks = 3;
 
+    public bool IsActivated()
+    {
+        return activated;
+    }
+
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -27,7 +32,7 @@ public class SurvivalModeWallScript : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-            Activate(3.0f);
+            Deactivate();
     }
 
     public void Deactivate()
