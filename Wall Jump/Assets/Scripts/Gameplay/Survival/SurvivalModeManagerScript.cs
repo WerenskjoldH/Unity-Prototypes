@@ -4,48 +4,36 @@ using UnityEngine;
 
 public class SurvivalModeManagerScript : MonoBehaviour
 {
+    public GameObject startGameText;
+
     public PlayerControllerScript playerControllerScript;
 
     // Contains SurvivalModeWallScripts
     public ArrayList environmentObjects = new ArrayList();
-    public Queue<SurvivalModeWallScript> activeWalls = new Queue<SurvivalModeWallScript>();
 
-    SurvivalModeWallScript lastAdded;
+    public float scrollSpeed = 5.0f;
 
-    float timeBetweenSelections = 3;
-    float timeSum;
-
-    bool lastFinishedAdding = true;
+    bool gameStart = false;
 
     void Update()
     {
-        if(timeSum > timeBetweenSelections && lastFinishedAdding)
+        if(!gameStart)
         {
-            timeSum = 0;
-            if (activeWalls.Count > 2) {
-                Debug.Log("Deactivating");
-                Debug.Log("Count: " + activeWalls.Count);
-                activeWalls.Dequeue().Deactivate();
-            }
-
-            int selectedObject = Random.Range(0, environmentObjects.Count);
-            while(((SurvivalModeWallScript)environmentObjects[selectedObject]).IsActivated())
+            if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
             {
-                selectedObject = Random.Range(0, environmentObjects.Count);
+                gameStart = true;
+                startGameText.SetActive(false);
             }
-
-            ((SurvivalModeWallScript)environmentObjects[selectedObject]).Activate(timeBetweenSelections);
-            activeWalls.Enqueue((SurvivalModeWallScript)environmentObjects[selectedObject]);
-            lastAdded = (SurvivalModeWallScript)environmentObjects[selectedObject];
-            lastFinishedAdding = false;
         }
         else
         {
-            if (lastAdded == null || lastAdded.dangerous)
-                lastFinishedAdding = true;
+            foreach (GameObject o in environmentObjects)
+            {
+                Vector2 t = o.transform.position;
+                t.y -= scrollSpeed * Time.deltaTime;
+                o.transform.position = t;
+            }
         }
-
-        if(lastFinishedAdding)
-            timeSum += Time.deltaTime;
+        
     }
 }

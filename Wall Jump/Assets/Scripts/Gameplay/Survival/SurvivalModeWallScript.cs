@@ -26,13 +26,11 @@ public class SurvivalModeWallScript : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         defaultColor = spriteRenderer.color;
 
-        survivalManager.environmentObjects.Add(this);
+        survivalManager.environmentObjects.Add(this.gameObject);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            Deactivate();
     }
 
     public void Deactivate()
