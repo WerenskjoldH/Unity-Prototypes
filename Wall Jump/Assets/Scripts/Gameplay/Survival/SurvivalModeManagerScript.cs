@@ -5,8 +5,9 @@ using UnityEngine;
 public class SurvivalModeManagerScript : MonoBehaviour
 {
     public PlayerControllerScript playerControllerScript;
-    public GameObject[] Environment;
-    
+
+    // Contains SurvivalModeWallScripts
+    public ArrayList environmentObjects = new ArrayList();
 
     void Start()
     {

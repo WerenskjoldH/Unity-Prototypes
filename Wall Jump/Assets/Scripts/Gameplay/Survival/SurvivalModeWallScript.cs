@@ -6,22 +6,34 @@ public class SurvivalModeWallScript : MonoBehaviour
 {
     public Color dangerousColor = Color.red;
     Color defaultColor;
+
     SpriteRenderer spriteRenderer;
+
+    public SurvivalModeManagerScript survivalManager;
+
     bool activated = false;
     public bool dangerous = false;
-    // This is a little arbitrary right now
+
     int speedOfBlinks = 3;
 
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         defaultColor = spriteRenderer.color;
+
+        survivalManager.environmentObjects.Add(this);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
             Activate(3.0f);
+    }
+
+    public void Deactivate()
+    {
+        activated = false;
+        spriteRenderer.color = defaultColor;
     }
 
     public void Activate(float timeToActivate)
@@ -48,12 +60,10 @@ public class SurvivalModeWallScript : MonoBehaviour
                 spriteRenderer.color = defaultColor;
             }
 
-            Debug.Log("Running Coroutine: " + timePassed);
             timePassed += Time.deltaTime;
             yield return null;
         }
 
-        Debug.Log("Ending Coroutine");
         dangerous = true;
         spriteRenderer.color = dangerousColor;
     }
