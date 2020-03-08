@@ -31,6 +31,10 @@ public class SurvivalModeManagerScript : MonoBehaviour
             {
                 Vector2 t = o.transform.position;
                 t.y -= scrollSpeed * Time.deltaTime;
+
+                if (t.y < -7.0f)
+                    t.y = -1 * t.y;
+
                 o.transform.position = t;
             }
         }
