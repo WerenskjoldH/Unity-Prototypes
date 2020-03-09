@@ -7,6 +7,7 @@ public class SurvivalModeWallScript : MonoBehaviour
     public Color dangerousColor = Color.red;
     Color defaultColor;
 
+    // This is automatically set
     SpriteRenderer spriteRenderer;
 
     public SurvivalModeManagerScript survivalManager;
@@ -27,6 +28,19 @@ public class SurvivalModeWallScript : MonoBehaviour
         defaultColor = spriteRenderer.color;
 
         survivalManager.environmentObjects.Add(this.gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        // So we don't accidentally destroy the player, we remove them as a child
+        PlayerControllerScript pS = gameObject.GetComponentInChildren<PlayerControllerScript>();
+        if (pS != null)
+        {
+            pS.parentObject.transform.SetParent(null);
+        }
+
+        // So we don't leave null references, we remove this game object from the manager script
+        survivalManager.environmentObjects.Remove(gameObject);
     }
 
     private void Update()
