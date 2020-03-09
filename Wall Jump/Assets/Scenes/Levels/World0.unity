@@ -1253,6 +1253,7 @@ MonoBehaviour:
   playerControllerScript: {fileID: 1961822874}
   scrollSpeed: 1
   cullingDistanceFromCenter: {x: 12, y: 8}
+  playerKillBoundsFromCenter: {x: 11, y: 8}
 --- !u!4 &1208533427
 Transform:
   m_ObjectHideFlags: 0

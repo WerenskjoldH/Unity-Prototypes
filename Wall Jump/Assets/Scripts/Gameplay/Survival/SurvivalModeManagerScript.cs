@@ -12,7 +12,8 @@ public class SurvivalModeManagerScript : MonoBehaviour
     public ArrayList environmentObjects = new ArrayList();
 
     public float scrollSpeed = 5.0f;
-    public Vector2 cullingDistanceFromCenter = new Vector2(12.0f, 12.0f);
+    public Vector2 cullingDistanceFromCenter = new Vector2(12.0f, 8.0f);
+    public Vector2 playerKillBoundsFromCenter = new Vector2(12.0f, 8.0f);
 
     bool gameStart = false;
 
@@ -31,7 +32,8 @@ public class SurvivalModeManagerScript : MonoBehaviour
         else
         {
             /// Gameplay Code
-
+            
+            // World Object Updating
             foreach (GameObject o in environmentObjects)
             {
                 Vector2 t = o.transform.position;
@@ -46,6 +48,14 @@ public class SurvivalModeManagerScript : MonoBehaviour
                     //t.y = -1 * t.y;
 
                 o.transform.position = t;
+            }
+
+            // Player Object Updating
+            // Check for game over
+            if(playerControllerScript.gameObject.transform.position.x < -1.0f * playerKillBoundsFromCenter.x || playerControllerScript.gameObject.transform.position.y < -1.0f * playerKillBoundsFromCenter.y)
+            {
+                // Destroy Player and Trigger Gameover
+                Debug.Log("Game Over");
             }
         }
         
