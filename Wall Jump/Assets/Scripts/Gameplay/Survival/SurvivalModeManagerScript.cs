@@ -15,6 +15,8 @@ public class SurvivalModeManagerScript : MonoBehaviour
     public Vector2 cullingDistanceFromCenter = new Vector2(12.0f, 8.0f);
     public Vector2 playerKillBoundsFromCenter = new Vector2(12.0f, 8.0f);
 
+    int removedObject = 0;
+
     bool gameStart = false;
 
     private bool GameObjectCulling(GameObject gameObject, Vector2 objectPos)
@@ -23,6 +25,7 @@ public class SurvivalModeManagerScript : MonoBehaviour
         if (objectPos.x < -1 * cullingDistanceFromCenter.x || objectPos.y < -1 * cullingDistanceFromCenter.y)
         {
             Destroy(gameObject);
+            removedObject++;
             return true;
         }
 
