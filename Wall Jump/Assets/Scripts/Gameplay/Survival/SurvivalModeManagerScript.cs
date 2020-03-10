@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class ObstaclePrefab
+{
+    public int difficulty;
+    public GameObject obstaclePrefab;
+}
+
 public class SurvivalModeManagerScript : MonoBehaviour
 {
     public GameObject startGameText;
@@ -11,7 +18,7 @@ public class SurvivalModeManagerScript : MonoBehaviour
     // Contains SurvivalModeWallScripts
     public ArrayList environmentObjects = new ArrayList();
 
-    public List<GameObject> spawnablePrefabs = new List<GameObject>();
+    public ObstaclePrefab[] spawnablePrefabs;
 
     public float scrollSpeed = 5.0f;
     public float spawnDistance = 12.0f;
