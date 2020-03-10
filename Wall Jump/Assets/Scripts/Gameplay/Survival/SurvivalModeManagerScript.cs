@@ -11,7 +11,10 @@ public class SurvivalModeManagerScript : MonoBehaviour
     // Contains SurvivalModeWallScripts
     public ArrayList environmentObjects = new ArrayList();
 
+    public List<GameObject> spawnablePrefabs = new List<GameObject>();
+
     public float scrollSpeed = 5.0f;
+    public float spawnDistance = 12.0f;
     public Vector2 cullingDistanceFromCenter = new Vector2(12.0f, 8.0f);
     public Vector2 playerKillBoundsFromCenter = new Vector2(12.0f, 8.0f);
 
@@ -30,6 +33,11 @@ public class SurvivalModeManagerScript : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void GameObjectSpawning()
+    {
+
     }
 
     void Update()
@@ -56,6 +64,8 @@ public class SurvivalModeManagerScript : MonoBehaviour
 
                 if (GameObjectCulling(o, t))
                     continue;
+
+                GameObjectSpawning();
                 
                 o.transform.position = t;
             }
