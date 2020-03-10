@@ -27,7 +27,9 @@ public class SurvivalModeWallScript : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         defaultColor = spriteRenderer.color;
 
-        survivalManager.environmentObjects.Add(this.gameObject);
+        if (survivalManager == null)
+            survivalManager = GameObject.FindWithTag("GameManager").GetComponent<SurvivalModeManagerScript>();
+        survivalManager.environmentObjects.Add(gameObject);
     }
 
     private void OnDestroy()
