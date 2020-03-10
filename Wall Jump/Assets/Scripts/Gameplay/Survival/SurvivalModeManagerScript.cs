@@ -22,12 +22,12 @@ public class SurvivalModeManagerScript : MonoBehaviour
 
     bool gameStart = false;
 
-    private bool GameObjectCulling(GameObject gameObject, Vector2 objectPos)
+    private bool GameObjectCulling(GameObject observedGameObject, Vector2 objectPos)
     {
         // This code is to be removed once the object spawning system is added
         if (objectPos.x < -1 * cullingDistanceFromCenter.x || objectPos.y < -1 * cullingDistanceFromCenter.y)
         {
-            Destroy(gameObject);
+            Destroy(observedGameObject);
             removedObject++;
             return true;
         }
