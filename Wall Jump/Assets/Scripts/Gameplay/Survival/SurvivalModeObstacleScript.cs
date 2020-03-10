@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SurvivalModeWallScript : MonoBehaviour
+public class SurvivalModeObstacleScript : MonoBehaviour
 {
     public Color dangerousColor = Color.red;
     Color defaultColor;
