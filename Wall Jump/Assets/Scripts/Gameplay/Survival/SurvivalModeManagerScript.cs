@@ -17,6 +17,18 @@ public class SurvivalModeManagerScript : MonoBehaviour
 
     bool gameStart = false;
 
+    private bool GameObjectCulling(GameObject gameObject, Vector2 objectPos)
+    {
+        // This code is to be removed once the object spawning system is added
+        if (objectPos.x < -1 * cullingDistanceFromCenter.x || objectPos.y < -1 * cullingDistanceFromCenter.y)
+        {
+            Destroy(gameObject);
+            return true;
+        }
+
+        return false;
+    }
+
     void Update()
     {
         if(!gameStart)
@@ -39,14 +51,9 @@ public class SurvivalModeManagerScript : MonoBehaviour
                 Vector2 t = o.transform.position;
                 t.x -= scrollSpeed * Time.deltaTime;
 
-                // This code is to be removed once the object spawning system is added
-                if (t.x < -1 * cullingDistanceFromCenter.x)
-                    Destroy(o);
-                //t.x = -1 * t.x;
-                if (t.y < -1 * cullingDistanceFromCenter.y)
-                    Destroy(o);
-                    //t.y = -1 * t.y;
-
+                if (GameObjectCulling(o, t))
+                    continue;
+                
                 o.transform.position = t;
             }
 
