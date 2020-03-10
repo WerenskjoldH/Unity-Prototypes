@@ -144,7 +144,6 @@ public class PlayerControllerScript : MonoBehaviour
                 gameObject.GetComponent<FixedJoint2D>().enabled = false;
 
                 Vector2 dampeningForce = -1.0f * playerRB.velocity * playerRB.mass * airJumpDampening;
-                Debug.Log(dampeningForce);
                 playerRB.AddForce(dampeningForce);
 
                 Vector2 differenceVector = (mousePos - transform.position);
