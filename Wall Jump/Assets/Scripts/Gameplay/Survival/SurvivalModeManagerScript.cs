@@ -87,7 +87,7 @@ public class SurvivalModeManagerScript : MonoBehaviour
         {
             /// Gameplay Code
             
-            // World Object Updating
+            // Obstacle Updating
             foreach (GameObject o in environmentObjects)
             {
                 Vector2 t = o.transform.position;
@@ -95,15 +95,16 @@ public class SurvivalModeManagerScript : MonoBehaviour
 
                 if (GameObjectCulling(o, t))
                     continue;
-
-                GameObjectSpawning();
                 
                 o.transform.position = t;
             }
 
+            // Obstacle Spawning
+            GameObjectSpawning();
+
             // Player Object Updating
             // Check for game over
-            if(playerControllerScript.gameObject.transform.position.x < -1.0f * playerKillBoundsFromCenter.x || playerControllerScript.gameObject.transform.position.y < -1.0f * playerKillBoundsFromCenter.y)
+            if (playerControllerScript.gameObject.transform.position.x < -1.0f * playerKillBoundsFromCenter.x || playerControllerScript.gameObject.transform.position.y < -1.0f * playerKillBoundsFromCenter.y)
             {
                 // Destroy Player and Trigger Gameover
                 Debug.Log("Game Over");

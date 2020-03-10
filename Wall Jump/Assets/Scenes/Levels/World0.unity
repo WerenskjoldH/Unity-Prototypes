@@ -534,10 +534,10 @@ MonoBehaviour:
       type: 3}
   scrollSpeed: 1
   spawnDistance: 12
-  spawnMidpointDistance: 5
+  spawnMidpointDistance: 3.5
   cullingDistanceFromCenter: {x: 12, y: 8}
   playerKillBoundsFromCenter: {x: 11, y: 8}
-  timeBetweenSpawns: 12
+  timeBetweenSpawns: 5
 --- !u!4 &1208533427
 Transform:
   m_ObjectHideFlags: 0
@@ -559,6 +559,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4910605722737166320, guid: 2672a9065859e9642b3b513652ae5899,
+        type: 3}
+      propertyPath: airJumpDampening
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 4910605722737166325, guid: 2672a9065859e9642b3b513652ae5899,
         type: 3}
       propertyPath: m_Parameters.colorGradient.key0.a

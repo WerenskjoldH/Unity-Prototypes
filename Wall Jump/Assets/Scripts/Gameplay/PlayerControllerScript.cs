@@ -7,6 +7,8 @@ public class PlayerControllerScript : MonoBehaviour
     // Both Launch Properties Use World Units
     public float launchPower = 50.0f;
     public float maxLaunchMult = 3.0f;
+    [Range(0, 1)]
+    public float airJumpDampening = 0.4f;
     public float requiredGrindTimeToRefillJumps = 0.1f;
     public int totalJumpsAllowed = 3;
     public JumpCounterScript jumpCounterScript;
@@ -132,6 +134,7 @@ public class PlayerControllerScript : MonoBehaviour
 
             if (Input.GetMouseButtonUp(0))
             {
+                Rigidbody2D playerRB = gameObject.GetComponent<Rigidbody2D>();
                 stuckToSurface = false;
                 totalJumpsMade++;
                 jumpCounterScript.ReduceJumps();
@@ -140,9 +143,13 @@ public class PlayerControllerScript : MonoBehaviour
 
                 gameObject.GetComponent<FixedJoint2D>().enabled = false;
 
+                Vector2 dampeningForce = -1.0f * playerRB.velocity * playerRB.mass * airJumpDampening;
+                Debug.Log(dampeningForce);
+                playerRB.AddForce(dampeningForce);
+
                 Vector2 differenceVector = (mousePos - transform.position);
                 Vector2 launchForce = launchPower * Mathf.Min(differenceVector.magnitude, maxLaunchMult) * differenceVector.normalized;
-                gameObject.GetComponent<Rigidbody2D>().AddForce(launchForce);
+                playerRB.AddForce(launchForce);
             }
         }
 
