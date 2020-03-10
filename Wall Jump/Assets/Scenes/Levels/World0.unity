@@ -527,14 +527,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startGameText: {fileID: 2036438139}
   playerControllerScript: {fileID: 1961822874}
+  currentDifficulty: 0
   spawnablePrefabs:
   - difficulty: 0
     obstaclePrefab: {fileID: 4272354707366402824, guid: 723a3473192e7204182ea492e395af77,
       type: 3}
   scrollSpeed: 1
   spawnDistance: 12
+  spawnMidpointDistance: 5
   cullingDistanceFromCenter: {x: 12, y: 8}
   playerKillBoundsFromCenter: {x: 11, y: 8}
+  timeBetweenSpawns: 12
 --- !u!4 &1208533427
 Transform:
   m_ObjectHideFlags: 0
@@ -1381,41 +1384,6 @@ PrefabInstance:
       propertyPath: survivalManager
       value: 
       objectReference: {fileID: 1208533426}
-    - target: {fileID: 4272354707366402823, guid: 723a3473192e7204182ea492e395af77,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4272354707366402823, guid: 723a3473192e7204182ea492e395af77,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4272354707366402823, guid: 723a3473192e7204182ea492e395af77,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4272354707366402823, guid: 723a3473192e7204182ea492e395af77,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4272354707366402823, guid: 723a3473192e7204182ea492e395af77,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4272354707366402823, guid: 723a3473192e7204182ea492e395af77,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4272354707366402823, guid: 723a3473192e7204182ea492e395af77,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
     - target: {fileID: 4272354707366402823, guid: 723a3473192e7204182ea492e395af77,
         type: 3}
       propertyPath: m_RootOrder

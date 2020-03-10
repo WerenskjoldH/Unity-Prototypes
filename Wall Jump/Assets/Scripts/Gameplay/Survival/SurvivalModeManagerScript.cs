@@ -18,16 +18,25 @@ public class SurvivalModeManagerScript : MonoBehaviour
     // Contains SurvivalModeWallScripts
     public ArrayList environmentObjects = new ArrayList();
 
+    public int currentDifficulty = 0;
+    // For future reference, this SHOULD be put to a dictionary for quickly referencing difficulty to obstacle arrays
     public ObstaclePrefab[] spawnablePrefabs;
 
     public float scrollSpeed = 5.0f;
     public float spawnDistance = 12.0f;
+    // Absolute vertical distance from y 
+    public float spawnMidpointDistance = 5.0f;
     public Vector2 cullingDistanceFromCenter = new Vector2(12.0f, 8.0f);
     public Vector2 playerKillBoundsFromCenter = new Vector2(12.0f, 8.0f);
+
+    public float timeBetweenSpawns = 10.0f;
+    float timeBetweenSpawnsAcc = 0.0f;
 
     int removedObject = 0;
 
     bool gameStart = false;
+    bool shouldSpawn = false;
+    
 
     private bool GameObjectCulling(GameObject observedGameObject, Vector2 objectPos)
     {
@@ -44,7 +53,22 @@ public class SurvivalModeManagerScript : MonoBehaviour
 
     private void GameObjectSpawning()
     {
+        /// Spawn Decision code
+        if (!shouldSpawn)
+        {
+            timeBetweenSpawnsAcc += Time.deltaTime;
+            if (timeBetweenSpawnsAcc >= timeBetweenSpawns)
+                shouldSpawn = true;
+        }
+        else
+        {
 
+            /// Spawning Code
+            // This is all to be changed
+            Instantiate(spawnablePrefabs[0].obstaclePrefab, new Vector2(spawnDistance, Random.Range(-1 * spawnMidpointDistance, spawnMidpointDistance)), Quaternion.Euler(0, 0, 90));
+            shouldSpawn = false;
+            timeBetweenSpawnsAcc = 0;
+        }
     }
 
     void Update()
@@ -58,7 +82,7 @@ public class SurvivalModeManagerScript : MonoBehaviour
                 gameStart = true;
                 startGameText.SetActive(false);
             }
-        }
+        }  
         else
         {
             /// Gameplay Code
