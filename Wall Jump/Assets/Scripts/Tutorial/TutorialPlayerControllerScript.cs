@@ -22,6 +22,34 @@ public class TutorialPlayerControllerScript : MonoBehaviour
     bool jumpCancel = false;
     Collision2D lastCollision = null;
 
+    bool ableToGrind = false;
+    bool ableToStick = false;
+
+    public void DisableGrinding()
+    {
+        ableToGrind = false;
+    }
+    
+    public void DisableSticking()
+    {
+        ableToStick = false;
+    }
+
+    public void EnableGrinding()
+    {
+        ableToGrind = true;
+    }
+
+    public void EnableSticking()
+    {
+        ableToStick = true;
+    }
+
+    public int GetNumberJumpsUsed()
+    {
+        return totalJumpsMade;
+    }
+
     public bool IsStuckToSurface()
     {
         return stuckToSurface;
@@ -52,7 +80,7 @@ public class TutorialPlayerControllerScript : MonoBehaviour
     {
 
         // Grinding Particle Effect
-        if (!stuckToSurface && collision.relativeVelocity.magnitude > 3.0f && Input.GetMouseButton(0))
+        if (ableToGrind && !stuckToSurface && collision.relativeVelocity.magnitude > 3.0f && Input.GetMouseButton(0))
         {
             if (grindTime / 0.1f > grindParticleObjects)
             {
@@ -89,7 +117,7 @@ public class TutorialPlayerControllerScript : MonoBehaviour
 
     private void CollisionStick(Collision2D collision)
     {
-        if (collision != null && collision.gameObject.tag == "Collidable")
+        if (ableToStick && collision != null && collision.gameObject.tag == "Collidable")
         {
             stuckToSurface = true;
             lastCollision = collision;
