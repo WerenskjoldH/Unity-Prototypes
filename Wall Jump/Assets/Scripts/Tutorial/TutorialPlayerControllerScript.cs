@@ -25,7 +25,7 @@ public class TutorialPlayerControllerScript : MonoBehaviour
     bool ableToGrind = false;
     bool ableToStick = false;
 
-    public GameObject ObjectStuckTo()
+    public GameObject GetObjectStuckTo()
     {
         if (!stuckToSurface || lastCollision == null)
             return null;
