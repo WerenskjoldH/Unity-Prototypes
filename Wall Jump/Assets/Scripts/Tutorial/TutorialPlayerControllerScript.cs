@@ -16,6 +16,7 @@ public class TutorialPlayerControllerScript : MonoBehaviour
     public ParticleSystem collisionParticleEffect;
 
     int totalJumpsMade = 0;
+    int totalGrindsMade = 0;
     float grindTime = 0;
     int grindParticleObjects = 0;
     bool stuckToSurface = false;
@@ -27,9 +28,16 @@ public class TutorialPlayerControllerScript : MonoBehaviour
 
     public GameObject GetObjectStuckTo()
     {
-        if (!stuckToSurface || lastCollision == null)
-            return null;
-        return lastCollision.gameObject;
+        if (stuckToSurface && lastCollision != null)
+            return lastCollision.gameObject;
+        return null;
+    }
+
+    public GameObject GetObjectTouching()
+    {
+        if (lastCollision != null)
+            return lastCollision.gameObject;
+        return null;
     }
 
     public void DisableGrinding()
@@ -55,6 +63,11 @@ public class TutorialPlayerControllerScript : MonoBehaviour
     public int GetNumberJumpsUsed()
     {
         return totalJumpsMade;
+    }
+
+    public int GetNumberGrindsMade()
+    {
+        return totalGrindsMade;
     }
 
     public bool IsStuckToSurface()
@@ -110,6 +123,9 @@ public class TutorialPlayerControllerScript : MonoBehaviour
 
         if (grindTime > 0)
         {
+            if(requiredGrindTimeToRefillJumps <= grindTime)
+                totalGrindsMade++; 
+
             Debug.Log("Grinded for: " + grindTime + "Second(s)");
             grindParticleObjects = 0;
             grindTime = 0;

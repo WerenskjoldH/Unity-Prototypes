@@ -16,6 +16,8 @@ public class TutorialManagerScript : MonoBehaviour
 
     int tutorialStep = 0;
 
+    int requiredGrinds = 3;
+
     IEnumerator WaitToMoveToNextStep(float waitTime, int toWhichTutorialStep)
     {
         float timePassed = 0.0f;
@@ -52,7 +54,7 @@ public class TutorialManagerScript : MonoBehaviour
                 tutorialStep = 1;
             }
         }else if(tutorialStep == 1) {
-            textArea.text = "You now know how to <color=#df7126>launch</color>\nYou have <color=#df7126>" + (playerScript.totalJumpsAllowed - playerScript.GetNumberJumpsUsed()) + "</color> jumps left";
+            textArea.text = "Now you know how to <color=#df7126>launch</color>\nYou have <color=#df7126>" + (playerScript.totalJumpsAllowed - playerScript.GetNumberJumpsUsed()) + "</color> jumps left";
             if(playerScript.GetNumberJumpsUsed() == playerScript.totalJumpsAllowed)
             {
                 StartCoroutine(WaitToMoveToNextStep(2.0f, 2));
@@ -89,26 +91,59 @@ public class TutorialManagerScript : MonoBehaviour
             GameObject stuckToObject = playerScript.GetObjectStuckTo();
             if (stuckToObject == leftWall)
             {
+                leftWall.GetComponent<SpriteRenderer>().color = Color.white;
                 tutorialStep = 5;
             }
         }
         else if(tutorialStep == 5)
         {
             textArea.text = "Now try to stick to the <color=#99e550>right wall</color>\n<color=#df7126>without</color> touching the ground";
+
             leftWall.GetComponent<SpriteRenderer>().color = Color.white;
             rightWall.GetComponent<SpriteRenderer>().color = Color.HSVToRGB(0.2517f, 0.6507f, 0.8980f);
             bottomWall.GetComponent<SpriteRenderer>().color = Color.HSVToRGB(0, 0.7093f, 0.6745f);
+
+            GameObject stuckToObject = playerScript.GetObjectStuckTo();
+            GameObject touchingObject = playerScript.GetObjectTouching();
+            if(touchingObject == bottomWall)
+            {
+                rightWall.GetComponent<SpriteRenderer>().color = Color.white;
+                bottomWall.GetComponent<SpriteRenderer>().color = Color.white;
+                tutorialStep = 4;
+            }
+            if(stuckToObject == rightWall)
+            {
+                rightWall.GetComponent<SpriteRenderer>().color = Color.white;
+                bottomWall.GetComponent<SpriteRenderer>().color = Color.white;
+                tutorialStep = 6;
+            }
+
         }
         else if(tutorialStep == 6)
         {
-            // Player touched the ground, tell them to go back to the left wall
-            // Point back to step 5
+            // Player made it to the right wall without touching the ground
+            textArea.text = "Perfect, almost there!\nLast, we need to practice <color=#df7126>grinding</color>";
+            StartCoroutine(WaitToMoveToNextStep(4.0f, 7));
         }
         else if(tutorialStep == 7)
         {
-            // Player made it to the right wall without touching the ground
+            playerScript.EnableGrinding();
+            textArea.text = "If you hold <color=#d95763>Right Mouse Button</color> while moving you will start to <color=#df7126>grind</color>!\nThis recovers jumps on the fly!";
+            StartCoroutine(WaitToMoveToNextStep(4.0f, 8));
         }
-        
+        else if(tutorialStep == 8)
+        {
+            textArea.text = "Holding <color=#d95763>Right Mouse Button</color> while moving will start a <color=#df7126>grind</color>\nTry grinding <color=#df7126>" +
+                (requiredGrinds - playerScript.GetNumberGrindsMade()) + "</color> more time(s)";
+            if(requiredGrinds - playerScript.GetNumberGrindsMade() <= 0)
+            {
+                tutorialStep = 9;
+            }
+        }
+        else if(tutorialStep == 9)
+        {
+            textArea.text = "Nice! You're all done!\nPress <color=#d95763>Space</color> when you are ready to return";
+        }
 
 
     }
