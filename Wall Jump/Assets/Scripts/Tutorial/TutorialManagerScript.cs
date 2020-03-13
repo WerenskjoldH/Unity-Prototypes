@@ -7,6 +7,8 @@ public class TutorialManagerScript : MonoBehaviour
 {
     public TutorialPlayerControllerScript playerScript;
 
+    public GameObject topWall, rightWall, bottomWall, leftWall; 
+
     public TextMeshProUGUI textArea;
 
     bool playerFirstClick = false;
@@ -59,7 +61,7 @@ public class TutorialManagerScript : MonoBehaviour
             if (!playerExhausted && playerScript.GetNumberJumpsUsed() == playerScript.totalJumpsAllowed)
             {
                 playerScript.EnableSticking();
-                textArea.text = "Hmm... You seem a bit tired\nTry hitting the<color=#d95763> Right Mouse Button </color> while on a wall";
+                textArea.text = "Try hitting the <color=#d95763>Right Mouse Button</color>";
                 playerExhausted = true;
             }
 
@@ -74,7 +76,14 @@ public class TutorialManagerScript : MonoBehaviour
         {
             // Sticking To Walls
             // React differently based on the amount of jumps made in last step?
-            textArea.text = "Now let's practice <color=#df7126>sticking</color> to walls";
+            textArea.text = "Now then, let's try <color=#df7126>sticking</color> to walls";
+            StartCoroutine(WaitToMoveToNextStep(5.0f, 4));
+        }
+        else if(tutorialStep == 4)
+        {
+            textArea.text = "To <color=#df7126>stick</color> to a wall hold the <color=#d95763>Right Mouse Button</color> before colliding with it\n" +
+                "I have highlighted the <color=#99e550>left wall</color> try to stick to it";
+            leftWall.GetComponent<SpriteRenderer>().color = Color.HSVToRGB(0.2517f, 0.6507f, 0.8980f);
         }
         
 

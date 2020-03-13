@@ -531,6 +531,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerScript: {fileID: 4910605723213936429}
+  topWall: {fileID: 4272354707227577491}
+  rightWall: {fileID: 4272354707369380519}
+  bottomWall: {fileID: 4272354707216854265}
+  leftWall: {fileID: 4272354705941404465}
   textArea: {fileID: 1470484169}
 --- !u!1001 &1267828643
 PrefabInstance:
@@ -963,7 +967,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -2
+  m_SortingOrder: -3
   m_Sprite: {fileID: 21300000, guid: 8fba8423ca196f84488907de0b7775e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -983,8 +987,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4272354705941404465}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -9.1438, y: 0.000000042468, z: 0}
-  m_LocalScale: {x: 35.25, y: 3.85, z: 1}
+  m_LocalPosition: {x: -9, y: 0.000000042468, z: 0}
+  m_LocalScale: {x: 27.5, y: 3.25, z: 1}
   m_Children: []
   m_Father: {fileID: 1600787744}
   m_RootOrder: 3
@@ -1095,7 +1099,7 @@ Transform:
   m_GameObject: {fileID: 4272354707216854265}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -5, z: 0}
-  m_LocalScale: {x: 4, y: 55.5, z: 1}
+  m_LocalScale: {x: 3.75, y: 53, z: 1}
   m_Children: []
   m_Father: {fileID: 1600787744}
   m_RootOrder: 0
@@ -1168,7 +1172,7 @@ Transform:
   m_GameObject: {fileID: 4272354707227577491}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 5, z: 0}
-  m_LocalScale: {x: 4, y: 55.5, z: 1}
+  m_LocalScale: {x: 3.75, y: 53, z: 1}
   m_Children: []
   m_Father: {fileID: 1600787744}
   m_RootOrder: 1
@@ -1297,8 +1301,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4272354707369380519}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 9.1438, y: -0.000000042468, z: 0}
-  m_LocalScale: {x: 35.25, y: 3.85, z: 1}
+  m_LocalPosition: {x: 9, y: -0.000000042468, z: 0}
+  m_LocalScale: {x: 27.5, y: 3.85, z: 1}
   m_Children: []
   m_Father: {fileID: 1600787744}
   m_RootOrder: 2
@@ -1388,7 +1392,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -2
+  m_SortingOrder: -3
   m_Sprite: {fileID: 21300000, guid: 8fba8423ca196f84488907de0b7775e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
