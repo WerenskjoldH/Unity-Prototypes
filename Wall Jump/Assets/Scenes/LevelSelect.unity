@@ -642,7 +642,7 @@ PrefabInstance:
     - target: {fileID: 7363587764238103364, guid: 377653e1cbddf3d41b751d7ba16f0d4a,
         type: 3}
       propertyPath: m_text
-      value: Survival
+      value: Tutorial
       objectReference: {fileID: 0}
     - target: {fileID: 7363587764238103364, guid: 377653e1cbddf3d41b751d7ba16f0d4a,
         type: 3}
@@ -667,7 +667,7 @@ PrefabInstance:
     - target: {fileID: 7363587764238103364, guid: 377653e1cbddf3d41b751d7ba16f0d4a,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7363587764238103364, guid: 377653e1cbddf3d41b751d7ba16f0d4a,
         type: 3}

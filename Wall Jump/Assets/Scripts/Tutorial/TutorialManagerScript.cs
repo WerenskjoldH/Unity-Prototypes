@@ -6,6 +6,7 @@ using TMPro;
 public class TutorialManagerScript : MonoBehaviour
 {
     public TutorialPlayerControllerScript playerScript;
+    public SceneTransitionerScript sceneTransitionerScript;
 
     public GameObject topWall, rightWall, bottomWall, leftWall; 
 
@@ -143,6 +144,8 @@ public class TutorialManagerScript : MonoBehaviour
         else if(tutorialStep == 9)
         {
             textArea.text = "Nice! You're all done!\nPress <color=#d95763>Space</color> when you are ready to return";
+            if (Input.GetKeyUp(KeyCode.Space))
+                sceneTransitionerScript.LoadLevel("LevelSelect");
         }
 
 
