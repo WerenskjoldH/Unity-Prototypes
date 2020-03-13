@@ -25,6 +25,13 @@ public class TutorialPlayerControllerScript : MonoBehaviour
     bool ableToGrind = false;
     bool ableToStick = false;
 
+    public GameObject ObjectStuckTo()
+    {
+        if (!stuckToSurface || lastCollision == null)
+            return null;
+        return lastCollision.gameObject;
+    }
+
     public void DisableGrinding()
     {
         ableToGrind = false;
@@ -53,11 +60,6 @@ public class TutorialPlayerControllerScript : MonoBehaviour
     public bool IsStuckToSurface()
     {
         return stuckToSurface;
-    }
-
-    public GameObject ObjectStuckTo()
-    {
-        return lastCollision.gameObject;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
