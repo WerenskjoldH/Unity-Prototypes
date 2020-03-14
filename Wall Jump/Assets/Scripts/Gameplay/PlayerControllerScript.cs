@@ -22,14 +22,18 @@ public class PlayerControllerScript : MonoBehaviour
     bool jumpCancel = false;
     Collision2D lastCollision = null;
 
-    public bool IsStuckToSurface()
+    public GameObject GetObjectStuckTo()
     {
-        return stuckToSurface;
+        if (stuckToSurface && lastCollision != null)
+            return lastCollision.gameObject;
+        return null;
     }
 
-    public GameObject ObjectStuckTo()
+    public GameObject GetObjectTouching()
     {
-        return lastCollision.gameObject;
+        if (lastCollision != null)
+            return lastCollision.gameObject;
+        return null;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
