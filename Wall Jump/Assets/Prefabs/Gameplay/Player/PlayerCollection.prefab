@@ -464,7 +464,7 @@ FixedJoint2D:
   m_GameObject: {fileID: 4910605722737166328}
   m_Enabled: 0
   serializedVersion: 4
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_ConnectedRigidBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
