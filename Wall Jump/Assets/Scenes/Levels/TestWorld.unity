@@ -434,8 +434,8 @@ MonoBehaviour:
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_CameraDistance: 10
-  m_DeadZoneWidth: 1
-  m_DeadZoneHeight: 1
+  m_DeadZoneWidth: 0.2
+  m_DeadZoneHeight: 0.75
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
   m_SoftZoneWidth: 1
@@ -578,7 +578,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -0.00000023841858, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -791,7 +791,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 616820674}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -0.00000023841858, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 495091664}
@@ -814,7 +814,7 @@ MonoBehaviour:
   m_BoundingVolume: {fileID: 0}
   m_BoundingShape2D: {fileID: 2078966417}
   m_ConfineScreenEdges: 1
-  m_Damping: 1
+  m_Damping: 0.1
 --- !u!1 &983511848
 GameObject:
   m_ObjectHideFlags: 0
@@ -1853,6 +1853,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4910605722737166320, guid: 2672a9065859e9642b3b513652ae5899,
+        type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 519420030}
+    - target: {fileID: 4910605722737166320, guid: 2672a9065859e9642b3b513652ae5899,
+        type: 3}
+      propertyPath: virtualCamera
+      value: 
+      objectReference: {fileID: 616820676}
     - target: {fileID: 4910605722737166324, guid: 2672a9065859e9642b3b513652ae5899,
         type: 3}
       propertyPath: m_EnableCollision

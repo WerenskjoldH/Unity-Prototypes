@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
+using DG.Tweening;
 
 public class PlayerControllerScript : MonoBehaviour
 {
@@ -14,13 +16,25 @@ public class PlayerControllerScript : MonoBehaviour
     public JumpCounterScript jumpCounterScript;
     public GameObject parentObject;
     public ParticleSystem collisionParticleEffect;
-    
+    public CinemachineVirtualCamera virtualCamera;
+
     int totalJumpsMade = 0;
     float grindTime = 0;
     int grindParticleObjects = 0;
     bool stuckToSurface = false;
     bool jumpCancel = false;
     Collision2D lastCollision = null;
+    CinemachineFramingTransposer framingTransposer;
+
+    public void EnableActionZoom()
+    {   
+        DOTween.To(()=> virtualCamera.m_Lens.OrthographicSize, x=> virtualCamera.m_Lens.OrthographicSize = x, 4.5f, 0.25f).SetEase(Ease.OutCubic);
+    }
+
+    public void DisableActionZoom()
+    {
+        DOTween.To(()=> virtualCamera.m_Lens.OrthographicSize, x=> virtualCamera.m_Lens.OrthographicSize = (float)x, 5, 0.75f).SetEase(Ease.OutCubic);
+    }
 
     public GameObject GetObjectStuckTo()
     {
@@ -67,6 +81,7 @@ public class PlayerControllerScript : MonoBehaviour
             if(totalJumpsMade > 0 && grindTime >= requiredGrindTimeToRefillJumps)
             {
                 totalJumpsMade = 0;
+                EnableActionZoom();
                 jumpCounterScript.ResetJumps();
             }
 
@@ -85,6 +100,7 @@ public class PlayerControllerScript : MonoBehaviour
         if (grindTime > 0)
         {
             Debug.Log("Grinded for: " + grindTime + "Second(s)");
+            DisableActionZoom();
             grindParticleObjects = 0;
             grindTime = 0;
         }
@@ -111,7 +127,9 @@ public class PlayerControllerScript : MonoBehaviour
         gameObject.GetComponent<LineRenderer>().positionCount = 2;
         jumpCounterScript.SetNumberOfJumps(totalJumpsAllowed);
 
-        if(GetComponent<TrailRenderer>() != null)
+        framingTransposer = virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
+
+        if (GetComponent<TrailRenderer>() != null)
             GetComponent<TrailRenderer>().startWidth = gameObject.GetComponent<SpriteRenderer>().size.y;
         
     }
@@ -160,6 +178,11 @@ public class PlayerControllerScript : MonoBehaviour
         {
             CollisionStick(lastCollision);
         }
+
+        if (Input.GetKeyUp(KeyCode.C))
+            EnableActionZoom();
+        if (Input.GetKeyUp(KeyCode.V))
+            DisableActionZoom();
 
         if (Input.GetMouseButton(0) && Input.GetMouseButtonDown(1))
         {
