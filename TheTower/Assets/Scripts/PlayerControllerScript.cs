@@ -25,19 +25,12 @@ public class PlayerControllerScript : MonoBehaviour
 
     void EyeMovement()
     {
-        //var desired = mouseGameObject.transform.position - towerEye.transform.position;
-        //var distance = Mathf.Min(desired.magnitude, 4.5f);
-        //desired = desired.normalized;
-        //float percentageToMax = distance / 4.5f;
-
-        //towerEye.transform.position = eyeDefaultPosition + new Vector2(maxEyeOffset * percentageToMax * desired.x, maxEyeOffset * percentageToMax * desired.y);
-
         Vector2 restVector = eyeDefaultPosition - towerEye.transform.position;
         float restDistance = restVector.magnitude;
         float speed = maxEyeSpeed;
         restVector.Normalize();
 
-        if (restDistance < 1.0f)
+        if (restDistance < 0.2)
         {
             speed = (restDistance - 0) / (speed - 0) * (maxEyeSpeed - 0);
         }
@@ -47,8 +40,18 @@ public class PlayerControllerScript : MonoBehaviour
         towerEyeRB.AddForce(force);
     }
 
+    void EyeRecoilForce(float strength)
+    {
+        Vector2 force = strength * (eyeDefaultPosition - mouseGameObject.transform.position).normalized;
+
+        towerEyeRB.AddForce(force);
+    }
+
     private void Update()
     {
         EyeMovement();
+
+        if (Input.GetMouseButtonUp(0))
+            EyeRecoilForce(250.0f);
     }
 }
