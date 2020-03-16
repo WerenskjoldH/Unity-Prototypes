@@ -18,6 +18,6 @@ public class EyeChargeParticlesScript : MonoBehaviour
 
     public void StopChargeEffect()
     {
-        chargeParticleSystem.Stop();
+        chargeParticleSystem.Clear();
     }
 }

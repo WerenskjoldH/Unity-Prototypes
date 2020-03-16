@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerControllerScript : MonoBehaviour
 {
@@ -20,18 +21,28 @@ public class PlayerControllerScript : MonoBehaviour
     public float bobHeight = 0.12f;
     public float recoilForce = 200.0f;
 
-    float requiredTimeToFire = 1.0f;
+    public float requiredTimeToFire = 1.0f;
     float timeHeldDown = 0;
     public bool mayAttack = false;
     public bool triggerFire = false;
 
-    public EyeChargeParticlesScript eyeChargeParticleScript;
-
+    public float beamFadeTime = 0.25f;
+    // Distance to draw beam end point when player misses
+    public float beamSkyDrawMagnitude = 10.0f;
+    public LineRenderer lineRenderer;
+    Color lineRendererDefaultStartColor;
+    Color lineRendererDefaultEndColor;
+    public ParticleSystem eyeChargeParticles;
+    
+    
     private void Start()
     {
         eyeDefaultPosition = towerEye.transform.position;
         eyeRestPosition = eyeDefaultPosition;
         towerEyeRB = towerEye.GetComponent<Rigidbody2D>();
+
+        lineRendererDefaultStartColor = lineRenderer.startColor;
+        lineRendererDefaultEndColor = lineRenderer.endColor;
     }
 
     void EyeBobMovement()
@@ -65,13 +76,63 @@ public class PlayerControllerScript : MonoBehaviour
         towerEyeRB.AddForce(force);
     }
 
+    IEnumerator FadeOutBeam()
+    {
+        float timePassed = 0;
+        Color startColor = lineRenderer.startColor;
+        Color endColor = lineRenderer.endColor;
+        
+        while (timePassed < beamFadeTime)
+        {
+            startColor.a = Mathf.Lerp(1, 0, timePassed/beamFadeTime);
+            endColor.a = Mathf.Lerp(1, 0, timePassed/beamFadeTime);
+
+            lineRenderer.startColor = startColor;
+            lineRenderer.endColor = endColor;
+
+            timePassed += Time.deltaTime;
+            yield return null;
+        }
+
+        lineRenderer.enabled = false;
+    }
+
+    void FireBeam()
+    {
+        Vector3 beamDirection = (mouseGameObject.transform.position - towerEye.transform.position).normalized;
+        beamDirection.z = 0;
+        RaycastHit2D hit = Physics2D.Raycast(towerEye.transform.position, beamDirection);    
+
+        EyeRecoilForce(recoilForce);
+
+        lineRenderer.enabled = true;
+        lineRenderer.SetPosition(0, towerEye.transform.position);
+
+        if (hit.collider != null)
+        {
+            Vector3 hitPoint = hit.point;
+            hitPoint.z = 0;
+            float distance = (hitPoint - towerEye.transform.position).magnitude;
+
+            lineRenderer.SetPosition(1, hitPoint);
+        }
+        else
+        {
+            lineRenderer.SetPosition(1, towerEye.transform.position + beamSkyDrawMagnitude * beamDirection);
+        }
+
+        lineRenderer.startColor = lineRendererDefaultStartColor;
+        lineRenderer.endColor = lineRendererDefaultEndColor;
+        StartCoroutine(FadeOutBeam());
+    }
+
     private void Update()
     {
         EyeMovement();
 
         if (Input.GetMouseButtonDown(0))
         {
-            eyeChargeParticleScript.PlayChargeEffect();
+            eyeChargeParticles.Play();
         }
 
         if (Input.GetMouseButton(0))
@@ -85,9 +146,9 @@ public class PlayerControllerScript : MonoBehaviour
         {
             if (mayAttack)
             {
-                EyeRecoilForce(recoilForce);
+                FireBeam();
             }
-            eyeChargeParticleScript.StopChargeEffect();
+            eyeChargeParticles.Clear();
             timeHeldDown = 0;
             mayAttack = false;
         }
