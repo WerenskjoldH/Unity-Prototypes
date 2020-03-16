@@ -33,6 +33,7 @@ public class PlayerControllerScript : MonoBehaviour
     Color lineRendererDefaultStartColor;
     Color lineRendererDefaultEndColor;
     public ParticleSystem eyeChargeParticles;
+    public ParticleSystem eyeChargedParticles;
 
     public GameObject beamHitPosition;
     ParticleSystem beamHitParticles;
@@ -144,8 +145,11 @@ public class PlayerControllerScript : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             timeHeldDown += Time.deltaTime;
-            if (timeHeldDown >= requiredTimeToFire)
+            if (!mayAttack && timeHeldDown >= requiredTimeToFire)
+            {
                 mayAttack = true;
+                eyeChargedParticles.Play();
+            }
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -155,6 +159,7 @@ public class PlayerControllerScript : MonoBehaviour
                 FireBeam();
             }
             eyeChargeParticles.Clear();
+            eyeChargedParticles.Stop();
             timeHeldDown = 0;
             mayAttack = false;
         }
