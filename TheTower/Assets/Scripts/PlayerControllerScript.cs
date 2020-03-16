@@ -33,6 +33,9 @@ public class PlayerControllerScript : MonoBehaviour
     Color lineRendererDefaultStartColor;
     Color lineRendererDefaultEndColor;
     public ParticleSystem eyeChargeParticles;
+
+    public GameObject beamHitPosition;
+    ParticleSystem beamHitParticles;
     
     
     private void Start()
@@ -112,7 +115,10 @@ public class PlayerControllerScript : MonoBehaviour
         {
             Vector3 hitPoint = hit.point;
             hitPoint.z = 0;
-            float distance = (hitPoint - towerEye.transform.position).magnitude;
+            //float distance = (hitPoint - towerEye.transform.position).magnitude;
+
+            beamHitPosition.transform.position = hitPoint;
+            beamHitPosition.GetComponent<ParticleSystem>().Play();
 
             lineRenderer.SetPosition(1, hitPoint);
         }
