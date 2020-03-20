@@ -8,6 +8,21 @@ TextureImporter:
   - first:
       213: -3934369846074566735
     second: Normal-Attacker_1
+  - first:
+      213: -2663857081096374749
+    second: Normal-Attacker_0
+  - first:
+      213: 3014873093616332288
+    second: Normal-Attacker_1
+  - first:
+      213: -1154991251985328085
+    second: Normal-Attacker_2
+  - first:
+      213: -3377793248904766076
+    second: Normal-Attacker_3
+  - first:
+      213: 865229210970960641
+    second: Normal-Attacker_4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -130,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 600c6a7f42af2ba50800000000000000
-      internalID: 6535561045948678150
+      spriteID: 32677d43914180bd0800000000000000
+      internalID: -2663857081096374749
       vertices: []
       indices: 
       edges: []
@@ -151,8 +166,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b797bd587f4669c0800000000000000
-      internalID: -3934369846074566735
+      spriteID: 00e62ebea1bf6d920800000000000000
+      internalID: 3014873093616332288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal-Attacker_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b281bb26395a8ffe0800000000000000
+      internalID: -1154991251985328085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal-Attacker_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48d915abfeaaf11d0800000000000000
+      internalID: -3377793248904766076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal-Attacker_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10337391269e10c00800000000000000
+      internalID: 865229210970960641
       vertices: []
       indices: 
       edges: []
