@@ -8,7 +8,9 @@ public class StandardAttackerScript : MonoBehaviour
     Animator standardAttackerAnimator;
 
     [SerializeField]
+    PlayerControllerScript playerControllerScript;
     GameObject towerBase;
+    float towerBaseTargetXPosition;
 
     [SerializeField]
     float attackRange;
@@ -17,7 +19,16 @@ public class StandardAttackerScript : MonoBehaviour
 
     void Start()
     {
-        
+        towerBase = playerControllerScript.towerBase;
+
+        // Spawned on left or right side of screen
+        if (gameObject.transform.position.x < 0)
+            towerBaseTargetXPosition = -1.0f * towerBase.GetComponent<PolygonCollider2D>().bounds.extents.x + towerBase.transform.position.x;
+        else
+            towerBaseTargetXPosition = towerBase.GetComponent<PolygonCollider2D>().bounds.extents.x + towerBase.transform.position.x;
+
+
+
     }
 
     void Update()

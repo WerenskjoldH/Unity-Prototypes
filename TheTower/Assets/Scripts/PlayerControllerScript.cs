@@ -5,8 +5,7 @@ using DG.Tweening;
 
 public class PlayerControllerScript : MonoBehaviour
 {
-    [SerializeField]
-    GameObject towerBase;
+    public GameObject towerBase;
     [SerializeField]
     GameObject towerEye;
     Rigidbody2D towerEyeRB;
