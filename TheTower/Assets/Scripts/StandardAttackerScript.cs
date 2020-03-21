@@ -12,6 +12,8 @@ public class StandardAttackerScript : MonoBehaviour
 
     [SerializeField]
     float attackRange;
+    [SerializeField]
+    float movementSpeed;
 
     void Start()
     {

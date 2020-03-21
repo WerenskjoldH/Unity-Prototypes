@@ -5391,6 +5391,7 @@ MonoBehaviour:
   standardAttackerAnimator: {fileID: 937885355}
   towerBase: {fileID: 0}
   attackRange: 0
+  movementSpeed: 0
 --- !u!61 &937885357
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20675,7 +20676,7 @@ MonoBehaviour:
   returnForce: 5
   bobHeight: 0.12
   recoilForce: 200
-  beamBlastRadius: 10
+  beamBlastRadius: 4
   requiredTimeToFire: 1.1
   mayAttack: 0
   triggerFire: 0

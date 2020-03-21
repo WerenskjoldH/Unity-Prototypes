@@ -15,29 +15,43 @@ public class PlayerControllerScript : MonoBehaviour
 
     Vector3 eyeDefaultPosition;
     Vector3 eyeRestPosition;
-    public float maxEyeSpeed = 1.0f;
-    public float maxEyeOffset = 0.5f;
-    public float returnForce = 1.0f;
-    public float bobHeight = 0.12f;
-    public float recoilForce = 200.0f;
+    [SerializeField]
+    float maxEyeSpeed = 1.0f;
+    [SerializeField]
+    float maxEyeOffset = 0.5f;
+    [SerializeField]
+    float returnForce = 1.0f;
+    [SerializeField]
+    float bobHeight = 0.12f;
+    [SerializeField]
+    float recoilForce = 200.0f;
     [SerializeField]
     float beamBlastRadius = 1.0f;
 
-    public float requiredTimeToFire = 1.0f;
+    [SerializeField]
+    float requiredTimeToFire = 1.0f;
     float timeHeldDown = 0;
-    public bool mayAttack = false;
-    public bool triggerFire = false;
+    [SerializeField]
+    bool mayAttack = false;
+    [SerializeField]
+    bool triggerFire = false;
 
-    public float beamFadeTime = 0.25f;
+    [SerializeField]
+    float beamFadeTime = 0.25f;
     // Distance to draw beam end point when player misses
-    public float beamSkyDrawMagnitude = 10.0f;
-    public LineRenderer lineRenderer;
+    [SerializeField]
+    float beamSkyDrawMagnitude = 10.0f;
+    [SerializeField]
+    LineRenderer lineRenderer;
     Color lineRendererDefaultStartColor;
     Color lineRendererDefaultEndColor;
-    public ParticleSystem eyeChargeParticles;
-    public ParticleSystem eyeChargedParticles;
+    [SerializeField]
+    ParticleSystem eyeChargeParticles;
+    [SerializeField]
+    ParticleSystem eyeChargedParticles;
 
-    public GameObject beamHitPositionObject;
+    [SerializeField]
+    GameObject beamHitPositionObject;
     ParticleSystem beamHitParticles;
 
     private void Start()
