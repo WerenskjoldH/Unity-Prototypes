@@ -6,6 +6,8 @@ public class StandardAttackerScript : MonoBehaviour
 {
     [SerializeField]
     Animator standardAttackerAnimator;
+    [SerializeField]
+    ParticleSystem standardAttackerDeathParticle;
 
     [SerializeField]
     PlayerControllerScript playerControllerScript;
@@ -39,7 +41,9 @@ public class StandardAttackerScript : MonoBehaviour
     public void Hit()
     {
         // Do all the death stuff
-        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        Destroy(gameObject);
+        Instantiate(standardAttackerDeathParticle, transform.position, Quaternion.identity).Play();
+        
     }
 
     void StartWalkingAnimation()
