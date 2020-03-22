@@ -12,11 +12,14 @@ public class StandardAttackerScript : MonoBehaviour
     [SerializeField]
     PlayerControllerScript playerControllerScript;
     GameObject towerBase;
-    float towerBaseTargetXPosition;
+    int movementDirection;
 
     [SerializeField]
     float attackRange;
     [SerializeField]
+    float movementSpeedMin;
+    [SerializeField]
+    float movementSpeedMax;
     float movementSpeed;
 
     void Start()
@@ -25,25 +28,49 @@ public class StandardAttackerScript : MonoBehaviour
 
         // Spawned on left or right side of screen
         if (gameObject.transform.position.x < 0)
-            towerBaseTargetXPosition = -1.0f * towerBase.GetComponent<PolygonCollider2D>().bounds.extents.x + towerBase.transform.position.x;
+        {
+            movementSpeed = Random.Range(movementSpeedMin, movementSpeedMax);
+        }
         else
-            towerBaseTargetXPosition = towerBase.GetComponent<PolygonCollider2D>().bounds.extents.x + towerBase.transform.position.x;
+        {
+            movementSpeed = -1.0f * Random.Range(movementSpeedMin, movementSpeedMax);
+        }
+    }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "TowerBase")
+        {
+            Debug.Log("Tower Attacked!");
+            DamageTower();
+        }
+    }
 
-
+    void Movement()
+    {
+        StartWalkingAnimation();
+        Vector3 position = transform.position;
+        position.x += movementSpeed * Time.deltaTime;
+        transform.position = position;
     }
 
     void Update()
     {
-        
+        Movement();
     }
 
+    // Called if the player's beam destroys this attacker
     public void Hit()
     {
         // Do all the death stuff
         Destroy(gameObject);
         Instantiate(standardAttackerDeathParticle, transform.position, Quaternion.identity).Play();
-        
+    }
+
+    // Called if the attacker makes it to the tower
+    void DamageTower()
+    {
+        Destroy(gameObject);
     }
 
     void StartWalkingAnimation()
