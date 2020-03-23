@@ -88,7 +88,7 @@ public class PlayerControllerScript : MonoBehaviour
             {
                 FireBeam();
             }
-            eyeChargeParticles.Clear();
+            //eyeChargeParticles.Clear();
             eyeChargedParticles.Stop();
             timeHeldDown = 0;
             mayAttack = false;

@@ -24,6 +24,7 @@ public class StandardAttackerScript : MonoBehaviour
 
     void Start()
     {
+        playerControllerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerScript>();
         towerBase = playerControllerScript.towerBase;
 
         // Spawned on left or right side of screen
