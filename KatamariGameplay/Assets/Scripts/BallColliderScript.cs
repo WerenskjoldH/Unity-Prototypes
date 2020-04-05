@@ -7,22 +7,18 @@ public class BallColliderScript : MonoBehaviour
     [SerializeField]
     BallControllerScript controllerScript;
 
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == "Collectable")
+        Debug.Log(other.gameObject.name);
+        if(other.gameObject.tag == "Collectable")
         {
-            collision.transform.parent = gameObject.transform;
-        }
-    }
+            other.GetComponent<Rigidbody>().isKinematic = true;
+            other.GetComponent<Collider>().enabled = false;
+            other.transform.parent = gameObject.transform;
+            CollidableScript otherCollideScript = other.gameObject.GetComponent<CollidableScript>();
+            controllerScript.IncreaseSize(otherCollideScript.sizeIncrease);
+            otherCollideScript.RetainSize(controllerScript.GetSize());
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }
     }
 }

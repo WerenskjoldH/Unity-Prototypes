@@ -6,10 +6,13 @@ public class BallControllerScript : MonoBehaviour
 {
 
     float rotation;
+    float currentSize = 2;
 
     [Header("Transforms and Rigidbodies")]
     [SerializeField]
-    Rigidbody collidingSphere;
+    Rigidbody ballCollidingSphere;
+    [SerializeField]
+    Transform itemCollectionTransform;
     [SerializeField]
     Transform steeringObject;
 
@@ -17,17 +20,30 @@ public class BallControllerScript : MonoBehaviour
     public float accelerationForce;
     public float turningSpeed;
 
-    void Start()
+    public float GetSize()
     {
-        
+        return currentSize;
+    }
+
+    public void IncreaseSize(float f)
+    {
+        currentSize += f;
+        itemCollectionTransform.localScale = new Vector3(currentSize, currentSize, currentSize);
+    }
+
+    private void Start()
+    {
+        currentSize += ballCollidingSphere.gameObject.transform.localScale.x;
+        itemCollectionTransform.localScale = new Vector3(currentSize, currentSize, currentSize);
+        Debug.Log(currentSize);
     }
 
     private void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.W))
-            collidingSphere.GetComponent<Rigidbody>().AddForce(10.0f * steeringObject.transform.forward);
+            ballCollidingSphere.GetComponent<Rigidbody>().AddForce(10.0f * steeringObject.transform.forward);
         else if (Input.GetKey(KeyCode.S))
-            collidingSphere.GetComponent<Rigidbody>().AddForce(-10.0f * steeringObject.transform.forward);
+            ballCollidingSphere.GetComponent<Rigidbody>().AddForce(-10.0f * steeringObject.transform.forward);
     }
 
     void Update()
@@ -37,7 +53,7 @@ public class BallControllerScript : MonoBehaviour
         else if (Input.GetKey(KeyCode.A))
             rotation -= turningSpeed;
 
-        transform.position = collidingSphere.transform.position;
+        transform.position = ballCollidingSphere.transform.position;
 
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + rotation, 0);
         steeringObject.Rotate(Vector3.up, rotation);
