@@ -53,9 +53,16 @@ public class BallControllerScript : MonoBehaviour
     private void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.W))
-            ballCollidingSphere.GetComponent<Rigidbody>().AddTorque(steeringObject.transform.right * torqueForce);
-        else if (Input.GetKey(KeyCode.S))
-            ballCollidingSphere.GetComponent<Rigidbody>().AddTorque(-steeringObject.transform.right * torqueForce);
+        {
+            Rigidbody rb = ballCollidingSphere.GetComponent<Rigidbody>();
+            rb.AddTorque(steeringObject.transform.right * torqueForce);
+            rb.AddForce(steeringObject.transform.forward * torqueForce / 4.0f);
+        }
+        else if (Input.GetKey(KeyCode.S)) {
+            Rigidbody rb = ballCollidingSphere.GetComponent<Rigidbody>();
+            rb.AddTorque(-steeringObject.transform.right * torqueForce);
+            rb.AddForce(-steeringObject.transform.forward * torqueForce / 4.0f);
+        }
     }
 
     void Update()
