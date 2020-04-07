@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class CollidableScript : MonoBehaviour
 {
-    public float sizeIncrease = 0.01f;
+    Mesh mesh;
+
+    [SerializeField]
+    float weight = 0.0f;
 
     Vector3 originalScale;
+
+    public float GetWeight()
+    {
+        return weight;
+    }
 
     private void Start()
     {
         originalScale = transform.localScale;
-    }
-
-    public void RetainSize(float parentScale)
-    {
-        Vector3 rescale = originalScale / parentScale;
-
-        transform.localScale = rescale;
     }
 }

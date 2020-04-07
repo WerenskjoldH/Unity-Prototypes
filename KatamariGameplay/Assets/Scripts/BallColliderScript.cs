@@ -6,6 +6,8 @@ public class BallColliderScript : MonoBehaviour
 {
     [SerializeField]
     BallControllerScript controllerScript;
+    [SerializeField]
+    GameObject collectedObjectParent;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,13 +16,11 @@ public class BallColliderScript : MonoBehaviour
         {
             // New Approach: Check other objects size/weight/surface area and determine if it should stick or not
 
-            //Destroy(collision.rigidbody);
-            //collision.rigidbody.isKinematic = true;
-            //other.GetComponent<Collider>().enabled = false;
-            other.transform.parent = gameObject.transform;
+            other.GetComponent<Collider>().enabled = false;
+            other.gameObject.layer = LayerMask.NameToLayer("Ball");
+            other.transform.parent = collectedObjectParent.transform;
             CollidableScript otherCollideScript = other.gameObject.GetComponent<CollidableScript>();
-            controllerScript.IncreaseSize(otherCollideScript.sizeIncrease);
-            otherCollideScript.RetainSize(controllerScript.GetSize());
+            controllerScript.IncreaseSize(otherCollideScript.GetWeight());
         }
     }
 }

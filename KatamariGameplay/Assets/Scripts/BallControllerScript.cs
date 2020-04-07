@@ -8,7 +8,9 @@ public class BallControllerScript : MonoBehaviour
 {
 
     float steeringRotation;
-    float currentSize = 0;
+    float currentRadius = 0;
+    [SerializeField]
+    float currentWeight = 1.0f;
     float cameraIncreaseFactor = 0.9f;
 
     [Header("Transforms and Rigidbodies")]
@@ -27,27 +29,34 @@ public class BallControllerScript : MonoBehaviour
 
     public float GetSize()
     {
-        return currentSize;
+        return currentRadius;
     }
 
-    public void IncreaseSize(float f)
+    public float GetWeight()
     {
-        currentSize += f;
-        //itemCollectionTransform.localScale = new Vector3(currentSize, currentSize, currentSize);
-        itemCollectionTransform.DOScale(new Vector3(currentSize, currentSize, currentSize), 0.5f);
+        return currentWeight;
+    }
+
+    public void IncreaseSize(float weight)
+    {
+        currentWeight += weight;
+
+        currentRadius += weight;
+        //itemCollectionTransform.localScale = new Vector3(currentRadius, currentRadius, currentRadius);
+        itemCollectionTransform.DOScale(new Vector3(currentRadius, currentRadius, currentRadius), 0.5f);
         CinemachineTransposer transposer = playerCamera.GetCinemachineComponent<CinemachineTransposer>();
         DOTween.To(
             () => transposer.m_FollowOffset, 
             x => transposer.m_FollowOffset = x,
-            transposer.m_FollowOffset + new Vector3(0, cameraIncreaseFactor*f, -(cameraIncreaseFactor * f)), 
+            transposer.m_FollowOffset + new Vector3(0, cameraIncreaseFactor* weight, -(cameraIncreaseFactor * weight)), 
             0.25f)
             .SetEase(Ease.OutCubic);
     }
 
     private void Start()
     {
-        currentSize += ballCollidingSphere.gameObject.transform.localScale.x;
-        itemCollectionTransform.localScale = new Vector3(currentSize, currentSize, currentSize);
+        currentRadius += ballCollidingSphere.gameObject.transform.localScale.x;
+        itemCollectionTransform.localScale = new Vector3(currentRadius, currentRadius, currentRadius);
     }
 
     private void FixedUpdate()
