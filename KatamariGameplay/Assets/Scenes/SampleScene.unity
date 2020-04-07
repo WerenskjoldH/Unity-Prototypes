@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 220273632}
   - component: {fileID: 220273633}
   - component: {fileID: 220273634}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Collection Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.54
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &242680577
 GameObject:
@@ -319,7 +319,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21861a561280dc243866bd729a2337e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 0
+  weight: 2
+  sizeIncrease: 0
 --- !u!1 &421339140
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,7 +334,7 @@ GameObject:
   - component: {fileID: 421339144}
   - component: {fileID: 421339146}
   - component: {fileID: 421339145}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Ball Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
