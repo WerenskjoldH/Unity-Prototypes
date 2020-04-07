@@ -8,8 +8,8 @@ public class CollidableScript : MonoBehaviour
 
     [SerializeField]
     float weight = 0.0f;
-    [SerializeField]
-    float sizeIncrease = 0.0f;
+    //[SerializeField]
+    //float sizeIncrease = 0.0f;
 
     Vector3 originalScale;
 

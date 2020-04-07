@@ -41,16 +41,19 @@ public class BallControllerScript : MonoBehaviour
     {
         currentWeight += weight;
 
-        currentRadius += weight;
+        float radInc = weight / 10.0f;
+        currentRadius += radInc;
         //itemCollectionTransform.localScale = new Vector3(currentRadius, currentRadius, currentRadius);
         itemCollectionTransform.DOScale(new Vector3(currentRadius, currentRadius, currentRadius), 0.5f);
         CinemachineTransposer transposer = playerCamera.GetCinemachineComponent<CinemachineTransposer>();
         DOTween.To(
             () => transposer.m_FollowOffset, 
             x => transposer.m_FollowOffset = x,
-            transposer.m_FollowOffset + new Vector3(0, cameraIncreaseFactor* weight, -(cameraIncreaseFactor * weight)), 
+            transposer.m_FollowOffset + new Vector3(0, cameraIncreaseFactor* radInc, -(cameraIncreaseFactor * radInc)), 
             0.25f)
             .SetEase(Ease.OutCubic);
+        Debug.Log("Ball Weight: " + currentWeight);
+        Debug.Log("Added " + weight + " weight");
     }
 
     private void Start()

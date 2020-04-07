@@ -11,7 +11,7 @@ public class BallColliderScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
+        //Debug.Log(other.gameObject.name);
         if(other.gameObject.tag == "Collectable")
         {
             // New Approach: Check other objects size/weight/surface area and determine if it should stick or not
