@@ -8,9 +8,8 @@ public class BallControllerScript : MonoBehaviour
 {
 
     float steeringRotation;
-    float currentRadius = 0;
     [SerializeField]
-    float currentWeight = 1.0f;
+    float currentRadius = 0;
     float cameraIncreaseFactor = 0.9f;
 
     [Header("Transforms and Rigidbodies")]
@@ -29,19 +28,14 @@ public class BallControllerScript : MonoBehaviour
 
     public float GetSize()
     {
-        return currentRadius;
+        return 2.0f * currentRadius;
     }
 
-    public float GetWeight()
+    public void IncreaseSize(float size)
     {
-        return currentWeight;
-    }
+        // This needs to be seriously re-worked
+        float radInc = size / 10.0f;
 
-    public void IncreaseSize(float weight)
-    {
-        currentWeight += weight;
-
-        float radInc = weight / 10.0f;
         currentRadius += radInc;
         //itemCollectionTransform.localScale = new Vector3(currentRadius, currentRadius, currentRadius);
         itemCollectionTransform.DOScale(new Vector3(currentRadius, currentRadius, currentRadius), 0.5f);
@@ -52,8 +46,8 @@ public class BallControllerScript : MonoBehaviour
             transposer.m_FollowOffset + new Vector3(0, cameraIncreaseFactor* radInc, -(cameraIncreaseFactor * radInc)), 
             0.25f)
             .SetEase(Ease.OutCubic);
-        Debug.Log("Ball Weight: " + currentWeight);
-        Debug.Log("Added " + weight + " weight");
+        Debug.Log("Ball Weight: " + currentRadius);
+        Debug.Log("Added " + size + " weight");
     }
 
     private void Start()

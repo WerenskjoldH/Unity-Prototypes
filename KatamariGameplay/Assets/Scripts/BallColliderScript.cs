@@ -17,13 +17,14 @@ public class BallColliderScript : MonoBehaviour
             // New Approach: Check other objects size/weight/surface area and determine if it should stick or not
 
             CollidableScript otherCollideScript = other.gameObject.GetComponent<CollidableScript>();
-            if (controllerScript.GetWeight() < other.GetComponent<CollidableScript>().GetWeight())
+            Debug.Log(controllerScript.GetSize() + " " + other.GetComponent<CollidableScript>().GetSize());
+            if (controllerScript.GetSize() < other.GetComponent<CollidableScript>().GetSize())
                 return;
 
             other.GetComponent<Collider>().enabled = false;
             other.gameObject.layer = LayerMask.NameToLayer("Ball");
             other.transform.parent = collectedObjectParent.transform;
-            controllerScript.IncreaseSize(otherCollideScript.GetWeight());
+            controllerScript.IncreaseSize(otherCollideScript.GetSize());
         }
     }
 }

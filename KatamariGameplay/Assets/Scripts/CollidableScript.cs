@@ -6,20 +6,13 @@ public class CollidableScript : MonoBehaviour
 {
     Mesh mesh;
 
-    [SerializeField]
-    float weight = 0.0f;
-    //[SerializeField]
-    //float sizeIncrease = 0.0f;
-
-    Vector3 originalScale;
-
-    public float GetWeight()
+    public float GetSize()
     {
-        return weight;
+        return mesh.bounds.size.magnitude * transform.localScale.magnitude;
     }
 
     private void Start()
     {
-        originalScale = transform.localScale;
+        mesh = GetComponent<MeshFilter>().mesh;
     }
 }
