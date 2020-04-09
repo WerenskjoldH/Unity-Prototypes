@@ -52,18 +52,14 @@
 
 			fixed4 frag(v2f i) : SV_Target
 			{
+                fixed4 textureSample = tex2D(_MainTex, i.uv);
                 // _WorldSpaceLightPos0 gets the main light in the scene, i.e. the directional light
 				float NdotL = dot(_WorldSpaceLightPos0, normalize(i.worldNormal));
-                float intensity = 0;
+                float intensity = smoothstep(0, 0.02, NdotL);
 
-                if(NdotL >= 0)
-                    intensity = 1;
-                else
-                    intensity = 0;
+                float3 lightColor = (intensity * _LightColor0) + _Ambient;
 
-                fixed4 textureSample = tex2D(_MainTex, i.uv);
-
-                return _Tint * textureSample * ((intensity * _LightColor0) + _Ambient);
+                return _Tint * textureSample * lightColor;
             }
             ENDCG
         }
