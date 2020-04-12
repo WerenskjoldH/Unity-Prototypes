@@ -57,7 +57,7 @@
 				float NdotL = dot(_WorldSpaceLightPos0, normalize(i.worldNormal));
                 float intensity = smoothstep(0, 0.02, NdotL);
 
-                float3 lightColor = (intensity * _LightColor0) + _Ambient;
+                float4 lightColor = (intensity * _LightColor0) + _Ambient;
 
                 return _Tint * textureSample * lightColor;
             }
