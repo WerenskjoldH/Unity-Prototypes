@@ -26,6 +26,11 @@ public class BallControllerScript : MonoBehaviour
     public float torqueForce = 10.0f;
     public float turningSpeed;
 
+    [Header("Growth Properties")]
+    [SerializeField]
+    float inverseGrowthFactor = 16.0f;
+
+
     public float GetSize()
     {
         return 2.0f * currentRadius;
@@ -34,7 +39,7 @@ public class BallControllerScript : MonoBehaviour
     public void IncreaseSize(float size)
     {
         // This needs to be seriously re-worked
-        float radInc = size / 10.0f;
+        float radInc = size / inverseGrowthFactor;
 
         currentRadius += radInc;
         //itemCollectionTransform.localScale = new Vector3(currentRadius, currentRadius, currentRadius);

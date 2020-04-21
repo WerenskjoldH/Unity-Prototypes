@@ -1460,3 +1460,151 @@ Cmd: compileSnippet
   error: 1 plat 4 at (132): pow(f, e) will not work for negative f, use abs(f) or conditionally handle negative values if you expect them\nCompiling Fragment program with _ADDITIONAL_LIGHTS
 Platform defines: UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_RGBM_ENCODING
   api=4 type=1 insize=20590 outsize=4622 kw=_ADDITIONAL_LIGHTS pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_RGBM_ENCODING ok=1
+Cmd: preprocess
+  insize=65567 outsize=3008 ok=1
+Cmd: preprocess
+  insize=65567 outsize=3008 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=811 outsize=209 ok=1
+Cmd: preprocess
+  insize=4615 outsize=780 ok=1
+Cmd: preprocess
+  insize=10681 outsize=776 ok=1
+Cmd: preprocess
+  insize=8853 outsize=776 ok=1
+Cmd: preprocess
+  insize=8656 outsize=776 ok=1
+Cmd: preprocess
+  insize=6353 outsize=781 ok=1
+Cmd: preprocess
+  insize=8126 outsize=781 ok=1
+Cmd: preprocess
+  insize=6975 outsize=781 ok=1
+Cmd: preprocess
+  insize=5393 outsize=782 ok=1
+Cmd: preprocess
+  insize=6342 outsize=782 ok=1
+Cmd: preprocess
+  insize=5429 outsize=775 ok=1
+Cmd: preprocess
+  insize=4551 outsize=786 ok=1
+Cmd: preprocess
+  insize=5565 outsize=781 ok=1
+Cmd: preprocess
+  insize=4112 outsize=780 ok=1
+Cmd: preprocess
+  insize=4185 outsize=781 ok=1
+Cmd: preprocess
+  insize=3953 outsize=785 ok=1
+Cmd: preprocess
+  insize=3879 outsize=784 ok=1
+Cmd: preprocess
+  insize=4315 outsize=787 ok=1
+Cmd: preprocess
+  insize=69577 outsize=2989 ok=1
+Cmd: preprocess
+  insize=3971 outsize=780 ok=1
+Cmd: preprocess
+  insize=6078 outsize=783 ok=1
+Cmd: preprocess
+  insize=5657 outsize=780 ok=1
+Cmd: preprocess
+  insize=7645 outsize=778 ok=1
+Cmd: preprocess
+  insize=7347 outsize=781 ok=1
+Cmd: preprocess
+  insize=7924 outsize=783 ok=1
+Cmd: preprocess
+  insize=8251 outsize=781 ok=1
+Cmd: preprocess
+  insize=5245 outsize=780 ok=1
+Cmd: preprocess
+  insize=4962 outsize=782 ok=1
+Cmd: preprocess
+  insize=7799 outsize=783 ok=1
+Cmd: preprocess
+  insize=3846 outsize=780 ok=1
+Cmd: preprocess
+  insize=3806 outsize=775 ok=1
+Cmd: preprocess
+  insize=5689 outsize=777 ok=1
+Cmd: preprocess
+  insize=11862 outsize=781 ok=1
