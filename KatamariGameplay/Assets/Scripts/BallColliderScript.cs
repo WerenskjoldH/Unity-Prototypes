@@ -21,6 +21,7 @@ public class BallColliderScript : MonoBehaviour
             if (controllerScript.GetSize() < other.GetComponent<CollidableScript>().GetSize())
                 return;
 
+            otherCollideScript.audioSource.Play();
             other.GetComponent<Collider>().enabled = false;
             other.gameObject.layer = LayerMask.NameToLayer("Ball");
             other.transform.parent = collectedObjectParent.transform;

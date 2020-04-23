@@ -5,6 +5,7 @@ using UnityEngine;
 public class CollidableScript : MonoBehaviour
 {
     Mesh mesh;
+    public AudioSource audioSource;
 
     public float GetSize()
     {
@@ -14,5 +15,7 @@ public class CollidableScript : MonoBehaviour
     private void Start()
     {
         mesh = GetComponent<MeshFilter>().mesh;
+        audioSource = GetComponent<AudioSource>();
+        audioSource.pitch = Random.Range(0.75f, 1);
     }
 }
