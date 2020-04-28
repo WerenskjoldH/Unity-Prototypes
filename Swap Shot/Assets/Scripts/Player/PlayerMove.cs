@@ -52,8 +52,10 @@ public class PlayerMove : MonoBehaviour
 
         charController.SimpleMove(Vector3.ClampMagnitude(forwardMovement + rightMovement, 1.0f) * movementSpeed);
 
-        if((vertInput != 0 || horizInput != 0) && OnSlope())
+        if ((vertInput != 0 || horizInput != 0) && OnSlope())
+        {
             charController.Move(Vector3.down * charController.height / 2 * slopeForce);
+        }
 
         SetMovementSpeed(horizInput, vertInput);
 
@@ -62,7 +64,7 @@ public class PlayerMove : MonoBehaviour
 
     private void SetMovementSpeed(float horizInput, float vertInput)
     {
-        if(Input.GetKey(runKey))
+        if(Input.GetKey(runKey) && runEnabled)
         {
             if (horizInput != 0 && vertInput == 0)
                 movementSpeed = Mathf.Lerp(movementSpeed, movementSpeedHorizontal * runSpeedMultiplier, Time.deltaTime * runBuildUp);
@@ -74,11 +76,11 @@ public class PlayerMove : MonoBehaviour
         else
         {
             if (horizInput != 0 && vertInput == 0)
-                movementSpeed = Mathf.Lerp(movementSpeed, movementSpeedHorizontal, Time.deltaTime * runBuildUp);
+                movementSpeed = Mathf.Lerp(movementSpeed, movementSpeedHorizontal, Time.deltaTime);
             else if (horizInput != 0 && vertInput != 0)
-                movementSpeed = Mathf.Lerp(movementSpeed, movementSpeedDiagonal, Time.deltaTime * runBuildUp);
+                movementSpeed = Mathf.Lerp(movementSpeed, movementSpeedDiagonal, Time.deltaTime);
             else if (horizInput == 0 && vertInput != 0)
-                movementSpeed = Mathf.Lerp(movementSpeed, movementSpeedHorizontal, Time.deltaTime * runBuildUp);
+                movementSpeed = Mathf.Lerp(movementSpeed, movementSpeedHorizontal, Time.deltaTime);
         }
     }
 
