@@ -7,6 +7,7 @@ public class InputManager
 {
     public Vector2 movementInput;
     public Vector2 mouseInput;
+    public float jumping = 0;
 
     public void Update()
     {
@@ -14,6 +15,7 @@ public class InputManager
         mouseInput.y = Input.GetAxis("Mouse Y");
         movementInput.x = Input.GetAxisRaw("Horizontal");
         movementInput.y = Input.GetAxis("Vertical");
+        jumping = Input.GetAxis("Jump");
     }
 }
 
@@ -44,7 +46,7 @@ public class PlayerControllerScript : MonoBehaviour
 
     [Header("Properties")]
     public bool isGrounded = false;
-    Vector3 raycastOffset;
+    public float groundRaycastLength = 1f;
     // Name sounds weird, but the body the player has changes
     Rigidbody bodyRigidBody;
 
@@ -53,7 +55,6 @@ public class PlayerControllerScript : MonoBehaviour
     private void Awake()
     {
         bodyRigidBody = GetComponent<Rigidbody>();
-        CalculateRaycastOffset();
         inputManager = new InputManager();
     }
 
@@ -75,10 +76,17 @@ public class PlayerControllerScript : MonoBehaviour
         MouseLook();
     }
 
-    public void CalculateRaycastOffset()
+    // This should be moved to using a spherecast
+    private void CheckGrounded()
     {
-        // We only need the y-offset
-        raycastOffset = new Vector3(0, GetComponent<Collider>().bounds.extents.y, 0);
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, -transform.up, out hit, groundRaycastLength))
+        {
+            isGrounded = true;
+        }
+        else
+            isGrounded = false;
+        Debug.DrawRay(transform.position, new Vector3(0, -groundRaycastLength, 0), Color.white);
     }
 
     void MouseLook()
@@ -100,7 +108,16 @@ public class PlayerControllerScript : MonoBehaviour
 
     void Movement()
     {
-        bodyRigidBody.AddForce(inputManager.movementInput.x * worldOrientationTransform.right * movementSpeed * Time.fixedDeltaTime);
-        bodyRigidBody.AddForce(inputManager.movementInput.y * worldOrientationTransform.forward * movementSpeed * Time.fixedDeltaTime);
+        float velocityModifier = 1.0f;
+
+        CheckGrounded();
+        if (inputManager.jumping == 1 && isGrounded)
+            bodyRigidBody.AddForce(worldOrientationTransform.up * jumpForce);
+
+        if (!isGrounded)
+            velocityModifier *= 0.5f;
+
+        bodyRigidBody.AddForce(inputManager.movementInput.x * worldOrientationTransform.right * movementSpeed * velocityModifier * Time.fixedDeltaTime);
+        bodyRigidBody.AddForce(inputManager.movementInput.y * worldOrientationTransform.forward * movementSpeed * velocityModifier * Time.fixedDeltaTime);
     }
 }
