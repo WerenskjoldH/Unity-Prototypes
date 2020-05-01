@@ -400,7 +400,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961244852}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: a022bc82200cbc746ac194b14d7f7d28, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -685,7 +685,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetBody: {fileID: 1132318977}
   bodyOffset: {x: 0, y: 0.7, z: 0}
-  updateInEditor: 0
+  updateInEditor: 1
 --- !u!4 &1127600847
 Transform:
   m_ObjectHideFlags: 0

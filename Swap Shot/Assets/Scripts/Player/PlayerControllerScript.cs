@@ -2,8 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// This controller takes inspiration from Dani Devy's implementation
 
+public class InputManager
+{
+    public Vector2 movementInput;
+    public Vector2 mouseInput;
+
+    public void Update()
+    {
+        mouseInput.x = Input.GetAxis("Mouse X");
+        mouseInput.y = Input.GetAxis("Mouse Y");
+        movementInput.x = Input.GetAxisRaw("Horizontal");
+        movementInput.y = Input.GetAxis("Vertical");
+    }
+}
+
+// This controller takes inspiration from Dani Devy's implementation
 public class PlayerControllerScript : MonoBehaviour
 {
     [Header("References")]
@@ -32,12 +46,15 @@ public class PlayerControllerScript : MonoBehaviour
 
     [Header("Properties")]
     public bool isGrounded = false;
-    // Name sounds weird, but we can change bodies
+    // Name sounds weird, but the body the player has changes
     Rigidbody bodyRigidBody;
+
+    InputManager inputManager;
 
     private void Awake()
     {
         bodyRigidBody = GetComponent<Rigidbody>();
+        inputManager = new InputManager();
     }
 
     void Start()
@@ -49,18 +66,19 @@ public class PlayerControllerScript : MonoBehaviour
     // Movement is done through forces, so best lock it into a fixed update
     private void FixedUpdate()
     {
-        
+        Movement();
     }
 
     void Update()
     {
+        inputManager.Update();
         MouseLook();
     }
 
     void MouseLook()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.fixedDeltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.fixedDeltaTime;
+        float mouseX = inputManager.mouseInput.x * mouseSensitivity * Time.fixedDeltaTime;
+        float mouseY = inputManager.mouseInput.y * mouseSensitivity * Time.fixedDeltaTime;
 
         Vector3 currentRotation = playerCameraTransform.localEulerAngles;
 
@@ -72,5 +90,11 @@ public class PlayerControllerScript : MonoBehaviour
 
         playerCameraTransform.localRotation = Quaternion.Euler(viewPitch, targetYaw, 0);
         worldOrientationTransform.localRotation = Quaternion.Euler(0, targetYaw, 0);
+    }
+
+    void Movement()
+    {
+        bodyRigidBody.AddForce(inputManager.movementInput.x * worldOrientationTransform.right * movementSpeed * Time.fixedDeltaTime);
+        bodyRigidBody.AddForce(inputManager.movementInput.y * worldOrientationTransform.forward * movementSpeed * Time.fixedDeltaTime);
     }
 }
