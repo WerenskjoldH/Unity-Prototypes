@@ -828,14 +828,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldOrientationTransform: {fileID: 1580105647}
   playerCameraTransform: {fileID: 1127600847}
-  movementSpeed: 2000
+  movementSpeed: 4500
   maxSpeed: 20
   mouseSensitivity: 70
   pitchLowerClamp: -90
   pitchUpperClamp: 90
   jumpForce: 500
   maxSlope: 50
-  frictionForce: 0.15
+  frictionForce: 0.175
+  frictionThreshold: 0.01
   isGrounded: 0
 --- !u!1 &1152866957
 GameObject:

@@ -26,7 +26,7 @@ public class PlayerControllerScript : MonoBehaviour
     [Space(5)]
 
     [Header("Look & Movement")]
-    [SerializeField] float movementSpeed = 2000;
+    [SerializeField] float movementSpeed = 500;
     [SerializeField] float maxSpeed = 20;
     
 
@@ -38,14 +38,13 @@ public class PlayerControllerScript : MonoBehaviour
     [Space(5)]
 
     [SerializeField] float jumpForce = 500;
+    // This is in degrees
     [SerializeField] float maxSlope = 50.0f;
-    [Space(5)]
-
-    [SerializeField] float frictionForce = 0.15f;
     [Space(5)]
 
     [Header("Properties")]
     public bool isGrounded = false;
+    Vector3 raycastOffset;
     // Name sounds weird, but the body the player has changes
     Rigidbody bodyRigidBody;
 
@@ -54,6 +53,7 @@ public class PlayerControllerScript : MonoBehaviour
     private void Awake()
     {
         bodyRigidBody = GetComponent<Rigidbody>();
+        CalculateRaycastOffset();
         inputManager = new InputManager();
     }
 
@@ -73,6 +73,12 @@ public class PlayerControllerScript : MonoBehaviour
     {
         inputManager.Update();
         MouseLook();
+    }
+
+    public void CalculateRaycastOffset()
+    {
+        // We only need the y-offset
+        raycastOffset = new Vector3(0, GetComponent<Collider>().bounds.extents.y, 0);
     }
 
     void MouseLook()
