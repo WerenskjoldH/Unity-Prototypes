@@ -14,22 +14,31 @@ public class InputManager
         mouseInput.x = Input.GetAxis("Mouse X");
         mouseInput.y = Input.GetAxis("Mouse Y");
         movementInput.x = Input.GetAxisRaw("Horizontal");
-        movementInput.y = Input.GetAxis("Vertical");
+        movementInput.y = Input.GetAxisRaw("Vertical");
         jumping = Input.GetAxis("Jump");
     }
 }
 
-// This controller takes inspiration from Dani Devy's implementation
+// This controller takes inspiration from Dani Devy's and WiggleWizard's implementation ( WiggleWizard ported a near 1:1 replica of Quake's movement )
 public class PlayerControllerScript : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] Transform worldOrientationTransform;
     [SerializeField] Transform playerCameraTransform;
     [Space(5)]
 
     [Header("Look & Movement")]
-    [SerializeField] float movementSpeed = 500;
-    [SerializeField] float maxSpeed = 20;
+    public Vector3 playerVelocity = Vector3.zero;
+    Vector3 moveDirection = Vector3.zero;
+
+    [SerializeField] float movementSpeed = 7;
+    [SerializeField] float groundAcceleration = 14;
+    [SerializeField] float groundDeceleration = 10;
+
+    [SerializeField] float friction = 6;
+    float currentFriction = 0;
+
+    [SerializeField] float gravityStrength = 20;
+    [SerializeField] float airControlPrecision = 0.3f;
     
 
     float viewPitch = 0;
@@ -39,22 +48,20 @@ public class PlayerControllerScript : MonoBehaviour
     [SerializeField] float pitchUpperClamp = 90.0f;
     [Space(5)]
 
-    [SerializeField] float jumpForce = 500;
-    // This is in degrees
-    [SerializeField] float maxSlope = 50.0f;
+    [SerializeField] float jumpForce = 8;
     [Space(5)]
 
-    [Header("Properties")]
-    public bool isGrounded = false;
-    public float groundRaycastLength = 1f;
     // Name sounds weird, but the body the player has changes
     Rigidbody bodyRigidBody;
+
+    CharacterController charController;
 
     InputManager inputManager;
 
     private void Awake()
     {
         bodyRigidBody = GetComponent<Rigidbody>();
+        charController = GetComponent<CharacterController>();
         inputManager = new InputManager();
     }
 
@@ -63,30 +70,12 @@ public class PlayerControllerScript : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-    
-    // Movement is done through forces, so best lock it into a fixed update
-    private void FixedUpdate()
-    {
-        Movement();
-    }
-
+   
     void Update()
     {
         inputManager.Update();
         MouseLook();
-    }
-
-    // This should be moved to using a spherecast
-    private void CheckGrounded()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, -transform.up, out hit, groundRaycastLength))
-        {
-            isGrounded = true;
-        }
-        else
-            isGrounded = false;
-        Debug.DrawRay(transform.position, new Vector3(0, -groundRaycastLength, 0), Color.white);
+        Movement();
     }
 
     void MouseLook()
@@ -102,22 +91,93 @@ public class PlayerControllerScript : MonoBehaviour
         // We shouldn't be able to do front/back tucks, so lock that pitch between target values;
         viewPitch = Mathf.Clamp(viewPitch, pitchLowerClamp, pitchUpperClamp);
 
-        playerCameraTransform.localRotation = Quaternion.Euler(viewPitch, targetYaw, 0);
-        worldOrientationTransform.localRotation = Quaternion.Euler(0, targetYaw, 0);
+        playerCameraTransform.rotation = Quaternion.Euler(viewPitch, targetYaw, 0);
+        transform.rotation = Quaternion.Euler(0, targetYaw, 0);
+
+    }
+
+    void ApplyFriction(float frictionModifier)
+    {
+        Vector3 playerVelCopy = playerVelocity;
+        float speed, newSpeed;
+        float drop = 0;
+        float control = 0;
+
+        playerVelCopy.y = 0;
+        speed = playerVelCopy.magnitude;
+
+        if (charController.isGrounded)
+        {
+            control = speed < groundDeceleration ? groundDeceleration : speed;
+            drop = control * friction * Time.deltaTime * frictionModifier;
+        }
+
+        newSpeed = speed - drop;
+        currentFriction = newSpeed;
+        if (newSpeed < 0)
+            newSpeed = 0;
+        
+        if(speed > 0)
+            newSpeed /= speed;
+
+        playerVelocity.x *= newSpeed;
+        playerVelocity.z *= newSpeed;
+    }
+
+    void Accelerate(Vector3 desiredDirection, float desiredSpeed, float acceleration)
+    {
+        float addSpeed;
+        float accSpeed;
+        float curSpeed;
+
+        curSpeed = Vector3.Dot(playerVelocity, desiredDirection);
+        addSpeed = desiredSpeed - curSpeed;
+        if (addSpeed <= 0)
+            return;
+
+        accSpeed = acceleration * Time.deltaTime * desiredSpeed;
+
+        if (accSpeed > addSpeed)
+            accSpeed = addSpeed;
+
+        playerVelocity.x += accSpeed * desiredDirection.x;
+        playerVelocity.z += accSpeed * desiredDirection.z;
+    }
+
+    void GroundMovement()
+    {
+        Vector3 desiredDirection;
+
+        ApplyFriction(1.0f);
+
+        desiredDirection = new Vector3(inputManager.movementInput.x, 0, inputManager.movementInput.y);
+        // This transforms the input direction from the local space it is in to the world space relative to the gameobject's transform, then normalizes it
+        desiredDirection = transform.TransformDirection(desiredDirection);
+        desiredDirection.Normalize();
+
+        moveDirection = desiredDirection;
+
+        float desiredSpeed = desiredDirection.magnitude;
+        desiredSpeed *= movementSpeed;
+
+        Accelerate(desiredDirection, desiredSpeed, groundAcceleration);
+
+        // ?Explore why this is necessary
+        playerVelocity.y = -gravityStrength * Time.deltaTime;
+    }
+
+    void AirMovement()
+    {
+        playerVelocity.y -= gravityStrength * Time.deltaTime;
     }
 
     void Movement()
     {
-        float velocityModifier = 1.0f;
+        if (charController.isGrounded)
+            GroundMovement();
+        else
+            AirMovement();
 
-        CheckGrounded();
-        if (inputManager.jumping == 1 && isGrounded)
-            bodyRigidBody.AddForce(worldOrientationTransform.up * jumpForce);
-
-        if (!isGrounded)
-            velocityModifier *= 0.5f;
-
-        bodyRigidBody.AddForce(inputManager.movementInput.x * worldOrientationTransform.right * movementSpeed * velocityModifier * Time.fixedDeltaTime);
-        bodyRigidBody.AddForce(inputManager.movementInput.y * worldOrientationTransform.forward * movementSpeed * velocityModifier * Time.fixedDeltaTime);
+        charController.Move(playerVelocity * Time.deltaTime);
     }
 }
