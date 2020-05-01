@@ -24,6 +24,7 @@ public class PlayerControllerScript : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] Transform playerCameraTransform;
+    [SerializeField] Vector3 cameraOffset = Vector3.zero;
     [Space(5)]
 
     [Header("Look & Movement")]
@@ -152,8 +153,7 @@ public class PlayerControllerScript : MonoBehaviour
 
         desiredDirection = new Vector3(inputManager.movementInput.x, 0, inputManager.movementInput.y);
         // This transforms the input direction from the local space it is in to the world space relative to the gameobject's transform, then normalizes it
-        desiredDirection = transform.TransformDirection(desiredDirection);
-        desiredDirection.Normalize();
+        desiredDirection = transform.TransformDirection(desiredDirection).normalized;
 
         moveDirection = desiredDirection;
 
@@ -179,5 +179,6 @@ public class PlayerControllerScript : MonoBehaviour
             AirMovement();
 
         charController.Move(playerVelocity * Time.deltaTime);
+        playerCameraTransform.position = transform.position + cameraOffset;
     }
 }
