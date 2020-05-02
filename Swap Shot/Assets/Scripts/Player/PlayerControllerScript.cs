@@ -89,7 +89,7 @@ public class PlayerControllerScript : MonoBehaviour
         float targetYaw = currentRotation.y + mouseX;
 
         viewPitch -= mouseY;
-        // We shouldn't be able to do front/back tucks, so lock that pitch between target values;
+        // We shouldn't be able to do front/back tucks, so lock that pitch between target values
         viewPitch = Mathf.Clamp(viewPitch, pitchLowerClamp, pitchUpperClamp);
 
         playerCameraTransform.rotation = Quaternion.Euler(viewPitch, targetYaw, 0);
