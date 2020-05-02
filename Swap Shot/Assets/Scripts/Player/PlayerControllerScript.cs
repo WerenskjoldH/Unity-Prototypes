@@ -35,12 +35,18 @@ public class PlayerControllerScript : MonoBehaviour
     [SerializeField] float groundAcceleration = 14;
     [SerializeField] float groundDeceleration = 10;
 
+    [SerializeField] float airControlPrecision = 0.3f;
+    [SerializeField] float airAcceleration = 2;
+    [SerializeField] float airDeceleration = 2;
+    [SerializeField] float sideStrafeSpeed = 1;
+    [SerializeField] float sideStrafeAcceleration = 50;
+    [SerializeField] float jumpSpeed = 8;
+    bool queuedJump = false;
+
     [SerializeField] float friction = 6;
     float currentFriction = 0;
 
-    [SerializeField] float gravityStrength = 20;
-    [SerializeField] float airControlPrecision = 0.3f;
-    
+    [SerializeField] float gravityStrength = 20;    
 
     float viewPitch = 0;
     [Space(5)]
@@ -149,7 +155,10 @@ public class PlayerControllerScript : MonoBehaviour
     {
         Vector3 desiredDirection;
 
-        ApplyFriction(1.0f);
+        if (queuedJump)
+            ApplyFriction(0.0f);
+        else
+            ApplyFriction(1.0f);
 
         desiredDirection = new Vector3(inputManager.movementInput.x, 0, inputManager.movementInput.y);
         // This transforms the input direction from the local space it is in to the world space relative to the gameobject's transform, then normalizes it
@@ -164,18 +173,103 @@ public class PlayerControllerScript : MonoBehaviour
 
         // ?Explore why this is necessary
         playerVelocity.y = -gravityStrength * Time.deltaTime;
+
+        if(queuedJump)
+        {
+            playerVelocity.y = jumpSpeed;
+            queuedJump = false;
+        }
+    }
+
+    void QueueJump()
+    {
+        if (Input.GetButtonDown("Jump") && !queuedJump)
+            queuedJump = true;
+        if (Input.GetButtonUp("Jump"))
+            queuedJump = false;
+    }
+
+    void AirControl(Vector3 desiredDirection, float desiredSpeed)
+    {
+        float zSpeed, speed;
+        float dot;
+        float k;
+
+        // If not moving in a forward/backwards direction, no control
+        if (Mathf.Abs(inputManager.movementInput.y) < 0.001 || Mathf.Abs(desiredSpeed) < 0.001)
+            return;
+
+        zSpeed = playerVelocity.y;
+        playerVelocity.y = 0;
+
+        speed = playerVelocity.magnitude;
+        playerVelocity.Normalize();
+
+        dot = Vector3.Dot(playerVelocity, desiredDirection);
+        k = 32;
+        k *= airControlPrecision * dot * dot * Time.deltaTime;
+
+        // Allows changing directions while not speeding up
+        if(dot > 0)
+        {
+            float xVel = playerVelocity.x * speed + desiredDirection.x * k;
+            float yVel = playerVelocity.y * speed + desiredDirection.y * k;
+            float zVel = playerVelocity.z * speed + desiredDirection.z * k;
+
+            playerVelocity = new Vector3(xVel, yVel, zVel);
+            playerVelocity.Normalize();
+            moveDirection = playerVelocity;
+        }
+
+        playerVelocity.x *= speed;
+        // zSpeed is named such since ID's world unit coordinates being oriented differently
+        playerVelocity.y = zSpeed; 
+        playerVelocity.z *= speed;
     }
 
     void AirMovement()
     {
+        Vector3 desiredDirection;
+        float desiredVelocity = airAcceleration;
+        float acceleration;
+
+        desiredDirection = new Vector3(inputManager.movementInput.x, 0, inputManager.movementInput.y);
+        desiredDirection = transform.TransformDirection(desiredDirection);
+
+        float desiredSpeed = desiredDirection.magnitude * movementSpeed;
+
+        desiredDirection.Normalize();
+        moveDirection = desiredDirection;
+
+        // Air Control (CPM - Full Air Control)
+        float desiredSpeedTwo = desiredSpeed;
+        if (Vector3.Dot(playerVelocity, desiredDirection) < 0)
+            acceleration = airDeceleration;
+        else
+            acceleration = airAcceleration;
+
+        if(inputManager.movementInput.y == 0 && inputManager.movementInput.x != 0)
+        {
+            if (desiredSpeed > sideStrafeSpeed)
+                desiredSpeed = sideStrafeSpeed;
+            acceleration = sideStrafeAcceleration;
+        }
+
+        Debug.Log(desiredDirection);
+        Accelerate(desiredDirection, desiredSpeed, acceleration);
+
+        if (airControlPrecision > 0)
+            AirControl(desiredDirection, desiredSpeedTwo);
+
         playerVelocity.y -= gravityStrength * Time.deltaTime;
     }
 
     void Movement()
     {
+        QueueJump();
         if (charController.isGrounded)
             GroundMovement();
-        else
+        else if(!charController.isGrounded)
             AirMovement();
 
         charController.Move(playerVelocity * Time.deltaTime);
