@@ -7,7 +7,7 @@ public class InputManager
 {
     public Vector2 movementInput;
     public Vector2 mouseInput;
-    public float jumping = 0;
+    public bool queuedJump = false;
 
     public void Update()
     {
@@ -15,7 +15,11 @@ public class InputManager
         mouseInput.y = Input.GetAxis("Mouse Y");
         movementInput.x = Input.GetAxisRaw("Horizontal");
         movementInput.y = Input.GetAxisRaw("Vertical");
-        jumping = Input.GetAxis("Jump");
+
+        if (Input.GetButtonDown("Jump") && !queuedJump)
+            queuedJump = true;
+        if (Input.GetButtonUp("Jump"))
+            queuedJump = false;
     }
 }
 
@@ -41,7 +45,6 @@ public class PlayerControllerScript : MonoBehaviour
     [SerializeField] float sideStrafeSpeed = 1;
     [SerializeField] float sideStrafeAcceleration = 50;
     [SerializeField] float jumpSpeed = 8;
-    bool queuedJump = false;
 
     [SerializeField] float friction = 6;
     float currentFriction = 0;
@@ -155,7 +158,7 @@ public class PlayerControllerScript : MonoBehaviour
     {
         Vector3 desiredDirection;
 
-        if (queuedJump)
+        if (inputManager.queuedJump)
             ApplyFriction(0.0f);
         else
             ApplyFriction(1.0f);
@@ -174,19 +177,11 @@ public class PlayerControllerScript : MonoBehaviour
         // ?Explore why this is necessary
         playerVelocity.y = -gravityStrength * Time.deltaTime;
 
-        if(queuedJump)
+        if(inputManager.queuedJump)
         {
             playerVelocity.y = jumpSpeed;
-            queuedJump = false;
+            inputManager.queuedJump = false;
         }
-    }
-
-    void QueueJump()
-    {
-        if (Input.GetButtonDown("Jump") && !queuedJump)
-            queuedJump = true;
-        if (Input.GetButtonUp("Jump"))
-            queuedJump = false;
     }
 
     void AirControl(Vector3 desiredDirection, float desiredSpeed)
@@ -230,7 +225,6 @@ public class PlayerControllerScript : MonoBehaviour
     void AirMovement()
     {
         Vector3 desiredDirection;
-        float desiredVelocity = airAcceleration;
         float acceleration;
 
         desiredDirection = new Vector3(inputManager.movementInput.x, 0, inputManager.movementInput.y);
@@ -266,7 +260,6 @@ public class PlayerControllerScript : MonoBehaviour
 
     void Movement()
     {
-        QueueJump();
         if (charController.isGrounded)
             GroundMovement();
         else if(!charController.isGrounded)
