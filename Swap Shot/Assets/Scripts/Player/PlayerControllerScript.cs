@@ -40,6 +40,7 @@ public class PlayerControllerScript : MonoBehaviour
     [SerializeField] float groundDeceleration = 10;
 
     [SerializeField] float airControlPrecision = 0.3f;
+    [SerializeField] float minimumSpeedForAirControl = 0.001f;
     [SerializeField] float airAcceleration = 2;
     [SerializeField] float airDeceleration = 2;
     [SerializeField] float sideStrafeSpeed = 1;
@@ -86,6 +87,13 @@ public class PlayerControllerScript : MonoBehaviour
         inputManager.Update();
         MouseLook();
         Movement();
+    }
+
+    Vector3 CalculateRawDesiredDirection()
+    {
+        Vector3 desiredDirection = new Vector3(inputManager.movementInput.x, 0, inputManager.movementInput.y);
+        desiredDirection = transform.TransformDirection(desiredDirection);
+        return desiredDirection;
     }
 
     void MouseLook()
@@ -158,23 +166,20 @@ public class PlayerControllerScript : MonoBehaviour
     {
         Vector3 desiredDirection;
 
+        // If jumping then don't apply friction as it will cause stutters in forward/backward momentum
         if (inputManager.queuedJump)
             ApplyFriction(0.0f);
         else
             ApplyFriction(1.0f);
 
-        desiredDirection = new Vector3(inputManager.movementInput.x, 0, inputManager.movementInput.y);
-        // This transforms the input direction from the local space it is in to the world space relative to the gameobject's transform, then normalizes it
-        desiredDirection = transform.TransformDirection(desiredDirection).normalized;
+        desiredDirection = CalculateRawDesiredDirection().normalized;
 
         moveDirection = desiredDirection;
 
-        float desiredSpeed = desiredDirection.magnitude;
-        desiredSpeed *= movementSpeed;
+        float desiredSpeed = desiredDirection.magnitude * movementSpeed;
 
         Accelerate(desiredDirection, desiredSpeed, groundAcceleration);
 
-        // ?Explore why this is necessary
         playerVelocity.y = -gravityStrength * Time.deltaTime;
 
         if(inputManager.queuedJump)
@@ -191,9 +196,10 @@ public class PlayerControllerScript : MonoBehaviour
         float k;
 
         // If not moving in a forward/backwards direction, no control
-        if (Mathf.Abs(inputManager.movementInput.y) < 0.001 || Mathf.Abs(desiredSpeed) < 0.001)
+        if (Mathf.Abs(inputManager.movementInput.y) < minimumSpeedForAirControl || Mathf.Abs(desiredSpeed) < minimumSpeedForAirControl)
             return;
 
+        // This is to preserve the player's y velocity through calculations
         zSpeed = playerVelocity.y;
         playerVelocity.y = 0;
 
@@ -208,10 +214,9 @@ public class PlayerControllerScript : MonoBehaviour
         if(dot > 0)
         {
             float xVel = playerVelocity.x * speed + desiredDirection.x * k;
-            float yVel = playerVelocity.y * speed + desiredDirection.y * k;
             float zVel = playerVelocity.z * speed + desiredDirection.z * k;
 
-            playerVelocity = new Vector3(xVel, yVel, zVel);
+            playerVelocity = new Vector3(xVel, 0, zVel);
             playerVelocity.Normalize();
             moveDirection = playerVelocity;
         }
@@ -227,11 +232,11 @@ public class PlayerControllerScript : MonoBehaviour
         Vector3 desiredDirection;
         float acceleration;
 
-        desiredDirection = new Vector3(inputManager.movementInput.x, 0, inputManager.movementInput.y);
-        desiredDirection = transform.TransformDirection(desiredDirection);
+        desiredDirection = CalculateRawDesiredDirection();
 
         float desiredSpeed = desiredDirection.magnitude * movementSpeed;
 
+        // Notice how we normalize the movement vector AFTER calculating the magnitude, this is what will make jumping at angles faster
         desiredDirection.Normalize();
         moveDirection = desiredDirection;
 
@@ -249,7 +254,6 @@ public class PlayerControllerScript : MonoBehaviour
             acceleration = sideStrafeAcceleration;
         }
 
-        Debug.Log(desiredDirection);
         Accelerate(desiredDirection, desiredSpeed, acceleration);
 
         if (airControlPrecision > 0)
