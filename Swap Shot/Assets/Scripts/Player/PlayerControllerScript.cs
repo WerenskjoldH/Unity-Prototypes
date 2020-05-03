@@ -96,13 +96,13 @@ public class PlayerControllerScript : MonoBehaviour
         return desiredDirection;
     }
 
+
+
     void MouseLook()
     {
         float mouseX = inputManager.mouseInput.x * mouseSensitivity * Time.fixedDeltaTime;
         float mouseY = inputManager.mouseInput.y * mouseSensitivity * Time.fixedDeltaTime;
-
         Vector3 currentRotation = playerCameraTransform.localEulerAngles;
-
         float targetYaw = currentRotation.y + mouseX;
 
         viewPitch -= mouseY;
@@ -165,8 +165,9 @@ public class PlayerControllerScript : MonoBehaviour
     void GroundMovement()
     {
         Vector3 desiredDirection;
+        float desiredSpeed;
 
-        // If jumping then don't apply friction as it will cause stutters in forward/backward momentum
+        // If there is a jump queued in the air then don't apply friction as it will cause stutters in forward/backward momentum
         if (inputManager.queuedJump)
             ApplyFriction(0.0f);
         else
@@ -176,8 +177,7 @@ public class PlayerControllerScript : MonoBehaviour
 
         moveDirection = desiredDirection;
 
-        float desiredSpeed = desiredDirection.magnitude * movementSpeed;
-
+        desiredSpeed = desiredDirection.magnitude * movementSpeed;
         Accelerate(desiredDirection, desiredSpeed, groundAcceleration);
 
         playerVelocity.y = -gravityStrength * Time.deltaTime;
@@ -230,24 +230,27 @@ public class PlayerControllerScript : MonoBehaviour
     void AirMovement()
     {
         Vector3 desiredDirection;
+        float desiredSpeed;
+        float desiredSpeedTwo;
         float acceleration;
 
         desiredDirection = CalculateRawDesiredDirection();
 
-        float desiredSpeed = desiredDirection.magnitude * movementSpeed;
+        desiredSpeed = desiredDirection.magnitude * movementSpeed;
 
         // Notice how we normalize the movement vector AFTER calculating the magnitude, this is what will make jumping at angles faster
         desiredDirection.Normalize();
         moveDirection = desiredDirection;
 
         // Air Control (CPM - Full Air Control)
-        float desiredSpeedTwo = desiredSpeed;
         if (Vector3.Dot(playerVelocity, desiredDirection) < 0)
             acceleration = airDeceleration;
         else
             acceleration = airAcceleration;
 
-        if(inputManager.movementInput.y == 0 && inputManager.movementInput.x != 0)
+        // If not holding forward/backward, but pressing a strafe ( horizontal key ) then we use the strafe speed/acceleration values
+        desiredSpeedTwo = desiredSpeed;
+        if (inputManager.movementInput.y == 0 && inputManager.movementInput.x != 0)
         {
             if (desiredSpeed > sideStrafeSpeed)
                 desiredSpeed = sideStrafeSpeed;
