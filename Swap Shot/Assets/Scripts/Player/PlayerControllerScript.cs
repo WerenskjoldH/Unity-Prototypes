@@ -23,7 +23,7 @@ public class InputManager
     }
 }
 
-// This controller takes inspiration from Dani Devy's and WiggleWizard's implementation ( WiggleWizard ported a near 1:1 replica of Quake's movement )
+// This controller takes inspiration from WiggleWizard's implementation ( WiggleWizard ported a near 1:1 replica of Quake's movement )
 public class PlayerControllerScript : MonoBehaviour
 {
     [Header("References")]
@@ -111,7 +111,6 @@ public class PlayerControllerScript : MonoBehaviour
 
         playerCameraTransform.rotation = Quaternion.Euler(viewPitch, targetYaw, 0);
         transform.rotation = Quaternion.Euler(0, targetYaw, 0);
-
     }
 
     void ApplyFriction(float frictionModifier)
@@ -119,14 +118,13 @@ public class PlayerControllerScript : MonoBehaviour
         Vector3 playerVelCopy = playerVelocity;
         float speed, newSpeed;
         float drop = 0;
-        float control = 0;
 
         playerVelCopy.y = 0;
         speed = playerVelCopy.magnitude;
 
         if (charController.isGrounded)
         {
-            control = speed < groundDeceleration ? groundDeceleration : speed;
+            float control = speed < groundDeceleration ? groundDeceleration : speed;
             drop = control * friction * Time.deltaTime * frictionModifier;
         }
 

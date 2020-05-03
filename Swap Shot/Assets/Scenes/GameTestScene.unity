@@ -886,13 +886,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCameraTransform: {fileID: 646424770}
   cameraOffset: {x: 0, y: 0.7, z: 0}
-  playerVelocity: {x: 0, y: 0, z: 0}
   movementSpeed: 7
   groundAcceleration: 14
   groundDeceleration: 10
+  airControlPrecision: 0.3
+  minimumSpeedForAirControl: 0.001
+  airAcceleration: 2
+  airDeceleration: 2
+  sideStrafeSpeed: 1
+  sideStrafeAcceleration: 50
+  jumpSpeed: 8
   friction: 6
   gravityStrength: 20
-  airControlPrecision: 0.3
   mouseSensitivity: 70
   pitchLowerClamp: -90
   pitchUpperClamp: 90
