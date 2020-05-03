@@ -28,7 +28,7 @@ public class PlayerControllerScript : MonoBehaviour
     [Space(5)]
 
     [Header("Look & Movement")]
-    public Vector3 playerVelocity = Vector3.zero;
+    Vector3 playerVelocity = Vector3.zero;
     Vector3 moveDirection = Vector3.zero;
 
     [SerializeField] float movementSpeed = 7;
