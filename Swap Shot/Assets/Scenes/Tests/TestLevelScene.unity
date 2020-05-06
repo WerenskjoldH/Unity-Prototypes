@@ -220,7 +220,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh25704
+  m_Name: pb_Mesh16368
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3837,7 +3837,7 @@ PrefabInstance:
     - target: {fileID: 7496709071322370566, guid: 8451ef664a22d13469c64944eacf6eab,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7496709071322370566, guid: 8451ef664a22d13469c64944eacf6eab,
         type: 3}
@@ -4050,7 +4050,7 @@ GameObject:
   m_Layer: 0
   m_Name: PlayerStartPoint
   m_TagString: StartPoint
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2800000, guid: 366edf8cce3c98c47b92594e25080e6e, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -4074,7 +4074,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2014350038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 15, z: -50}
+  m_LocalPosition: {x: -10.94, y: 13, z: -48.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
