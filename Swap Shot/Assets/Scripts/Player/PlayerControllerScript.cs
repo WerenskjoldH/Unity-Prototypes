@@ -33,7 +33,10 @@ public class PlayerControllerScript : MonoBehaviour
 
     [Header("Look & Movement")]
     Vector3 playerVelocity = Vector3.zero;
+    // This is primarily for debugging
     Vector3 moveDirection = Vector3.zero;
+
+    [SerializeField] float surfaceRaycastLength = 1.5f;
 
     [SerializeField] float movementSpeed = 7;
     [SerializeField] float groundAcceleration = 14;
@@ -269,6 +272,8 @@ public class PlayerControllerScript : MonoBehaviour
             GroundMovement();
         else if(!charController.isGrounded)
             AirMovement();
+
+        Debug.DrawRay(transform.position, surfaceRaycastLength * new Vector3(0, -1, 0));
 
         charController.Move(playerVelocity * Time.deltaTime);
         playerCameraTransform.position = transform.position + cameraOffset;
