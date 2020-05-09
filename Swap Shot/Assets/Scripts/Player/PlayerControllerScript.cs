@@ -37,6 +37,7 @@ public class PlayerControllerScript : MonoBehaviour
     Vector3 moveDirection = Vector3.zero;
 
     [SerializeField] float surfaceRaycastLength = 1.5f;
+    bool playerGrounded = false;
 
     [SerializeField] float movementSpeed = 7;
     [SerializeField] float groundAcceleration = 14;
@@ -95,7 +96,6 @@ public class PlayerControllerScript : MonoBehaviour
     {
         inputManager.Update();
         MouseLook();
-        Movement();
     }
 
     private void FixedUpdate()
@@ -109,7 +109,10 @@ public class PlayerControllerScript : MonoBehaviour
         else
         {
             fromUpToGroundNormal = Quaternion.identity;
+            playerGrounded = false;
         }
+
+        Movement();
     }
 
     Vector3 CalculateRawDesiredDirection()
@@ -145,7 +148,7 @@ public class PlayerControllerScript : MonoBehaviour
         playerVelCopy.y = 0;
         speed = playerVelCopy.magnitude;
 
-        if (charController.isGrounded)
+        if (playerGrounded)
         {
             float control = speed < groundDeceleration ? groundDeceleration : speed;
             drop = control * friction * Time.deltaTime * frictionModifier;
@@ -284,22 +287,15 @@ public class PlayerControllerScript : MonoBehaviour
     
     void applyWorldForces()
     {
-        if (charController.isGrounded)
+        if (playerGrounded)
         {
-            float slopeAngle = Vector3.Angle(transform.up, groundHit.normal);
+            //float slopeAngle = Vector3.Angle(transform.up, groundHit.normal);
 
-            if (slopeAngle >= charController.slopeLimit)
-            {
-                float gravityComponent = slopeDescentMultiplier * Vector3.Dot(-transform.up, downSlopeVector);
-                Vector3 gravityForce = (25.0f * gravityComponent) * downSlopeVector;
-                playerVelocity += gravityForce * Time.deltaTime;
-
-                //Debug.DrawRay(transform.position, gravityForce, Color.magenta);
-            }
-            else
-            {
-                playerVelocity.y -= gravityStrength * Time.deltaTime;
-            }
+            float downAlignment = Vector3.Dot(-transform.up, downSlopeVector);
+            float gravityComponent = slopeDescentMultiplier * downAlignment;
+            Vector3 gravityForce = gravityComponent * downSlopeVector;
+            playerVelocity += gravityForce;
+            Debug.DrawRay(transform.position, gravityForce, Color.magenta);
 
             if (inputManager.queuedJump)
             {
@@ -308,14 +304,19 @@ public class PlayerControllerScript : MonoBehaviour
             }
         }
         else
+        {
             playerVelocity.y -= gravityStrength * Time.deltaTime;
+        }
     }
 
     void Movement()
     {
         if (charController.isGrounded)
+            playerGrounded = true;
+
+        if (playerGrounded)
             GroundMovement();
-        else if(!charController.isGrounded)
+        else if(!playerGrounded)
             AirMovement();
 
         applyWorldForces();
