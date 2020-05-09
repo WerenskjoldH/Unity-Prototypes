@@ -189,6 +189,8 @@ public class PlayerControllerScript : MonoBehaviour
         Vector3 desiredDirection;
         float desiredSpeed;
 
+        Debug.Log("On Ground");
+
         // If there is a jump queued in the air then don't apply friction as it will cause stutters in forward/backward momentum
         if (inputManager.queuedJump)
             ApplyFriction(0.0f);
@@ -248,6 +250,8 @@ public class PlayerControllerScript : MonoBehaviour
         float desiredSpeedTwo;
         float acceleration;
 
+        Debug.Log("In air");
+
         desiredDirection = CalculateRawDesiredDirection();
 
         desiredSpeed = desiredDirection.magnitude * movementSpeed;
@@ -288,14 +292,13 @@ public class PlayerControllerScript : MonoBehaviour
             {
                 float gravityComponent = slopeDescentMultiplier * Vector3.Dot(-transform.up, downSlopeVector);
                 Vector3 gravityForce = (25.0f * gravityComponent) * downSlopeVector;
-                Debug.Log(gravityForce);
                 playerVelocity += gravityForce * Time.deltaTime;
 
-                Debug.DrawRay(transform.position, gravityForce, Color.magenta);
+                //Debug.DrawRay(transform.position, gravityForce, Color.magenta);
             }
             else
             {
-                //playerVelocity.y -= -gravityStrength * Time.deltaTime;
+                playerVelocity.y -= gravityStrength * Time.deltaTime;
             }
 
             if (inputManager.queuedJump)
@@ -315,13 +318,13 @@ public class PlayerControllerScript : MonoBehaviour
         else if(!charController.isGrounded)
             AirMovement();
 
+        applyWorldForces();
+
         Debug.DrawRay(transform.position, surfaceRaycastLength * new Vector3(0, -1, 0));
         Debug.DrawRay(transform.position, fromUpToGroundNormal * moveDirection, Color.green);
         Debug.DrawRay(transform.position, playerVelocity, Color.red);
 
-        applyWorldForces();
-
-        Debug.Log(playerVelocity);
+        //Debug.Log(playerVelocity);
 
         charController.Move(playerVelocity * Time.deltaTime);
         playerCameraTransform.position = transform.position + cameraOffset;
