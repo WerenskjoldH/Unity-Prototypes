@@ -50,6 +50,8 @@ public class PlayerControllerScript : MonoBehaviour
     [SerializeField] float sideStrafeAcceleration = 50;
     [SerializeField] float jumpSpeed = 8;
 
+    [SerializeField] float slopeDescentMultiplier = 4.0f;
+
     [SerializeField] float friction = 6;
     float currentFriction = 0;
 
@@ -68,8 +70,9 @@ public class PlayerControllerScript : MonoBehaviour
     // Name sounds weird, but the body the player has changes
     Rigidbody bodyRigidBody;
 
-    Vector3 groundNormal;
+    RaycastHit groundHit;
     Quaternion fromUpToGroundNormal;
+    Vector3 downSlopeVector;
 
     CharacterController charController;
 
@@ -163,10 +166,6 @@ public class PlayerControllerScript : MonoBehaviour
             accSpeed = addSpeed;
 
         playerVelocity += accSpeed * (fromUpToGroundNormal * moveDirection);
-
-        //playerVelocity.x += accSpeed * desiredDirection.x;
-        //playerVelocity.z += accSpeed * desiredDirection.z;
-        //playerVelocity = playerVelocity;
     }
 
     void GroundMovement()
@@ -262,12 +261,32 @@ public class PlayerControllerScript : MonoBehaviour
         if (airControlPrecision > 0)
             AirControl(desiredDirection, desiredSpeedTwo);
     }
-
+    
+    // Gravity keeps increasing while on ground, limit it
+    // This can be done by calculating the normal force, which is a good idea
+    // That'll require a lot of re-working of this section, so take care :s
     void applyWorldForces()
     {
         if (charController.isGrounded)
         {
-            playerVelocity.y += -gravityStrength * Time.deltaTime;
+            float slopeAngle = Vector3.Angle(transform.up, groundHit.normal);
+
+            if (slopeAngle >= charController.slopeLimit)
+            {
+                float gravityComponent = slopeDescentMultiplier * Vector3.Dot(-transform.up, downSlopeVector);
+                Vector3 gravityForce = (25.0f * gravityComponent) * downSlopeVector;
+                Debug.Log(gravityComponent);
+                playerVelocity += gravityForce * Time.deltaTime;
+
+                Debug.DrawRay(transform.position, gravityForce, Color.magenta);
+            }
+            else
+            {
+                playerVelocity.y += -gravityStrength * Time.deltaTime;
+                downSlopeVector = Vector3.one;
+            }
+
+            Debug.Log(playerVelocity);
 
             if (inputManager.queuedJump)
             {
@@ -281,15 +300,14 @@ public class PlayerControllerScript : MonoBehaviour
 
     void Movement()
     {
-        RaycastHit groundHit;
         if(Physics.Raycast(transform.position, -1 * transform.up, out groundHit, surfaceRaycastLength))
         {
-            groundNormal = groundHit.normal;
-            fromUpToGroundNormal = Quaternion.FromToRotation(transform.up, groundNormal); 
+            fromUpToGroundNormal = Quaternion.FromToRotation(transform.up, groundHit.normal);
+            Vector3 nCrossUp = Vector3.Cross(groundHit.normal, Vector3.up);
+            downSlopeVector = Vector3.Cross(groundHit.normal, nCrossUp);
         }
         else
         {
-            groundNormal = transform.up;
             fromUpToGroundNormal = Quaternion.identity;
         }
 
