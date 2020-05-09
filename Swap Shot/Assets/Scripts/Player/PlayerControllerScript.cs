@@ -68,6 +68,9 @@ public class PlayerControllerScript : MonoBehaviour
     // Name sounds weird, but the body the player has changes
     Rigidbody bodyRigidBody;
 
+    Vector3 groundNormal;
+    Quaternion fromUpToGroundNormal;
+
     CharacterController charController;
 
     InputManager inputManager;
@@ -159,8 +162,11 @@ public class PlayerControllerScript : MonoBehaviour
         if (accSpeed > addSpeed)
             accSpeed = addSpeed;
 
-        playerVelocity.x += accSpeed * desiredDirection.x;
-        playerVelocity.z += accSpeed * desiredDirection.z;
+        playerVelocity += accSpeed * (fromUpToGroundNormal * moveDirection);
+
+        //playerVelocity.x += accSpeed * desiredDirection.x;
+        //playerVelocity.z += accSpeed * desiredDirection.z;
+        //playerVelocity = playerVelocity;
     }
 
     void GroundMovement()
@@ -180,14 +186,6 @@ public class PlayerControllerScript : MonoBehaviour
 
         desiredSpeed = desiredDirection.magnitude * movementSpeed;
         Accelerate(desiredDirection, desiredSpeed, groundAcceleration);
-
-        playerVelocity.y = -gravityStrength * Time.deltaTime;
-
-        if(inputManager.queuedJump)
-        {
-            playerVelocity.y = jumpSpeed;
-            inputManager.queuedJump = false;
-        }
     }
 
     void AirControl(Vector3 desiredDirection, float desiredSpeed)
@@ -242,6 +240,7 @@ public class PlayerControllerScript : MonoBehaviour
         // Notice how we normalize the movement vector AFTER calculating the magnitude, this is what will make jumping at angles faster
         desiredDirection.Normalize();
         moveDirection = desiredDirection;
+        
 
         // Air Control (CPM - Full Air Control)
         if (Vector3.Dot(playerVelocity, desiredDirection) < 0)
@@ -262,18 +261,48 @@ public class PlayerControllerScript : MonoBehaviour
 
         if (airControlPrecision > 0)
             AirControl(desiredDirection, desiredSpeedTwo);
+    }
 
-        playerVelocity.y -= gravityStrength * Time.deltaTime;
+    void applyWorldForces()
+    {
+        if (charController.isGrounded)
+        {
+            playerVelocity.y += -gravityStrength * Time.deltaTime;
+
+            if (inputManager.queuedJump)
+            {
+                playerVelocity.y = jumpSpeed;
+                inputManager.queuedJump = false;
+            }
+        }
+        else
+            playerVelocity.y -= gravityStrength * Time.deltaTime;
     }
 
     void Movement()
     {
+        RaycastHit groundHit;
+        if(Physics.Raycast(transform.position, -1 * transform.up, out groundHit, surfaceRaycastLength))
+        {
+            groundNormal = groundHit.normal;
+            fromUpToGroundNormal = Quaternion.FromToRotation(transform.up, groundNormal); 
+        }
+        else
+        {
+            groundNormal = transform.up;
+            fromUpToGroundNormal = Quaternion.identity;
+        }
+
         if (charController.isGrounded)
             GroundMovement();
         else if(!charController.isGrounded)
             AirMovement();
 
         Debug.DrawRay(transform.position, surfaceRaycastLength * new Vector3(0, -1, 0));
+        Debug.DrawRay(transform.position, fromUpToGroundNormal * moveDirection, Color.green);
+        Debug.DrawRay(transform.position, playerVelocity, Color.red);
+
+        applyWorldForces();
 
         charController.Move(playerVelocity * Time.deltaTime);
         playerCameraTransform.position = transform.position + cameraOffset;
