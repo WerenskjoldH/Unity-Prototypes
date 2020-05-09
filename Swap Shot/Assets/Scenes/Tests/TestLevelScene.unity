@@ -4135,7 +4135,7 @@ PrefabInstance:
     - target: {fileID: 7496709071108940972, guid: 8451ef664a22d13469c64944eacf6eab,
         type: 3}
       propertyPath: slopeDescentMultiplier
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7496709071108940972, guid: 8451ef664a22d13469c64944eacf6eab,
         type: 3}

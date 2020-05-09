@@ -325,8 +325,6 @@ public class PlayerControllerScript : MonoBehaviour
         Debug.DrawRay(transform.position, fromUpToGroundNormal * moveDirection, Color.green);
         Debug.DrawRay(transform.position, playerVelocity, Color.red);
 
-        //Debug.Log(playerVelocity);
-
         charController.Move(playerVelocity * Time.deltaTime);
         playerCameraTransform.position = transform.position + cameraOffset;
     }
