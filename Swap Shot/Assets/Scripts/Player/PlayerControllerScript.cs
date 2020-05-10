@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
+using Cinemachine;
 
 public class InputManager
 {
@@ -27,7 +25,7 @@ public class InputManager
 public class PlayerControllerScript : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] Transform playerCameraTransform;
+    [SerializeField] CinemachineVirtualCamera playerCamera;
     [SerializeField] Vector3 cameraOffset = Vector3.zero;
     [Space(5)]
 
@@ -96,7 +94,13 @@ public class PlayerControllerScript : MonoBehaviour
         isAlive = t;
     }
 
-
+    // The character controller overrides attempts to change position
+    public void SetPosition(Vector3 p)
+    {
+        charController.enabled = false;
+        transform.position = p;
+        charController.enabled = true;
+    }
 
     #endregion
 
@@ -153,14 +157,14 @@ public class PlayerControllerScript : MonoBehaviour
     {
         float mouseX = inputManager.mouseInput.x * mouseSensitivity * Time.fixedDeltaTime;
         float mouseY = inputManager.mouseInput.y * mouseSensitivity * Time.fixedDeltaTime;
-        Vector3 currentRotation = playerCameraTransform.localEulerAngles;
+        Vector3 currentRotation = playerCamera.transform.localEulerAngles;
         float targetYaw = currentRotation.y + mouseX;
 
         viewPitch -= mouseY;
         // We shouldn't be able to do front/back tucks, so lock that pitch between target values
         viewPitch = Mathf.Clamp(viewPitch, pitchLowerClamp, pitchUpperClamp);
 
-        playerCameraTransform.rotation = Quaternion.Euler(viewPitch, targetYaw, 0);
+        playerCamera.transform.rotation = Quaternion.Euler(viewPitch, targetYaw, 0);
         transform.rotation = Quaternion.Euler(0, targetYaw, 0);
     }
 
@@ -351,7 +355,7 @@ public class PlayerControllerScript : MonoBehaviour
         }
 
         charController.Move(playerVelocity * Time.deltaTime);
-        playerCameraTransform.position = transform.position + cameraOffset;
+        playerCamera.transform.position = transform.position + cameraOffset;
     }
 
     #endregion

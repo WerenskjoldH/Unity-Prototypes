@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class LevelStartPointScript : MonoBehaviour
 {
-    Transform playerTransform;
+    PlayerControllerScript playerScript;
     static bool multiplesFound = false;
 
     void Awake()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerScript>();
+    }
+
+    void Start()
+    {
+        DetectMultipleSpawnPoints();
+    }
+
+    public void MovePlayerToSpawn()
+    {
+        playerScript.SetPosition(transform.position);
     }
 
     //Checks if the designer accidentally placed two spawn points
@@ -25,12 +35,5 @@ public class LevelStartPointScript : MonoBehaviour
             Debug.LogError(numberOfSpawnPoints + " Start Points Found, Fix This Immediately");
             multiplesFound = true;
         }
-    }
-
-    void Start()
-    {
-        DetectMultipleSpawnPoints();
-
-        playerTransform.position = transform.position;
     }
 }
