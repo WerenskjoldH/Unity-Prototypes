@@ -68,6 +68,11 @@ public class PlayerControllerScript : MonoBehaviour
     [SerializeField] float jumpForce = 8;
     [Space(5)]
 
+    [Header("Player Info")]
+    bool isAlive = true;
+
+    [Space(5)]
+
     [Header("Debug Options")]
     [SerializeField] bool debugVectors;
 
@@ -79,7 +84,23 @@ public class PlayerControllerScript : MonoBehaviour
 
     InputManager inputManager;
 
-    private void Awake()
+    #region Getters & Setters
+
+    public bool GetPlayerAlive()
+    {
+        return isAlive;
+    }
+
+    public void SetPlayerAlive(bool t)
+    {
+        isAlive = t;
+    }
+
+
+
+    #endregion
+
+    void Awake()
     {
         charController = GetComponent<CharacterController>();
         inputManager = new InputManager();
@@ -97,7 +118,16 @@ public class PlayerControllerScript : MonoBehaviour
         MouseLook();
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
+    {
+
+        CheckGroundedSurface();
+        Movement();
+    }
+
+    #region Input & Movement
+
+    void CheckGroundedSurface()
     {
         if (Physics.Raycast(transform.position, -1 * transform.up, out groundHit, surfaceRaycastLength))
         {
@@ -110,8 +140,6 @@ public class PlayerControllerScript : MonoBehaviour
             fromUpToGroundNormal = Quaternion.identity;
             playerGrounded = false;
         }
-
-        Movement();
     }
 
     Vector3 CalculateRawDesiredDirection()
@@ -325,4 +353,6 @@ public class PlayerControllerScript : MonoBehaviour
         charController.Move(playerVelocity * Time.deltaTime);
         playerCameraTransform.position = transform.position + cameraOffset;
     }
+
+    #endregion
 }
