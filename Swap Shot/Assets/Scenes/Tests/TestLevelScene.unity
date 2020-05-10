@@ -501,6 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 760fbef33bfdf5f4bb169251b4e1c2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelStart: {fileID: 2014350039}
 --- !u!4 &518301093
 Transform:
   m_ObjectHideFlags: 0
@@ -4260,7 +4261,7 @@ PrefabInstance:
     - target: {fileID: 7496709071322370566, guid: 8451ef664a22d13469c64944eacf6eab,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7496709071322370566, guid: 8451ef664a22d13469c64944eacf6eab,
         type: 3}
@@ -4351,7 +4352,7 @@ GameObject:
   - component: {fileID: 2014350039}
   m_Layer: 0
   m_Name: PlayerStartPoint
-  m_TagString: StartPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: 366edf8cce3c98c47b92594e25080e6e, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4380,5 +4381,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

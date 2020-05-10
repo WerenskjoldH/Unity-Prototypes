@@ -3,12 +3,13 @@
 public class LevelManagerScript : MonoBehaviour
 {
     PlayerControllerScript playerScript;
-    LevelStartPointScript levelStart;
+    [SerializeField] LevelSpawnPointScript levelStart;
 
     void Awake()
     {
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerScript>();
-        levelStart = GameObject.FindGameObjectWithTag("StartPoint").GetComponent<LevelStartPointScript>();
+        if (levelStart == null)
+            Debug.LogError("Level Start Not Set In Level Manager Object, Fix This Immediately");
     }
 
     void Start()
