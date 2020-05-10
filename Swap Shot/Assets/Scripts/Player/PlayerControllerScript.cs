@@ -68,8 +68,8 @@ public class PlayerControllerScript : MonoBehaviour
     [SerializeField] float jumpForce = 8;
     [Space(5)]
 
-    // Name sounds weird, but the body the player has changes
-    Rigidbody bodyRigidBody;
+    [Header("Debug Options")]
+    [SerializeField] bool debugVectors;
 
     RaycastHit groundHit;
     Quaternion fromUpToGroundNormal;
@@ -81,7 +81,6 @@ public class PlayerControllerScript : MonoBehaviour
 
     private void Awake()
     {
-        bodyRigidBody = GetComponent<Rigidbody>();
         charController = GetComponent<CharacterController>();
         inputManager = new InputManager();
     }
@@ -122,8 +121,6 @@ public class PlayerControllerScript : MonoBehaviour
         return desiredDirection;
     }
 
-
-
     void MouseLook()
     {
         float mouseX = inputManager.mouseInput.x * mouseSensitivity * Time.fixedDeltaTime;
@@ -162,9 +159,6 @@ public class PlayerControllerScript : MonoBehaviour
         if(speed > 0)
             newSpeed /= speed;
 
-        //playerVelocity.x *= newSpeed;
-        //playerVelocity.z *= newSpeed;
-
         playerVelocity *= newSpeed;
     }
 
@@ -184,6 +178,8 @@ public class PlayerControllerScript : MonoBehaviour
         if (accSpeed > addSpeed)
             accSpeed = addSpeed;
 
+        // We use the fromUpToGroundNormal quaternion to rotate our move direction along any surface we are on
+        // If we are not on a surface this quaternion should default to identity to cover any oddities
         playerVelocity += accSpeed * (fromUpToGroundNormal * moveDirection);
     }
 
@@ -192,9 +188,7 @@ public class PlayerControllerScript : MonoBehaviour
         Vector3 desiredDirection;
         float desiredSpeed;
 
-        Debug.Log("On Ground");
-
-        // If there is a jump queued in the air then don't apply friction as it will cause stutters in forward/backward momentum
+        // If there is a jump queued in the air then don't apply friction as it will cause stutters in momentum
         if (inputManager.queuedJump)
             ApplyFriction(0.0f);
         else
@@ -210,7 +204,7 @@ public class PlayerControllerScript : MonoBehaviour
 
     void AirControl(Vector3 desiredDirection, float desiredSpeed)
     {
-        float zSpeed, speed;
+        float downSpeed, speed;
         float dot;
         float k;
 
@@ -219,7 +213,7 @@ public class PlayerControllerScript : MonoBehaviour
             return;
 
         // This is to preserve the player's y velocity through calculations
-        zSpeed = playerVelocity.y;
+        downSpeed = playerVelocity.y;
         playerVelocity.y = 0;
 
         speed = playerVelocity.magnitude;
@@ -241,8 +235,7 @@ public class PlayerControllerScript : MonoBehaviour
         }
 
         playerVelocity.x *= speed;
-        // zSpeed is named such since ID's world unit coordinates being oriented differently
-        playerVelocity.y = zSpeed; 
+        playerVelocity.y = downSpeed; 
         playerVelocity.z *= speed;
     }
 
@@ -252,8 +245,6 @@ public class PlayerControllerScript : MonoBehaviour
         float desiredSpeed;
         float desiredSpeedTwo;
         float acceleration;
-
-        Debug.Log("In air");
 
         desiredDirection = CalculateRawDesiredDirection();
 
@@ -284,29 +275,28 @@ public class PlayerControllerScript : MonoBehaviour
         if (airControlPrecision > 0)
             AirControl(desiredDirection, desiredSpeedTwo);
     }
-    
-    void applyWorldForces()
-    {
-        if (playerGrounded)
-        {
-            //float slopeAngle = Vector3.Angle(transform.up, groundHit.normal);
 
-            float downAlignment = Vector3.Dot(-transform.up, downSlopeVector);
-            float gravityComponent = slopeDescentMultiplier * downAlignment;
-            Vector3 gravityForce = gravityComponent * downSlopeVector;
-            playerVelocity += gravityForce;
+    void GroundWorldForces()
+    {
+        //float slopeAngle = Vector3.Angle(transform.up, groundHit.normal);
+        float downAlignment = Vector3.Dot(-transform.up, downSlopeVector);
+        float gravityComponent = slopeDescentMultiplier * downAlignment;
+        Vector3 gravityForce = gravityComponent * downSlopeVector;
+        playerVelocity += gravityForce;
+
+        if(debugVectors)
             Debug.DrawRay(transform.position, gravityForce, Color.magenta);
 
-            if (inputManager.queuedJump)
-            {
-                playerVelocity.y = jumpSpeed;
-                inputManager.queuedJump = false;
-            }
-        }
-        else
+        if (inputManager.queuedJump)
         {
-            playerVelocity.y -= gravityStrength * Time.deltaTime;
+            playerVelocity.y = jumpSpeed;
+            inputManager.queuedJump = false;
         }
+    }
+    
+    void AirWorldForces()
+    {
+        playerVelocity.y -= gravityStrength * Time.deltaTime;
     }
 
     void Movement()
@@ -315,15 +305,22 @@ public class PlayerControllerScript : MonoBehaviour
             playerGrounded = true;
 
         if (playerGrounded)
+        {
             GroundMovement();
-        else if(!playerGrounded)
+            GroundWorldForces();
+        }
+        else if (!playerGrounded)
+        {
             AirMovement();
+            AirWorldForces();
+        }
 
-        applyWorldForces();
-
-        Debug.DrawRay(transform.position, surfaceRaycastLength * new Vector3(0, -1, 0));
-        Debug.DrawRay(transform.position, fromUpToGroundNormal * moveDirection, Color.green);
-        Debug.DrawRay(transform.position, playerVelocity, Color.red);
+        if (debugVectors)
+        {
+            Debug.DrawRay(transform.position, surfaceRaycastLength * new Vector3(0, -1, 0));
+            Debug.DrawRay(transform.position, fromUpToGroundNormal * moveDirection, Color.green);
+            Debug.DrawRay(transform.position, playerVelocity, Color.red);
+        }
 
         charController.Move(playerVelocity * Time.deltaTime);
         playerCameraTransform.position = transform.position + cameraOffset;
