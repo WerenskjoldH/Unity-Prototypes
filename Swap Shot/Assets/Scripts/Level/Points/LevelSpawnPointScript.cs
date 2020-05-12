@@ -3,7 +3,6 @@
 public class LevelSpawnPointScript : MonoBehaviour
 {
     PlayerControllerScript playerScript;
-    static bool multiplesFound = false;
 
     void Awake()
     {
@@ -18,6 +17,7 @@ public class LevelSpawnPointScript : MonoBehaviour
     public void MovePlayerToSpawn()
     {
         playerScript.SetPosition(transform.position);
+        playerScript.SetPlayerAlive(true);
     }
 
     // Depricated until I decide if this is a consistent fact throughout the game
