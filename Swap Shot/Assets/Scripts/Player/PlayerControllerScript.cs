@@ -21,7 +21,14 @@ public class InputManager
     }
 }
 
-// This controller takes inspiration from WiggleWizard's implementation ( WiggleWizard ported a near 1:1 replica of Quake's movement )
+
+
+// This controller takes inspiration from WiggleWizard's implementation ( WiggleWizard ported a nice replica of Quake 3's movement )
+
+/*
+    Things Todo & Try:
+        - Fix overshooting slopes by having too strong of a vertical velocity
+*/
 public class PlayerControllerScript : MonoBehaviour
 {
     [Header("References")]
@@ -99,6 +106,15 @@ public class PlayerControllerScript : MonoBehaviour
     {
         charController.enabled = false;
         transform.position = p;
+        charController.enabled = true;
+    }
+
+    public void SetRotation(Quaternion q)
+    {
+        charController.enabled = false;
+        playerCamera.transform.rotation = q;
+        viewPitch = q.eulerAngles.x;
+        transform.rotation = q;
         charController.enabled = true;
     }
 
@@ -335,7 +351,9 @@ public class PlayerControllerScript : MonoBehaviour
     void Movement()
     {
         if (charController.isGrounded)
+        {
             playerGrounded = true;
+        }
 
         if (playerGrounded)
         {

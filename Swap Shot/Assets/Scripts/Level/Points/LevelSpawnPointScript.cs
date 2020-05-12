@@ -17,6 +17,7 @@ public class LevelSpawnPointScript : MonoBehaviour
     public void MovePlayerToSpawn()
     {
         playerScript.SetPosition(transform.position);
+        playerScript.SetRotation(transform.rotation);
         playerScript.SetPlayerAlive(true);
     }
 
