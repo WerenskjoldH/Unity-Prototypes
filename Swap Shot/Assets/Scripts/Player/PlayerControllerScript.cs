@@ -323,6 +323,7 @@ public class PlayerControllerScript : MonoBehaviour
         {
             playerVelocity.y = jumpSpeed;
             inputManager.queuedJump = false;
+            playerGrounded = false;
         }
     }
     
