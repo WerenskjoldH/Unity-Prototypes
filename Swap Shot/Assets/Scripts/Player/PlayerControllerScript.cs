@@ -222,8 +222,6 @@ public class PlayerControllerScript : MonoBehaviour
         int minutes, seconds, milliseconds;
 
         levelTime = levelManagerScript.GetLevelTime();
-        Debug.Log(levelTime);
-        // Players will certainly take minutes, so we need to be prepped for that
 
         minutes = (int)(levelTime / 60.0f);
         levelTime -= minutes * 60.0f;
