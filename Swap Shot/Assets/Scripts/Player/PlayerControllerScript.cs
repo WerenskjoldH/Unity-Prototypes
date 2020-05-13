@@ -389,6 +389,16 @@ public class PlayerControllerScript : MonoBehaviour
         prevPlayerGrounded = playerGrounded;
     }
 
+    void DebugVectors()
+    {
+        if (debugVectors)
+        {
+            Debug.DrawRay(transform.position, surfaceRaycastLength * new Vector3(0, -1, 0));
+            Debug.DrawRay(transform.position, fromUpToGroundNormal * moveDirection, Color.green);
+            Debug.DrawRay(transform.position, playerVelocity, Color.red);
+        }
+    }
+
     void Movement()
     {
         if (charController.isGrounded)
@@ -410,14 +420,7 @@ public class PlayerControllerScript : MonoBehaviour
             AirWorldForces();
         }
 
-        if (debugVectors)
-        {
-            Debug.DrawRay(transform.position, surfaceRaycastLength * new Vector3(0, -1, 0));
-            Debug.DrawRay(transform.position, fromUpToGroundNormal * moveDirection, Color.green);
-            Debug.DrawRay(transform.position, playerVelocity, Color.red);
-        }
-
-
+        DebugVectors();
 
         charController.Move(playerVelocity * Time.deltaTime);
         playerCamera.transform.position = transform.position + cameraOffset;
