@@ -196,7 +196,7 @@ public class PlayerControllerScript : MonoBehaviour
         if (startInput)
             return;
 
-        if (inputManager.movementInput != Vector2.zero)
+        if (inputManager.movementInput != Vector2.zero || inputManager.queuedJump)
             startInput = true;
     }
 
