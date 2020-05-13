@@ -188,6 +188,7 @@ public class PlayerControllerScript : MonoBehaviour
     {
         isAlive = true;
         startInput = false;
+        playerVelocity = Vector3.zero;
     }
 
     void PlayerBeginLevel()
