@@ -890,7 +890,7 @@ GameObject:
   - component: {fileID: 518301092}
   m_Layer: 0
   m_Name: LevelManager
-  m_TagString: Untagged
+  m_TagString: LevelManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1128,7 +1128,7 @@ GameObject:
   - component: {fileID: 651570170}
   - component: {fileID: 651570169}
   m_Layer: 5
-  m_Name: Speed
+  m_Name: Time
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1151,7 +1151,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 975, y: -535}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &651570169
 MonoBehaviour:
@@ -1171,7 +1171,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0:00
+  m_text: <mspace=0.5em>0:00</mspace>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 11ec1c4d00636d1488db0974dbc931ff, type: 2}
   m_sharedMaterial: {fileID: 1635868036360565102, guid: 11ec1c4d00636d1488db0974dbc931ff,
@@ -5252,6 +5252,16 @@ PrefabInstance:
       propertyPath: crosshairGrowShrinkSpeed
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 7496709071108940972, guid: 8451ef664a22d13469c64944eacf6eab,
+        type: 3}
+      propertyPath: speedTMP
+      value: 
+      objectReference: {fileID: 568367971}
+    - target: {fileID: 7496709071108940972, guid: 8451ef664a22d13469c64944eacf6eab,
+        type: 3}
+      propertyPath: timeTMP
+      value: 
+      objectReference: {fileID: 651570169}
     - target: {fileID: 7496709071108940973, guid: 8451ef664a22d13469c64944eacf6eab,
         type: 3}
       propertyPath: m_LocalPosition.x

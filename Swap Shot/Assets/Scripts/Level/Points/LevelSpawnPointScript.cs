@@ -18,7 +18,7 @@ public class LevelSpawnPointScript : MonoBehaviour
     {
         playerScript.SetPosition(transform.position);
         playerScript.SetRotation(transform.rotation);
-        playerScript.SetPlayerAlive(true);
+        playerScript.ResetPlayer();
     }
 
     // Depricated until I decide if this is a consistent fact throughout the game

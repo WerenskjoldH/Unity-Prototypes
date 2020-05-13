@@ -10,7 +10,7 @@ public class LevelManagerScript : MonoBehaviour
 
     #region Getters & Setters
 
-    float GetLevelTime()
+    public float GetLevelTime()
     {
         return levelTime;
     }
@@ -27,17 +27,13 @@ public class LevelManagerScript : MonoBehaviour
     void Start()
     {
         MovePlayerToStart();
-
-        if (levelTimerRunning)
-            UpdateLevelTimer();
     }
 
     void Update()
     {
         HandlePlayerDeath();
 
-        if (levelTimerRunning)
-            UpdateLevelTimer();
+        HandleTimerUpdate();
     }
 
     void MovePlayerToStart()
@@ -55,15 +51,23 @@ public class LevelManagerScript : MonoBehaviour
         MovePlayerToStart();
     }
 
+    void HandleTimerUpdate()
+    {
+        if (levelTimerRunning)
+        {
+            // Just accumulates total time the player has been running through the level
+            levelTime += Time.deltaTime;
+        }
+        else
+        {
+            if (playerScript.GetStartInput())
+                StartLevelTimer();
+        }
+    }
+
     void StartLevelTimer()
     {
         levelTimerRunning = true;
-    }
-
-    void UpdateLevelTimer()
-    {
-        // Just accumulates total time the player has been running through the level
-        levelTime += Time.deltaTime;
     }
 
     void ResetLevelTimer()

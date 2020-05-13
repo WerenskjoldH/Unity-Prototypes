@@ -32,10 +32,17 @@ public class InputManager
     Things Todo & Try:
         - Collisions with the player while in the air should stop their velocity (or at least dampen it), right now things act as if there was no impact
             + This is an easy fix, I just want to see if this could perhaps be kind of fun to mess with
+
+        - Migrate HUD To It's Own Script, probably
 */
 public class PlayerControllerScript : MonoBehaviour
 {
-    [Header("References")]
+    [Header("Script References")]
+
+    LevelManagerScript levelManagerScript;
+
+    [Space(5)]
+    [Header("Camera")]
     [SerializeField] CinemachineVirtualCamera playerCamera;
     [SerializeField] Vector3 cameraOffset = Vector3.zero;
     [Space(5)]
@@ -74,8 +81,19 @@ public class PlayerControllerScript : MonoBehaviour
     [SerializeField] float jumpForce = 8;
     [Space(5)]
 
+    RaycastHit groundHit;
+    Quaternion fromUpToGroundNormal;
+    Vector3 downSlopeVector;
+
+    [SerializeField] float surfaceRaycastLength = 1.5f;
+    bool prevPlayerGrounded = false;
+    bool playerGrounded = false;
+
+    CharacterController charController;
+
     [Header("Player Info")]
     bool isAlive = true;
+    bool startInput = false;
 
     [Space(5)]
 
@@ -87,23 +105,13 @@ public class PlayerControllerScript : MonoBehaviour
     [SerializeField] float crosshairGrowthFactor = 1.2f;
     [SerializeField] float crosshairGrowShrinkSpeed = 0.5f;
 
-    [SerializeField] TextMeshPro speedTMP;
-    [SerializeField] TextMeshPro timeTMP;
+    [SerializeField] TMP_Text speedTMP;
+    [SerializeField] TMP_Text timeTMP;
 
     [Space(5)]
 
     [Header("Debug Options")]
     [SerializeField] bool debugVectors;
-
-    RaycastHit groundHit;
-    Quaternion fromUpToGroundNormal;
-    Vector3 downSlopeVector;
-
-    [SerializeField] float surfaceRaycastLength = 1.5f;
-    bool prevPlayerGrounded = false;
-    bool playerGrounded = false;
-
-    CharacterController charController;
 
     InputManager inputManager;
 
@@ -114,9 +122,15 @@ public class PlayerControllerScript : MonoBehaviour
         return isAlive;
     }
 
+    // This should not ever be used to set the player alive, ResetPlayer() is the safer alternative
     public void SetPlayerAlive(bool t)
     {
         isAlive = t;
+    }
+
+    public bool GetStartInput()
+    {
+        return startInput;
     }
 
     // The character controller overrides attempts to change position
@@ -141,6 +155,7 @@ public class PlayerControllerScript : MonoBehaviour
     void Awake()
     {
         charController = GetComponent<CharacterController>();
+        levelManagerScript = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManagerScript>();
         inputManager = new InputManager();
     }
 
@@ -155,7 +170,9 @@ public class PlayerControllerScript : MonoBehaviour
     void Update()
     {
         inputManager.Update();
+        PlayerBeginLevel();
         MouseLook();
+        UpdateHud();
     }
 
     void FixedUpdate()
@@ -164,6 +181,25 @@ public class PlayerControllerScript : MonoBehaviour
         CheckGroundedSurface();
         Movement();
     }
+
+    #region Player Status
+
+    public void ResetPlayer()
+    {
+        isAlive = true;
+        startInput = false;
+    }
+
+    void PlayerBeginLevel()
+    {
+        if (startInput)
+            return;
+
+        if (inputManager.movementInput != Vector2.zero)
+            startInput = true;
+    }
+
+    #endregion
 
     #region HUD
 
@@ -176,6 +212,31 @@ public class PlayerControllerScript : MonoBehaviour
     void ShrinkCrosshair()
     {
         crosshairUiImage.rectTransform.DOScale(new Vector3(defaultCrosshairSize, defaultCrosshairSize), crosshairGrowShrinkSpeed);
+    }
+
+    void UpdateHud()
+    {
+        int playerSpeed = (int)playerVelocity.magnitude;
+        float levelTime;
+        int minutes, seconds, milliseconds;
+
+        levelTime = levelManagerScript.GetLevelTime();
+        Debug.Log(levelTime);
+        // Players will certainly take minutes, so we need to be prepped for that
+
+        minutes = (int)(levelTime / 60.0f);
+        levelTime -= minutes * 60.0f;
+        seconds = (int)(levelTime % 60.0f);
+        milliseconds = (int)((levelTime - seconds) * 100.0f);
+
+        string minutesStr = minutes.ToString("00");
+        string secondsStr = seconds.ToString("00");
+        // We calculate this, but are intentionally not using it right now
+        string millisecondsStr = milliseconds.ToString("00");
+        string timeStr = string.Format("<mspace=0.5em>{0}:{1}</mspace>", minutesStr, secondsStr);
+
+        speedTMP.text = playerSpeed.ToString();
+        timeTMP.text = timeStr;
     }
 
     #endregion
