@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using Cinemachine;
+using TMPro;
+using DG.Tweening;
 
 public class InputManager
 {
@@ -27,7 +30,8 @@ public class InputManager
 
 /*
     Things Todo & Try:
-        - Fix overshooting slopes by having too strong of a vertical velocity
+        - Collisions with the player while in the air should stop their velocity (or at least dampen it), right now things act as if there was no impact
+            + This is an easy fix, I just want to see if this could perhaps be kind of fun to mess with
 */
 public class PlayerControllerScript : MonoBehaviour
 {
@@ -40,9 +44,6 @@ public class PlayerControllerScript : MonoBehaviour
     Vector3 playerVelocity = Vector3.zero;
     // This is primarily for debugging
     Vector3 moveDirection = Vector3.zero;
-
-    [SerializeField] float surfaceRaycastLength = 1.5f;
-    bool playerGrounded = false;
 
     [SerializeField] float movementSpeed = 7;
     [SerializeField] float groundAcceleration = 14;
@@ -78,12 +79,29 @@ public class PlayerControllerScript : MonoBehaviour
 
     [Space(5)]
 
+    [Header("Hud Options")]
+
+    // We are assuming the width and height of the image are equivalent
+    [SerializeField] Image crosshairUiImage;
+    float defaultCrosshairSize;
+    [SerializeField] float crosshairGrowthFactor = 1.2f;
+    [SerializeField] float crosshairGrowShrinkSpeed = 0.5f;
+
+    [SerializeField] TextMeshPro speedTMP;
+    [SerializeField] TextMeshPro timeTMP;
+
+    [Space(5)]
+
     [Header("Debug Options")]
     [SerializeField] bool debugVectors;
 
     RaycastHit groundHit;
     Quaternion fromUpToGroundNormal;
     Vector3 downSlopeVector;
+
+    [SerializeField] float surfaceRaycastLength = 1.5f;
+    bool prevPlayerGrounded = false;
+    bool playerGrounded = false;
 
     CharacterController charController;
 
@@ -130,6 +148,8 @@ public class PlayerControllerScript : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        defaultCrosshairSize = crosshairUiImage.rectTransform.localScale.x;
     }
    
     void Update()
@@ -144,6 +164,21 @@ public class PlayerControllerScript : MonoBehaviour
         CheckGroundedSurface();
         Movement();
     }
+
+    #region HUD
+
+    void GrowCrosshair()
+    {
+        float crosshairGrownSize = defaultCrosshairSize + crosshairGrowthFactor;
+        crosshairUiImage.rectTransform.DOScale(new Vector3(crosshairGrownSize, crosshairGrownSize), crosshairGrowShrinkSpeed);
+    }
+
+    void ShrinkCrosshair()
+    {
+        crosshairUiImage.rectTransform.DOScale(new Vector3(defaultCrosshairSize, defaultCrosshairSize), crosshairGrowShrinkSpeed);
+    }
+
+    #endregion
 
     #region Input & Movement
 
@@ -338,6 +373,7 @@ public class PlayerControllerScript : MonoBehaviour
         if (inputManager.queuedJump)
         {
             playerVelocity.y = jumpSpeed;
+            GrowCrosshair();
             inputManager.queuedJump = false;
             playerGrounded = false;
         }
@@ -348,10 +384,18 @@ public class PlayerControllerScript : MonoBehaviour
         playerVelocity.y -= gravityStrength * Time.deltaTime;
     }
 
+    void StateChecks()
+    {
+        prevPlayerGrounded = playerGrounded;
+    }
+
     void Movement()
     {
         if (charController.isGrounded)
         {
+            if (!prevPlayerGrounded)
+                ShrinkCrosshair();
+
             playerGrounded = true;
         }
 
@@ -372,6 +416,8 @@ public class PlayerControllerScript : MonoBehaviour
             Debug.DrawRay(transform.position, fromUpToGroundNormal * moveDirection, Color.green);
             Debug.DrawRay(transform.position, playerVelocity, Color.red);
         }
+
+
 
         charController.Move(playerVelocity * Time.deltaTime);
         playerCamera.transform.position = transform.position + cameraOffset;

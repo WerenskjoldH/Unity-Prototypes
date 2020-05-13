@@ -5,6 +5,18 @@ public class LevelManagerScript : MonoBehaviour
     PlayerControllerScript playerScript;
     [SerializeField] LevelSpawnPointScript levelStart;
 
+    bool levelTimerRunning = false;
+    float levelTime = 0;
+
+    #region Getters & Setters
+
+    float GetLevelTime()
+    {
+        return levelTime;
+    }
+
+    #endregion
+
     void Awake()
     {
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerScript>();
@@ -14,16 +26,23 @@ public class LevelManagerScript : MonoBehaviour
 
     void Start()
     {
-        MovePlayerToStart();    
+        MovePlayerToStart();
+
+        if (levelTimerRunning)
+            UpdateLevelTimer();
     }
 
     void Update()
     {
         HandlePlayerDeath();
+
+        if (levelTimerRunning)
+            UpdateLevelTimer();
     }
 
     void MovePlayerToStart()
     {
+        ResetLevelTimer();
         levelStart.MovePlayerToSpawn();
     }
 
@@ -35,4 +54,27 @@ public class LevelManagerScript : MonoBehaviour
         // If the player is dead we move him to the start point
         MovePlayerToStart();
     }
+
+    void StartLevelTimer()
+    {
+        levelTimerRunning = true;
+    }
+
+    void UpdateLevelTimer()
+    {
+        // Just accumulates total time the player has been running through the level
+        levelTime += Time.deltaTime;
+    }
+
+    void ResetLevelTimer()
+    {
+        levelTimerRunning = false;
+        levelTime = 0;
+    }
+
+    void StopLevelTimer()
+    {
+        levelTimerRunning = false;
+    }
 }
+
