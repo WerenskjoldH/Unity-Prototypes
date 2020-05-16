@@ -74,7 +74,7 @@ MonoBehaviour:
     y: 0
     width: 1500
     height: 918
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &4
 MonoBehaviour:
@@ -140,10 +140,10 @@ MonoBehaviour:
     y: 30
     width: 1500
     height: 868
-  m_MinSize: {x: 677, y: 492}
-  m_MaxSize: {x: 14001, y: 14042}
+  m_MinSize: {x: 679, y: 492}
+  m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 139
+  controlID: 136
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -165,7 +165,7 @@ MonoBehaviour:
     y: 0
     width: 1190
     height: 868
-  m_MinSize: {x: 402, y: 492}
+  m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
   controlID: 54
@@ -190,8 +190,8 @@ MonoBehaviour:
     y: 0
     width: 1190
     height: 593
-  m_MinSize: {x: 402, y: 221}
-  m_MaxSize: {x: 8002, y: 4021}
+  m_MinSize: {x: 403, y: 221}
+  m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
   controlID: 55
 --- !u!114 &9
@@ -362,9 +362,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 15.755349, y: 21.06156, z: -53.80515}
+    m_Target: {x: -0.99282897, y: 15.152803, z: -39.02475}
     speed: 2
-    m_Value: {x: 15.755349, y: 21.06156, z: -53.80515}
+    m_Value: {x: -0.99282897, y: 15.152803, z: -39.02475}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -410,9 +410,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.15408222, y: -0.21008168, z: 0.03282002, w: 0.96534944}
+    m_Target: {x: 0.0644661, y: 0.1464964, z: 0.010799581, w: -0.9874911}
     speed: 2
-    m_Value: {x: 0.15396723, y: -0.21143939, z: 0.033037033, w: 0.96462226}
+    m_Value: {x: 0.064438, y: 0.14643255, z: 0.010794874, w: -0.98706067}
   m_Size:
     m_Target: 3.1578836
     speed: 2
@@ -470,9 +470,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 92490000
+      m_SelectedIDs: 5cf8ffff
       m_LastClickedID: 0
-      m_ExpandedIDs: 3afbffff
+      m_ExpandedIDs: 2efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_MaximizeOnPlay: 0
   m_VSyncEnabled: 0
   m_Gizmos: 0
-  m_Stats: 1
+  m_Stats: 0
   m_SelectedSizes: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   m_ZoomArea:
     m_HRangeLocked: 0
@@ -554,7 +554,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -624,21 +624,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Materials
+    - Assets/Sprites/Skybox/Cloudy/CloudySkybox/Output/Test01
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Materials
+  - Assets/Sprites/Skybox/Cloudy/CloudySkybox/Output/Test01
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Hunter Werenskjold\source\repos\Unity-Prototypes\Swap
     Shot
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 16490000
-    m_LastClickedID: 18710
-    m_ExpandedIDs: 00000000dc43000016490000184900001a4900001c4900001e49000020490000944900009649000098490000ca490000d0490000d6490000d849000000ca9a3b
+    scrollPos: {x: 0, y: 342}
+    m_SelectedIDs: e2490000
+    m_LastClickedID: 18914
+    m_ExpandedIDs: 00000000e04300001c4900001e49000020490000224900002449000026490000d4490000da490000dc490000de490000e049000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -666,7 +666,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000dc43000016490000184900001a4900001c4900001e49000020490000
+    m_ExpandedIDs: 00000000e04300001c4900001e49000020490000224900002449000026490000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
