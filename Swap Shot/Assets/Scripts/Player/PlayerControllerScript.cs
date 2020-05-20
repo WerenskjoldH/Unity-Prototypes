@@ -232,7 +232,7 @@ public class PlayerControllerScript : MonoBehaviour
         string secondsStr = seconds.ToString("00");
         // We calculate this, but are intentionally not using it right now
         string millisecondsStr = milliseconds.ToString("00");
-        string timeStr = string.Format("<mspace=0.5em>{0}:{1}</mspace>", minutesStr, secondsStr);
+        string timeStr = string.Format("<mspace=0.5em>{0}:{1}:{2}</mspace>", minutesStr, secondsStr, millisecondsStr);
 
         speedTMP.text = playerSpeed.ToString();
         timeTMP.text = timeStr;
