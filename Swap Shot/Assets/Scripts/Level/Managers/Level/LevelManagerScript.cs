@@ -4,6 +4,8 @@ public class LevelManagerScript : MonoBehaviour
 {
     PlayerControllerScript playerScript;
     [SerializeField] LevelSpawnPointScript levelStart;
+    [SerializeField] SceneManagerScript sceneManager;
+    string nameOfNextLevel;
 
     bool levelTimerRunning = false;
     float levelTime = 0;

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneManagerScript : MonoBehaviour
 {
     public Animator animator;
+    // This is a bad approach
     public float couroutineWaitTime = 1f;
 
     public void LoadLevel(string name)
@@ -15,7 +16,7 @@ public class SceneManagerScript : MonoBehaviour
 
     IEnumerator LoadLevelCouroutine(string name)
     {
-        animator.SetTrigger("Out");
+        animator.SetTrigger("End");
 
         yield return new WaitForSeconds(couroutineWaitTime);
 
