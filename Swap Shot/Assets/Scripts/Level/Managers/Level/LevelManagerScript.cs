@@ -5,7 +5,7 @@ public class LevelManagerScript : MonoBehaviour
     PlayerControllerScript playerScript;
     [SerializeField] LevelSpawnPointScript levelStart;
     [SerializeField] SceneManagerScript sceneManager;
-    string nameOfNextLevel;
+    [SerializeField] string nameOfNextLevel;
 
     bool levelTimerRunning = false;
     float levelTime = 0;
@@ -37,6 +37,13 @@ public class LevelManagerScript : MonoBehaviour
 
         HandleTimerUpdate();
     }
+
+    public void TriggerExitZoneReached()
+    {
+        sceneManager.LoadLevel(nameOfNextLevel);
+    }
+
+    #region Handle Player
 
     void MovePlayerToStart()
     {
@@ -82,5 +89,7 @@ public class LevelManagerScript : MonoBehaviour
     {
         levelTimerRunning = false;
     }
+
+    #endregion
 }
 
