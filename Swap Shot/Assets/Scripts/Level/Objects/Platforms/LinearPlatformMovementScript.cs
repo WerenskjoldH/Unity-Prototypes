@@ -5,6 +5,8 @@ using DG.Tweening;
 
 public class LinearPlatformMovementScript : MonoBehaviour
 {
+
+    // TO-DO: Convert this to a list so we can have infinite points and at the end loop back to the first
     [SerializeField] Transform startPoint;
     [SerializeField] Transform endPoint;
     Transform targetPoint;
