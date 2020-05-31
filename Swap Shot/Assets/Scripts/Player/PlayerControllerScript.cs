@@ -83,6 +83,8 @@ public class PlayerControllerScript : MonoBehaviour
 
     RaycastHit groundHit;
     Quaternion fromUpToGroundNormal;
+    // This is in relation to moving platforms and the likes
+    Vector3 externalVelocity;
     Vector3 downSlopeVector;
 
     [SerializeField] float surfaceRaycastLength = 1.5f;
@@ -148,6 +150,11 @@ public class PlayerControllerScript : MonoBehaviour
         viewPitch = q.eulerAngles.x;
         transform.rotation = q;
         charController.enabled = true;
+    }
+
+    public void AddToExternalVelocity(Vector3 extVal)
+    {
+        externalVelocity += extVal;
     }
 
     #endregion
@@ -426,6 +433,7 @@ public class PlayerControllerScript : MonoBehaviour
         float gravityComponent = slopeDescentMultiplier * downAlignment;
         Vector3 gravityForce = gravityComponent * downSlopeVector;
         playerVelocity += gravityForce;
+        playerVelocity += externalVelocity;
 
         if(debugVectors)
             Debug.DrawRay(transform.position, gravityForce, Color.magenta);
@@ -481,9 +489,9 @@ public class PlayerControllerScript : MonoBehaviour
         }
 
         DebugVectors();
-
-        charController.Move(playerVelocity * Time.deltaTime);
+        charController.Move((playerVelocity * Time.deltaTime) + externalVelocity);
         playerCamera.transform.position = transform.position + cameraOffset;
+        externalVelocity = Vector3.zero;
     }
 
     #endregion

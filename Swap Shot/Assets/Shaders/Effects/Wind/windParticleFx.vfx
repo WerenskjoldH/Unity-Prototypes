@@ -21,7 +21,7 @@ MonoBehaviour:
     x: 857
     y: -463
     width: 1619
-    height: 1632
+    height: 1750
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1139,9 +1139,9 @@ VisualEffectResource:
       m_Vector2f:
         m_Array:
         - m_ExpressionIndex: 30
-          m_Value: {x: 0, y: 1}
+          m_Value: {x: 0, y: 2}
         - m_ExpressionIndex: 41
-          m_Value: {x: 0, y: 15}
+          m_Value: {x: 0, y: 10}
       m_Vector3f:
         m_Array:
         - m_ExpressionIndex: 14
@@ -2942,7 +2942,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615074}
   - {fileID: 8926484042661615094}
   - {fileID: 8926484042661615097}
-  m_UIPosition: {x: 1310, y: 493}
+  m_UIPosition: {x: 1314, y: 611}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
@@ -5815,7 +5815,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":0.0,"y":1.0}'
+      m_SerializableObject: '{"x":0.0,"y":2.0}'
     m_Space: 2147483647
   m_Property:
     name: Rate
@@ -5924,7 +5924,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":0.0,"y":15.0}'
+      m_SerializableObject: '{"x":0.0,"y":10.0}'
     m_Space: 2147483647
   m_Property:
     name: Period
