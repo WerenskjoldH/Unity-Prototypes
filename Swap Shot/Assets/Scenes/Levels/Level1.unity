@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -645,6 +645,18 @@ Transform:
   m_Father: {fileID: 1191369619}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 250.31999, z: 0}
+--- !u!114 &895879051 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5413192428549976295, guid: 7572dc5439da4184c8505c45b11d8111,
+    type: 3}
+  m_PrefabInstance: {fileID: 5413192428111435075}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 760fbef33bfdf5f4bb169251b4e1c2cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &905947017
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,6 +850,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 736449188268504409258204cccadc35, type: 3}
+--- !u!1 &976263703 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 736449188268504409258204cccadc35,
+    type: 3}
+  m_PrefabInstance: {fileID: 976263702}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &976263704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976263703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 763a710fdc18bda4298bde6acdbdb14e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelManager: {fileID: 895879051}
+--- !u!64 &976263705
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976263703}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2534964839176971238, guid: 736449188268504409258204cccadc35, type: 3}
 --- !u!1 &1030768907
 GameObject:
   m_ObjectHideFlags: 0
@@ -1955,6 +2000,11 @@ PrefabInstance:
       propertyPath: sceneManager
       value: 
       objectReference: {fileID: 581963474}
+    - target: {fileID: 5413192428549976295, guid: 7572dc5439da4184c8505c45b11d8111,
+        type: 3}
+      propertyPath: nameOfNextLevel
+      value: Level2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7572dc5439da4184c8505c45b11d8111, type: 3}
 --- !u!23 &6806638068830291606
