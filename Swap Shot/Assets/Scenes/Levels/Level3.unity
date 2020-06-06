@@ -699,6 +699,7 @@ GameObject:
   - component: {fileID: 522622954}
   - component: {fileID: 522622953}
   - component: {fileID: 522622952}
+  - component: {fileID: 522622956}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -738,7 +739,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6509fc5d34382064cab3d05bbb50f539, type: 2}
+  - {fileID: 977760005}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -777,10 +778,26 @@ Transform:
   m_LocalRotation: {x: -0.6715178, y: 0.22150367, z: 0.22150367, w: 0.6715178}
   m_LocalPosition: {x: 1.91, y: 19.37, z: -41.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 799233807}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 36.511}
+--- !u!114 &522622956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522622951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a7b95dc5b6c3e445bb1c7a4e0b3bb89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 522622953}
+  spherePoint: {fileID: 799233807}
+  radius: 3.5
 --- !u!114 &581963474 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2486657062933464003, guid: 6aeebed40179ce2408b85cb2931f33d5,
@@ -878,6 +895,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2041376113}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &799233806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 799233807}
+  m_Layer: 0
+  m_Name: Opening
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &799233807
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799233806}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 522622955}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 36.511}
 --- !u!1 &905947017
 GameObject:
   m_ObjectHideFlags: 0
@@ -1150,6 +1197,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 736449188268504409258204cccadc35, type: 3}
+--- !u!21 &977760005
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: KillWallMaterial (Instance) (Instance) (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: 0af069c6730104847b0bd4ec9331d08c,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - Vector1_23C75598: 0.8
+    - Vector1_C5839ECE: 3.5
+    m_Colors:
+    - Color_79BE1A64: {r: 1, g: 0.41037738, b: 0.48697263, a: 0}
+    - Vector3_CE91E199: {r: 1.91, g: 19.37, b: -41.8, a: 0}
 --- !u!1001 &1079950112
 PrefabInstance:
   m_ObjectHideFlags: 0
