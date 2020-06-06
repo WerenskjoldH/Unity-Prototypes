@@ -16,7 +16,7 @@ public class KillWallScript : MonoBehaviour
 
     void Update()
     {
-        meshRenderer.sharedMaterial.SetFloat("Vector1_C5839ECE", radius);
-        meshRenderer.sharedMaterial.SetVector("Vector3_CE91E199", spherePoint.position);
+        meshRenderer.material.SetFloat("Vector1_C5839ECE", radius);
+        meshRenderer.material.SetVector("Vector3_CE91E199", spherePoint.position);
     }
 }
