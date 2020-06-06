@@ -776,7 +776,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522622951}
   m_LocalRotation: {x: -0.6715178, y: 0.22150367, z: 0.22150367, w: 0.6715178}
-  m_LocalPosition: {x: 1.91, y: 19.37, z: -41.8}
+  m_LocalPosition: {x: 1.18, y: 19.37, z: -41.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 799233807}
@@ -797,7 +797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 522622953}
   spherePoint: {fileID: 799233807}
-  radius: 3.5
+  radius: 2.81
 --- !u!114 &581963474 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2486657062933464003, guid: 6aeebed40179ce2408b85cb2931f33d5,
@@ -919,7 +919,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799233806}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.09, y: -0, z: 0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 522622955}
@@ -1219,10 +1219,12 @@ Material:
     m_TexEnvs: []
     m_Floats:
     - Vector1_23C75598: 0.8
-    - Vector1_C5839ECE: 3.5
+    - Vector1_33ADCA5C: 0.22
+    - Vector1_C5839ECE: 2.81
     m_Colors:
+    - Color_5AE2C3BA: {r: 1, g: 1, b: 1, a: 1}
     - Color_79BE1A64: {r: 1, g: 0.41037738, b: 0.48697263, a: 0}
-    - Vector3_CE91E199: {r: 1.91, g: 19.37, b: -41.8, a: 0}
+    - Vector3_CE91E199: {r: 1.1076629, g: 19.380001, b: -41.20645, a: 0}
 --- !u!1001 &1079950112
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2319,7 +2321,7 @@ PrefabInstance:
     - target: {fileID: 5413192428549976295, guid: 7572dc5439da4184c8505c45b11d8111,
         type: 3}
       propertyPath: nameOfNextLevel
-      value: Level1
+      value: Level0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7572dc5439da4184c8505c45b11d8111, type: 3}
