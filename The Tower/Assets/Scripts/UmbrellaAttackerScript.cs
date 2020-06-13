@@ -106,6 +106,7 @@ public class UmbrellaAttackerScript : MonoBehaviour, AttackerInterface
     void DestroySelf()
     {
         Destroy(gameObject);
+        Instantiate(umbrellaDeathParticle, transform.position, Quaternion.identity).Play();
     }
 
     void StartFloatingAnimation()
