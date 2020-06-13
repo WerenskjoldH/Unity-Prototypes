@@ -29,6 +29,7 @@ public class UmbrellaAttackerScript : MonoBehaviour, AttackerInterface
     float bobHeight;
     [SerializeField]
     float bobSpeed;
+    float bobOffset;
 
     bool attacking = false;
 
@@ -50,6 +51,8 @@ public class UmbrellaAttackerScript : MonoBehaviour, AttackerInterface
 
         attackRange = towerBase.transform.position.x + towerBase.GetComponent<BoxCollider2D>().bounds.extents.x;
 
+        bobOffset = Time.frameCount;
+
         // Spawned on left or right side of screen
         if (gameObject.transform.position.x < 0)
         {
@@ -67,7 +70,7 @@ public class UmbrellaAttackerScript : MonoBehaviour, AttackerInterface
         if (!attacking)
         {
             position.x += movementSpeed * Time.deltaTime;
-            position.y += bobHeight * Mathf.Sin(bobSpeed * Time.timeSinceLevelLoad);
+            position.y += bobHeight * Mathf.Sin(bobSpeed * Time.timeSinceLevelLoad + bobOffset);
         }
         else
         {
