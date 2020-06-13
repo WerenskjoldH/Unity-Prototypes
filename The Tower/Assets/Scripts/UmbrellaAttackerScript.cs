@@ -68,7 +68,7 @@ public class UmbrellaAttackerScript : MonoBehaviour, AttackerInterface
         if (!attacking)
         {
             position.x += movementSpeed * Time.deltaTime;
-            position.y += bobHeight * (float)Math.Sin(bobSpeed * Time.timeSinceLevelLoad);
+            position.y += bobHeight * Mathf.Sin(bobSpeed * Time.timeSinceLevelLoad);
         }
         else
         {
@@ -80,7 +80,7 @@ public class UmbrellaAttackerScript : MonoBehaviour, AttackerInterface
     // Update is called once per frame
     void Update()
     {
-        if ((gameObject.transform.position.x - towerBase.transform.position.x) <= attackRange)
+        if (Mathf.Abs(gameObject.transform.position.x - towerBase.transform.position.x) <= attackRange)
         {
             attacking = true;
             StartAttackingAnimation();
