@@ -6,6 +6,8 @@ using UnityEngine;
 public class UmbrellaAttackerScript : MonoBehaviour, AttackerInterface
 {
     [SerializeField]
+    Animator umbrellaAttackerAnimator;
+    [SerializeField]
     ParticleSystem umbrellaDeathParticle;
 
     [SerializeField]
@@ -67,5 +69,15 @@ public class UmbrellaAttackerScript : MonoBehaviour, AttackerInterface
     void DamageTower()
     {
         Destroy(gameObject);
+    }
+
+    void StartFloatingAnimation()
+    {
+        umbrellaAttackerAnimator.SetTrigger("floating");
+    }
+
+    void StartAttackingAnimation()
+    {
+        umbrellaAttackerAnimator.SetTrigger("attacking");
     }
 }
