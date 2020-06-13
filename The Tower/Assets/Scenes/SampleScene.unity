@@ -20616,7 +20616,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerBase: {fileID: 1643073395}
   towerEye: {fileID: 2110570431}
-  mouseGameObject: {fileID: 1159317067}
+  mouseScript: {fileID: 1159317068}
   maxEyeSpeed: 10
   maxEyeOffset: 0.5
   returnForce: 5
