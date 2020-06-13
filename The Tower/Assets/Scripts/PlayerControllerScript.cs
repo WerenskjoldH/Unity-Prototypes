@@ -10,7 +10,7 @@ public class PlayerControllerScript : MonoBehaviour
     GameObject towerEye;
     Rigidbody2D towerEyeRB;
     [SerializeField]
-    GameObject mouseGameObject;
+    PlayerMouseScript mouseScript;
 
     Vector3 eyeDefaultPosition;
     Vector3 eyeRestPosition;
@@ -29,7 +29,6 @@ public class PlayerControllerScript : MonoBehaviour
 
     [SerializeField]
     float requiredTimeToFire = 1.0f;
-    float timeHeldDown = 0;
     [SerializeField]
     bool mayAttack = false;
     [SerializeField]
@@ -65,24 +64,23 @@ public class PlayerControllerScript : MonoBehaviour
 
     private void Update()
     {
-        EyeMovement();
+        
 
-        if (Input.GetMouseButtonDown(0))
+        if (mouseScript.GetMouseDown())
         {
             eyeChargeParticles.Play();
         }
 
-        if (Input.GetMouseButton(0))
+        if (mouseScript.GetMouseHold())
         {
-            timeHeldDown += Time.deltaTime;
-            if (!mayAttack && timeHeldDown >= requiredTimeToFire)
+            if (!mayAttack && mouseScript.GetMouseHoldDuration() >= requiredTimeToFire)
             {
                 mayAttack = true;
                 eyeChargedParticles.Play();
             }
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (mouseScript.GetMouseUp())
         {
             if (mayAttack)
             {
@@ -90,10 +88,14 @@ public class PlayerControllerScript : MonoBehaviour
             }
             //eyeChargeParticles.Clear();
             eyeChargedParticles.Stop();
-            timeHeldDown = 0;
             mayAttack = false;
         }
 
+    }
+
+    private void FixedUpdate()
+    {
+        EyeMovement();
     }
 
     void EyeBobMovement()
@@ -122,7 +124,7 @@ public class PlayerControllerScript : MonoBehaviour
 
     void EyeRecoilForce(float strength)
     {
-        Vector2 force = strength * (eyeRestPosition - mouseGameObject.transform.position).normalized;
+        Vector2 force = strength * (eyeRestPosition - mouseScript.GetMousePosition()).normalized;
 
         towerEyeRB.AddForce(force);
     }
@@ -150,7 +152,7 @@ public class PlayerControllerScript : MonoBehaviour
 
     void FireBeam()
     {
-        Vector3 beamDirection = (mouseGameObject.transform.position - towerEye.transform.position).normalized;
+        Vector3 beamDirection = (mouseScript.transform.position - towerEye.transform.position).normalized;
         beamDirection.z = 0;
         RaycastHit2D hit = Physics2D.Raycast(towerEye.transform.position, beamDirection);
 
