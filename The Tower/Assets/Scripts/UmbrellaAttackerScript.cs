@@ -14,7 +14,6 @@ public class UmbrellaAttackerScript : MonoBehaviour, AttackerInterface
     [SerializeField]
     PlayerControllerScript playerControllerScript;
     GameObject towerBase;
-    int movementDirection;
 
     [SerializeField]
     float divebombSpeed;
