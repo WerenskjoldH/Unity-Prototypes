@@ -29,10 +29,8 @@ public class PlayerControllerScript : MonoBehaviour
 
     [SerializeField]
     float requiredTimeToFire = 1.0f;
-    [SerializeField]
     bool mayAttack = false;
-    [SerializeField]
-    bool triggerFire = false;
+    bool fireBeam = false;
 
     [SerializeField]
     float beamFadeTime = 0.25f;
@@ -84,7 +82,7 @@ public class PlayerControllerScript : MonoBehaviour
         {
             if (mayAttack)
             {
-                FireBeam();
+                fireBeam = true;
             }
             //eyeChargeParticles.Clear();
             eyeChargedParticles.Stop();
@@ -95,6 +93,12 @@ public class PlayerControllerScript : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(fireBeam)
+        {
+            fireBeam = false;
+            FireBeam();
+        }
+
         EyeMovement();
     }
 

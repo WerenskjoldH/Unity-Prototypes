@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &253031104609061427
+--- !u!1 &3759236194394884515
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 253031104609061429}
-  - component: {fileID: 253031104609061430}
-  - component: {fileID: 253031104609061431}
-  - component: {fileID: 253031104609061424}
-  - component: {fileID: 253031104609061425}
-  - component: {fileID: 253031104609061426}
+  - component: {fileID: 3759236194394884517}
+  - component: {fileID: 3759236194394884518}
+  - component: {fileID: 3759236194394884512}
+  - component: {fileID: 3759236194394884513}
+  - component: {fileID: 3759236194394884514}
+  - component: {fileID: 5708163470336437444}
   m_Layer: 0
   m_Name: UmbrellaAttacker
   m_TagString: Attacker
@@ -21,27 +21,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &253031104609061429
+--- !u!4 &3759236194394884517
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253031104609061427}
+  m_GameObject: {fileID: 3759236194394884515}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.8259854, y: 0.21593764, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &253031104609061430
+--- !u!212 &3759236194394884518
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253031104609061427}
+  m_GameObject: {fileID: 3759236194394884515}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -86,13 +86,74 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &253031104609061431
-BoxCollider2D:
+--- !u!50 &3759236194394884512
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253031104609061427}
+  m_GameObject: {fileID: 3759236194394884515}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &3759236194394884513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3759236194394884515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5817d38fed5e1054c93b41ece9d4ff5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  umbrellaAttackerAnimator: {fileID: 3759236194394884514}
+  umbrellaDeathParticle: {fileID: 3300557710256577091, guid: 6a83b3d5b4520494d8520d230061ec7d,
+    type: 3}
+  playerControllerScript: {fileID: 0}
+  divebombSpeed: 5
+  movementSpeedMin: 1.1
+  movementSpeedMax: 1.6
+  bobHeight: 0.01
+  bobSpeed: 2
+--- !u!95 &3759236194394884514
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3759236194394884515}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 625ea77e3f733704b9b8e526c94c5464, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!60 &5708163470336437444
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3759236194394884515}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -109,67 +170,13 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.3125}
-  m_EdgeRadius: 0
---- !u!50 &253031104609061424
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253031104609061427}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 1
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!114 &253031104609061425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253031104609061427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5817d38fed5e1054c93b41ece9d4ff5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  umbrellaAttackerAnimator: {fileID: 253031104609061426}
-  umbrellaDeathParticle: {fileID: 3300557710256577091, guid: 6a83b3d5b4520494d8520d230061ec7d,
-    type: 3}
-  playerControllerScript: {fileID: 0}
-  divebombSpeed: 5
-  movementSpeedMin: 1.1
-  movementSpeedMax: 1.6
-  bobHeight: 0.01
-  bobSpeed: 2
---- !u!95 &253031104609061426
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253031104609061427}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 625ea77e3f733704b9b8e526c94c5464, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.5, y: 0.5}
+      - {x: -0.5, y: 0.05591043}
+      - {x: -0.12492244, y: 0.040158134}
+      - {x: -0.11133289, y: -0.5091133}
+      - {x: 0.10418733, y: -0.50000006}
+      - {x: 0.1172425, y: 0.04033216}
+      - {x: 0.5014137, y: 0.04392173}
+      - {x: 0.5, y: 0.5}
