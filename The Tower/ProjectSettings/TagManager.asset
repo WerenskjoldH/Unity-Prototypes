@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Attacker
+  - TowerPart
   layers:
   - Default
   - TransparentFX

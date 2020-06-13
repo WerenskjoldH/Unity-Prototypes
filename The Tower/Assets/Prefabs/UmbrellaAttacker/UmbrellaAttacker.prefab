@@ -149,7 +149,7 @@ MonoBehaviour:
   umbrellaDeathParticle: {fileID: 3300557710256577091, guid: 6a83b3d5b4520494d8520d230061ec7d,
     type: 3}
   playerControllerScript: {fileID: 0}
-  attackRange: 1
+  divebombSpeed: 5
   movementSpeedMin: 1.1
   movementSpeedMax: 1.6
   bobHeight: 0.01

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class UmbrellaAttackerScript : MonoBehaviour, AttackerInterface
@@ -16,6 +17,7 @@ public class UmbrellaAttackerScript : MonoBehaviour, AttackerInterface
     int movementDirection;
 
     [SerializeField]
+    float divebombSpeed;
     float attackRange;
     [SerializeField]
     float movementSpeedMin;
@@ -23,15 +25,31 @@ public class UmbrellaAttackerScript : MonoBehaviour, AttackerInterface
     float movementSpeedMax;
     float movementSpeed;
 
+
     [SerializeField]
     float bobHeight;
     [SerializeField]
     float bobSpeed;
 
+    bool attacking = false;
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "TowerPart")
+        {
+            DamageTower();
+        }
+        else if (collision.gameObject.tag != "Attacker")
+            DestroySelf();
+
+    }
+
     void Start()
     {
         playerControllerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerScript>();
         towerBase = playerControllerScript.towerBase;
+
+        attackRange = towerBase.transform.position.x + towerBase.GetComponent<BoxCollider2D>().bounds.extents.x;
 
         // Spawned on left or right side of screen
         if (gameObject.transform.position.x < 0)
@@ -47,14 +65,27 @@ public class UmbrellaAttackerScript : MonoBehaviour, AttackerInterface
     void Movement()
     {
         Vector3 position = transform.position;
-        position.x += movementSpeed * Time.deltaTime;
-        position.y += bobHeight * (float)Math.Sin(bobSpeed * Time.timeSinceLevelLoad);
+        if (!attacking)
+        {
+            position.x += movementSpeed * Time.deltaTime;
+            position.y += bobHeight * (float)Math.Sin(bobSpeed * Time.timeSinceLevelLoad);
+        }
+        else
+        {
+            position.y -= divebombSpeed * Time.deltaTime;
+        }
         transform.position = position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if ((gameObject.transform.position.x - towerBase.transform.position.x) <= attackRange)
+        {
+            attacking = true;
+            StartAttackingAnimation();
+        }
+
         Movement();
     }
 
@@ -67,6 +98,12 @@ public class UmbrellaAttackerScript : MonoBehaviour, AttackerInterface
 
     // Called if the attacker makes it to the tower
     void DamageTower()
+    {
+        Debug.Log("Tower Attacked!");
+        DestroySelf();
+    }
+
+    void DestroySelf()
     {
         Destroy(gameObject);
     }
