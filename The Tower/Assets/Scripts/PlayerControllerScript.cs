@@ -183,7 +183,7 @@ public class PlayerControllerScript : MonoBehaviour
                     continue;
                 }
 
-                colliders[i].GetComponent<StandardAttackerScript>().Hit();
+                colliders[i].GetComponent<AttackerInterface>().Hit();
                 i++;
             }
         }

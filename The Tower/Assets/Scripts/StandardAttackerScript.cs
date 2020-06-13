@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StandardAttackerScript : MonoBehaviour
+public class StandardAttackerScript : MonoBehaviour, AttackerInterface
 {
     [SerializeField]
     Animator standardAttackerAnimator;

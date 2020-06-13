@@ -27,8 +27,11 @@ public class GameManagerScript : MonoBehaviour
     void SpawnAttacker()
     {
         Spawner selectedSpawner = spawnerList[Random.Range(0, spawnerList.Count)];
-        // Default enemy
-        Instantiate(enemyList[0], selectedSpawner.spawner.transform.position, Quaternion.identity);
+        // Ground enemy
+        if(selectedSpawner.spawnerType == SpawnerType.GROUND)
+            Instantiate(enemyList[0], selectedSpawner.spawner.transform.position, Quaternion.identity);
+        else if(selectedSpawner.spawnerType == SpawnerType.AIR)
+            Instantiate(enemyList[1], selectedSpawner.spawner.transform.position, Quaternion.identity);
     }
 
     void Start()
@@ -54,7 +57,8 @@ public class GameManagerScript : MonoBehaviour
 
 public enum SpawnerType
 {
-    GROUND
+    GROUND,
+    AIR
 }
 
 [System.Serializable]
@@ -62,4 +66,5 @@ struct Spawner
 {
     public GameObject spawner;
     public SpawnerType spawnerType;
+    public float enableTime;
 }
