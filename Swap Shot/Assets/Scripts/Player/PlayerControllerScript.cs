@@ -17,6 +17,15 @@ public class InputManager
         movementInput.x = Input.GetAxisRaw("Horizontal");
         movementInput.y = Input.GetAxisRaw("Vertical");
 
+        // I feel it safest to keep this here for now
+        if (Input.GetButtonDown("Cancel"))
+        {
+            Application.Quit();
+            // In debug mode the game will not close, so we log it
+            Debug.LogWarning("Game Has Closed");
+        }
+            
+
         if (Input.GetButtonDown("Jump") && !queuedJump)
             queuedJump = true;
         if (Input.GetButtonUp("Jump"))
