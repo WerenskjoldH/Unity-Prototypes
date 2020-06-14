@@ -15,12 +15,8 @@ public class KillWallScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
-
-        // For prototype purposes we are going to just do something a little janky
         if(other.gameObject.tag == "Player")
         {
-            Debug.Log("Player Detected");
             GameObject player = other.gameObject;
             CinemachineVirtualCamera playerCamera = player.GetComponent<PlayerControllerScript>().GetPlayerVirtualCamera();
             if (Mathf.Abs((playerCamera.transform.position - spherePoint.position).magnitude) >= radius)
