@@ -194,7 +194,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1204150217}
+  - {fileID: 1920142043}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -448,38 +448,6 @@ Transform:
   m_Father: {fileID: 589152644}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &250781064
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: KillWallMaterial (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance)
-  m_Shader: {fileID: -6465566751694194690, guid: 0af069c6730104847b0bd4ec9331d08c,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Floats:
-    - Vector1_23C75598: 0.8
-    - Vector1_33ADCA5C: 0.22
-    - Vector1_C5839ECE: 4
-    m_Colors:
-    - Color_5AE2C3BA: {r: 1, g: 1, b: 1, a: 1}
-    - Color_79BE1A64: {r: 1, g: 0.41037738, b: 0.48697263, a: 0}
-    - Vector3_CE91E199: {r: -7.0799866, g: 21.43, b: -13.1, a: 0}
 --- !u!1 &276472329 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2534866581884222612, guid: 5fd36936adb533c4ba4416b1df833518,
@@ -567,7 +535,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 250781064}
+  - {fileID: 1514837592}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -972,6 +940,7 @@ GameObject:
   - component: {fileID: 522622954}
   - component: {fileID: 522622953}
   - component: {fileID: 522622952}
+  - component: {fileID: 522622957}
   - component: {fileID: 522622956}
   m_Layer: 0
   m_Name: Plane
@@ -988,10 +957,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522622951}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &522622953
@@ -1012,7 +981,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1604989425}
+  - {fileID: 1373161377}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1073,6 +1042,22 @@ MonoBehaviour:
   meshRenderer: {fileID: 522622953}
   spherePoint: {fileID: 799233807}
   radius: 2.81
+--- !u!54 &522622957
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522622951}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &524414747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2135,38 +2120,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &1204150217
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: KillWallMaterial (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance)
-  m_Shader: {fileID: -6465566751694194690, guid: 0af069c6730104847b0bd4ec9331d08c,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Floats:
-    - Vector1_23C75598: 0.8
-    - Vector1_33ADCA5C: 0.22
-    - Vector1_C5839ECE: 4
-    m_Colors:
-    - Color_5AE2C3BA: {r: 1, g: 1, b: 1, a: 1}
-    - Color_79BE1A64: {r: 1, g: 0.41037738, b: 0.48697263, a: 0}
-    - Vector3_CE91E199: {r: -7.0799866, g: 21.43, b: 2, a: 0}
 --- !u!1001 &1207066910
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2417,6 +2370,39 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: 5fd36936adb533c4ba4416b1df833518, type: 3}
+--- !u!21 &1373161377
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: KillWallMaterial (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: 0af069c6730104847b0bd4ec9331d08c,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - Vector1_23C75598: 0.8
+    - Vector1_33ADCA5C: 0.22
+    - Vector1_C5839ECE: 2.81
+    m_Colors:
+    - Color_5AE2C3BA: {r: 1, g: 1, b: 1, a: 1}
+    - Color_79BE1A64: {r: 1, g: 0.41037738, b: 0.48697263, a: 0}
+    - Vector3_CE91E199: {r: -4.5700073, g: 23.919998, b: -41.17, a: 0}
 --- !u!4 &1399151154 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 5fd36936adb533c4ba4416b1df833518,
@@ -2861,6 +2847,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!21 &1514837592
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: KillWallMaterial (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: 0af069c6730104847b0bd4ec9331d08c,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - Vector1_23C75598: 0.8
+    - Vector1_33ADCA5C: 0.22
+    - Vector1_C5839ECE: 4
+    m_Colors:
+    - Color_5AE2C3BA: {r: 1, g: 1, b: 1, a: 1}
+    - Color_79BE1A64: {r: 1, g: 0.41037738, b: 0.48697263, a: 0}
+    - Vector3_CE91E199: {r: -7.0799866, g: 21.43, b: -13.1, a: 0}
 --- !u!1 &1519045290 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2534866581884222612, guid: 5fd36936adb533c4ba4416b1df833518,
@@ -3051,38 +3070,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fd36936adb533c4ba4416b1df833518, type: 3}
---- !u!21 &1604989425
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: KillWallMaterial (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance)
-  m_Shader: {fileID: -6465566751694194690, guid: 0af069c6730104847b0bd4ec9331d08c,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Floats:
-    - Vector1_23C75598: 0.8
-    - Vector1_33ADCA5C: 0.22
-    - Vector1_C5839ECE: 2.81
-    m_Colors:
-    - Color_5AE2C3BA: {r: 1, g: 1, b: 1, a: 1}
-    - Color_79BE1A64: {r: 1, g: 0.41037738, b: 0.48697263, a: 0}
-    - Vector3_CE91E199: {r: -4.5700073, g: 23.919998, b: -41.17, a: 0}
 --- !u!4 &1622189584 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 7851930962c464d49848599c8c6c2976,
@@ -3648,6 +3635,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fd36936adb533c4ba4416b1df833518, type: 3}
+--- !u!21 &1920142043
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: KillWallMaterial (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: 0af069c6730104847b0bd4ec9331d08c,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - Vector1_23C75598: 0.8
+    - Vector1_33ADCA5C: 0.22
+    - Vector1_C5839ECE: 4
+    m_Colors:
+    - Color_5AE2C3BA: {r: 1, g: 1, b: 1, a: 1}
+    - Color_79BE1A64: {r: 1, g: 0.41037738, b: 0.48697263, a: 0}
+    - Vector3_CE91E199: {r: -7.0799866, g: 21.43, b: 2, a: 0}
 --- !u!1001 &1938528602
 PrefabInstance:
   m_ObjectHideFlags: 0

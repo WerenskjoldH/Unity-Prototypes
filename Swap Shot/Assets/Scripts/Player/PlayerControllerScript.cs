@@ -133,6 +133,11 @@ public class PlayerControllerScript : MonoBehaviour
         return isAlive;
     }
 
+    public CinemachineVirtualCamera GetPlayerVirtualCamera()
+    {
+        return playerCamera;
+    }
+
     // This should not ever be used to set the player alive, ResetPlayer() is the safer alternative
     public void SetPlayerAlive(bool t)
     {
