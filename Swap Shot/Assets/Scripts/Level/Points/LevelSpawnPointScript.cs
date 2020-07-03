@@ -6,13 +6,11 @@ public class LevelSpawnPointScript : MonoBehaviour
 
     void Awake()
     {
+        // Gets the player script
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerScript>();
     }
 
-    void Start()
-    {
-    }
-
+    // Sets the player's position and camera rotation to the spawn point's tranform
     public void MovePlayerToSpawn()
     {
         playerScript.SetPosition(transform.position);

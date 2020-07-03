@@ -138,7 +138,7 @@ public class PlayerControllerScript : MonoBehaviour
         return playerCamera;
     }
 
-    // This should not ever be used to set the player alive, ResetPlayer() is the safer alternative
+    // This is unsafe for the transition from dead to alive, ResetPlayer() is the safer alternative
     public void SetPlayerAlive(bool t)
     {
         isAlive = t;
