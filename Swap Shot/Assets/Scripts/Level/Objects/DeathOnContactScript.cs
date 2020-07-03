@@ -6,6 +6,7 @@ public class DeathOnContactScript : MonoBehaviour
 {
     [SerializeField] bool canKillPlayer = true;
 
+    // This will kill the player on contact
     private void OnCollisionEnter(Collision collision)
     {
         if (!canKillPlayer)

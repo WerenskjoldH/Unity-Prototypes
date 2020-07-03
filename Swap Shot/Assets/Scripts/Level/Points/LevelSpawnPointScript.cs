@@ -11,7 +11,6 @@ public class LevelSpawnPointScript : MonoBehaviour
 
     void Start()
     {
-        // DetectMultipleSpawnPoints();
     }
 
     public void MovePlayerToSpawn()
@@ -20,20 +19,4 @@ public class LevelSpawnPointScript : MonoBehaviour
         playerScript.SetRotation(transform.rotation);
         playerScript.ResetPlayer();
     }
-
-    // Depricated until I decide if this is a consistent fact throughout the game
-    //Checks if the designer accidentally placed two spawn points
-    //void DetectMultipleSpawnPoints()
-    //{
-    //    if (multiplesFound)
-    //        return;
-
-    //    int numberOfSpawnPoints = GameObject.FindGameObjectsWithTag("StartPoint").Length;
-
-    //    if (numberOfSpawnPoints > 1)
-    //    {
-    //        Debug.LogError(numberOfSpawnPoints + " Start Points Found, Fix This Immediately");
-    //        multiplesFound = true;
-    //    }
-    //}
 }

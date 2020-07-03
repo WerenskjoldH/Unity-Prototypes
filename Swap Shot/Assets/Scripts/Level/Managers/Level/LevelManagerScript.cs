@@ -12,6 +12,9 @@ public class LevelManagerScript : MonoBehaviour
 
     #region Getters & Setters
 
+    /*
+        @return Gets the length of time that has passed since the player started moving
+     */
     public float GetLevelTime()
     {
         return levelTime;
@@ -38,13 +41,16 @@ public class LevelManagerScript : MonoBehaviour
         HandleTimerUpdate();
     }
 
-    public void TriggerExitZoneReached()
+    // Loads the next level
+    // This is expected to be triggered by the ExitZoneScript
+    public void LoadNextLevel()
     {
         sceneManager.LoadLevel(nameOfNextLevel);
     }
 
     #region Handle Player
 
+    // This resets the level and moves the player back to the starting point
     void MovePlayerToStart()
     {
         ResetLevelTimer();
@@ -60,6 +66,7 @@ public class LevelManagerScript : MonoBehaviour
         MovePlayerToStart();
     }
 
+    // Handles the logic involved in keeping track of the timer and when it should run
     void HandleTimerUpdate()
     {
         if (levelTimerRunning)
@@ -74,17 +81,20 @@ public class LevelManagerScript : MonoBehaviour
         }
     }
 
+    // Starts the level timer
     void StartLevelTimer()
     {
         levelTimerRunning = true;
     }
 
+    // Resets the level timer AND disables it running until started again
     void ResetLevelTimer()
     {
         levelTimerRunning = false;
         levelTime = 0;
     }
 
+    // Stops the timer only, does NOT disable it running
     void StopLevelTimer()
     {
         levelTimerRunning = false;

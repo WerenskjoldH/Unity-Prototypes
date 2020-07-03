@@ -9,6 +9,7 @@ public class SceneManagerScript : MonoBehaviour
     // This is a bad approach
     public float couroutineWaitTime = 1f;
 
+    // This triggers the load level coroutine, including the transition animation
     public void LoadLevel(string name)
     {
         StartCoroutine(LoadLevelCouroutine(name));

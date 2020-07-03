@@ -21,23 +21,27 @@ public class LinearPlatformMovementScript : MonoBehaviour
         if (collision.gameObject.tag != "Player")
             return;
 
+        // To ensure the player is effected by the ground they are standing on, we must apply the platform's velocity to the player as an external force
         collision.gameObject.GetComponent<PlayerControllerScript>().AddToExternalVelocity(platformVelocity);
     }
 
     private void Start()
     {
         targetPoint = startPoint;
+        // This will tween the platform between its current position and target position
         transform.DOMove(targetPoint.position, movementSpeed).SetEase(Ease.InOutCubic);
     }
 
     private void FixedUpdate()
     {
+        // Update the platform's velocity
         platformVelocity = (transform.position - previousPosition);
         previousPosition = transform.position;
     }
 
     void Update()
     {
+        // When a target point is reached, we swap the target point and starting point
         if((targetPoint.position - transform.position).magnitude < 0.1f)
         {
             if (targetPoint == startPoint)
