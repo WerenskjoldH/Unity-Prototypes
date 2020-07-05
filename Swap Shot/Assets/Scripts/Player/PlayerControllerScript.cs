@@ -503,6 +503,7 @@ public class PlayerControllerScript : MonoBehaviour
         }
 
         DebugVectors();
+        StateChecks();
         charController.Move((playerVelocity * Time.deltaTime) + externalVelocity);
         playerCamera.transform.position = transform.position + cameraOffset;
         externalVelocity = Vector3.zero;
