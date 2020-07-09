@@ -35,7 +35,7 @@ public class InputManager
 
 
 
-// This controller takes inspiration from WiggleWizard's implementation ( WiggleWizard ported a nice replica of Quake 3's movement )
+// This controller takes inspiration from WiggleWizard's implementation ( WiggleWizard ported a Quake 3 Arena's movement almost 1:1 to Unity )
 
 /*
     Things Todo & Try:
@@ -58,23 +58,36 @@ public class PlayerControllerScript : MonoBehaviour
 
     [Header("Look & Movement")]
     Vector3 playerVelocity = Vector3.zero;
-    // This is primarily for debugging
+    // This is for debugging the player's movement
     Vector3 moveDirection = Vector3.zero;
 
+    // This sets the max speed the player will achieve while holding one direction down
     [SerializeField] float movementSpeed = 7;
+    // Acceleration on the player while on the ground, when a key is pressed
     [SerializeField] float groundAcceleration = 14;
+    // Deceleration on the player while on the ground, when a key is NOT pressed
     [SerializeField] float groundDeceleration = 10;
 
+    // [0,1] The player's control over movement in the air
+    [Range(0f,1.0f)]
     [SerializeField] float airControlPrecision = 0.3f;
+    // Describes a minimum speed that the player loses the ability to move in the air at
     [SerializeField] float minimumSpeedForAirControl = 0.001f;
+    // Acceleration on the player while in the air, when a key is pressed
     [SerializeField] float airAcceleration = 2;
+    // Deceleration on the player while in the air, when a key is NOT pressed
     [SerializeField] float airDeceleration = 2;
+    // When the player presses only a strafing key, what should their speed be limited to
     [SerializeField] float sideStrafeSpeed = 1;
+    // Acceleration when the player strafes in the air
     [SerializeField] float sideStrafeAcceleration = 50;
+    // Speed applied upwards the player jumps on the ground
     [SerializeField] float jumpSpeed = 8;
 
+    // Modifies how fast the player will slide down slopes
     [SerializeField] float slopeDescentMultiplier = 4.0f;
 
+    // Friction force on the player from the ground
     [SerializeField] float friction = 6;
     float currentFriction = 0;
 
@@ -92,7 +105,7 @@ public class PlayerControllerScript : MonoBehaviour
 
     RaycastHit groundHit;
     Quaternion fromUpToGroundNormal;
-    // This is in relation to moving platforms and the likes
+    // This is in relation to moving platforms and other obstacles that can impact the player's velocity
     Vector3 externalVelocity;
     Vector3 downSlopeVector;
 
@@ -104,6 +117,7 @@ public class PlayerControllerScript : MonoBehaviour
 
     [Header("Player Info")]
     bool isAlive = true;
+    // Determines if the player has pressed their first movement input triggering the level to start
     bool startInput = false;
 
     [Space(5)]
@@ -133,9 +147,11 @@ public class PlayerControllerScript : MonoBehaviour
         return isAlive;
     }
 
-    public CinemachineVirtualCamera GetPlayerVirtualCamera()
+    // Safe way to kill player from other scripts
+    public void TriggerPlayerDeath()
     {
-        return playerCamera;
+        // This is all that needs to be here for now, however if we need to fleshout player death later on, we now easily can
+        SetPlayerAlive(false);
     }
 
     // This is unsafe for the transition from dead to alive, ResetPlayer() is the safer alternative
@@ -144,12 +160,17 @@ public class PlayerControllerScript : MonoBehaviour
         isAlive = t;
     }
 
+    public CinemachineVirtualCamera GetPlayerVirtualCamera()
+    {
+        return playerCamera;
+    }
+
     public bool GetStartInput()
     {
         return startInput;
     }
 
-    // The character controller overrides attempts to change position
+    // The character controller overrides attempts to change position through more direct means
     public void SetPosition(Vector3 p)
     {
         charController.enabled = false;
@@ -251,7 +272,6 @@ public class PlayerControllerScript : MonoBehaviour
 
         string minutesStr = minutes.ToString("00");
         string secondsStr = seconds.ToString("00");
-        // We calculate this, but are intentionally not using it right now
         string millisecondsStr = milliseconds.ToString("00");
         string timeStr = string.Format("<mspace=0.5em>{0}:{1}:{2}</mspace>", minutesStr, secondsStr, millisecondsStr);
 
@@ -466,11 +486,6 @@ public class PlayerControllerScript : MonoBehaviour
         playerVelocity.y -= gravityStrength * Time.deltaTime;
     }
 
-    void StateChecks()
-    {
-        prevPlayerGrounded = playerGrounded;
-    }
-
     void DebugVectors()
     {
         if (debugVectors)
@@ -503,7 +518,7 @@ public class PlayerControllerScript : MonoBehaviour
         }
 
         DebugVectors();
-        StateChecks();
+        prevPlayerGrounded = playerGrounded;
         charController.Move((playerVelocity * Time.deltaTime) + externalVelocity);
         playerCamera.transform.position = transform.position + cameraOffset;
         externalVelocity = Vector3.zero;

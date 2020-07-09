@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneManagerScript : MonoBehaviour
 {
     public Animator animator;
-    // This is a bad approach
+    // This is a bad/dangerous approach
     public float couroutineWaitTime = 1f;
 
     // This triggers the load level coroutine, including the transition animation

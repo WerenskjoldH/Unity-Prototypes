@@ -11,7 +11,7 @@ public class KillWallScript : MonoBehaviour
     [SerializeField] float radius;
 
 
-    // To ensure the player never feels "cheated," by being unable to control where their appendages are, we only check if the player
+    // To ensure the player never feels cheated, by being unable to control where their appendages are, we only check if the player
     //  has missed the hole in the wall via the exact point of the camera
     // Deaths related to legs hitting outside of the hole feel like you have been cheated,
     //  since in real life we can pull them up or adjust
@@ -22,7 +22,7 @@ public class KillWallScript : MonoBehaviour
             GameObject player = other.gameObject;
             CinemachineVirtualCamera playerCamera = player.GetComponent<PlayerControllerScript>().GetPlayerVirtualCamera();
             if (Mathf.Abs((playerCamera.transform.position - spherePoint.position).magnitude) >= radius)
-                player.GetComponent<PlayerControllerScript>().SetPlayerAlive(false);
+                player.GetComponent<PlayerControllerScript>().TriggerPlayerDeath();
         }
     }
 

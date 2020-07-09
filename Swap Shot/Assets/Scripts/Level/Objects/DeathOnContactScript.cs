@@ -13,6 +13,6 @@ public class DeathOnContactScript : MonoBehaviour
             return;
 
         if (collision.gameObject.tag == "Player")
-            collision.gameObject.GetComponent<PlayerControllerScript>().SetPlayerAlive(false);
+            collision.gameObject.GetComponent<PlayerControllerScript>().TriggerPlayerDeath();
     }
 }
