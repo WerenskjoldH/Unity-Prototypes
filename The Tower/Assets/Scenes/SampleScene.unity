@@ -20112,10 +20112,12 @@ MonoBehaviour:
   enemyList:
   - {fileID: 9125048432428428261, guid: 797315f191523d3458a3b0a306975861, type: 3}
   - {fileID: 3759236194394884515, guid: 93a43e8d6b344b84fb4c3e7cef9281c3, type: 3}
+  playerControllerScript: {fileID: 1825460787}
   maxSpawnTime: 5
   maxSpawnTimeReduction: 2
   timeReductionIncrement: 0.02
   minSpawnTime: 1
+  startGameText: {fileID: 1951449844}
 --- !u!4 &1510915706
 Transform:
   m_ObjectHideFlags: 0

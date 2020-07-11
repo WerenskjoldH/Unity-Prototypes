@@ -9,6 +9,7 @@ public class PlayerControllerScript : MonoBehaviour
     [SerializeField]
     GameObject towerEye;
     Rigidbody2D towerEyeRB;
+
     [SerializeField]
     PlayerMouseScript mouseScript;
 
@@ -49,6 +50,12 @@ public class PlayerControllerScript : MonoBehaviour
     [SerializeField]
     GameObject beamHitPositionObject;
     ParticleSystem beamHitParticles;
+
+    // This is not very protective, but it shouldn't have to be
+    public PlayerMouseScript GetPlayerMouseScript()
+    {
+        return mouseScript;
+    }
 
     private void Start()
     {

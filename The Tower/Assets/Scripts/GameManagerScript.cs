@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 
 public enum SpawnerType
@@ -21,13 +22,21 @@ struct Spawner
 
 public class GameManagerScript : MonoBehaviour
 {
+    #region Spawners & Enemies Variables
     [SerializeField]
     List<Spawner> spawnerList;
 
     // If more enemies are added, this would do better as a dictionary
     [SerializeField]
     List<GameObject> enemyList;
+    #endregion
 
+    #region Player Variables
+    [SerializeField]
+    PlayerControllerScript playerControllerScript;
+    #endregion
+
+    #region Spawning Variables
     [SerializeField]
     float maxSpawnTime = 5.0f;
     [SerializeField]
@@ -40,6 +49,14 @@ public class GameManagerScript : MonoBehaviour
     // The randomly selected value between min and max to count up to
     float targetSpawnTime = 0.0f;
     float spawnTimeCtr = 0.0f;
+    #endregion
+
+    #region Pregame Variables
+    bool startGame = false;
+
+    [SerializeField]
+    TMP_Text startGameText;
+    #endregion
 
     void SpawnAttacker()
     {
@@ -51,19 +68,37 @@ public class GameManagerScript : MonoBehaviour
             Instantiate(enemyList[1], selectedSpawner.spawner.transform.position, Quaternion.identity);
     }
 
-    void Update()
+
+    void PreGameUpdate()
+    {
+        if(playerControllerScript.GetPlayerMouseScript().GetMouseDown())
+        {
+            startGame = true;
+            startGameText.gameObject.SetActive(false);
+        }
+    }
+
+    void GameUpdate()
     {
         /// Spawning
-        if(spawnTimeCtr >= targetSpawnTime)
+        if (spawnTimeCtr >= targetSpawnTime)
         {
             // Spawn
             SpawnAttacker();
             spawnTimeCtr = 0;
             targetSpawnTime = Random.Range(minSpawnTime, maxSpawnTime - maxSpawnTimeReduction);
-            if(maxSpawnTime - maxSpawnTimeReduction >= minSpawnTime)
+            if (maxSpawnTime - maxSpawnTimeReduction >= minSpawnTime)
                 maxSpawnTimeReduction += timeReductionIncrement;
         }
 
         spawnTimeCtr += Time.deltaTime;
+    }
+
+    void Update()
+    {
+        if (!startGame)
+            PreGameUpdate();
+        else
+            GameUpdate();
     }
 }
