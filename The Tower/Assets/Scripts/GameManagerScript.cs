@@ -2,12 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum SpawnerType
+{
+    GROUND,
+    AIR
+}
+
+[System.Serializable]
+struct Spawner
+{
+    public GameObject spawner;
+    public SpawnerType spawnerType;
+    // This is to be used for enabling the spawner after a set amount of game time has passed
+    //  Allows for progressively more difficult enemies to spawn
+    //public float enableTime;
+}
+
 public class GameManagerScript : MonoBehaviour
 {
-    // Could set this up as a dictionary if I add new attackers and spawner types
     [SerializeField]
     List<Spawner> spawnerList;
 
+    // If more enemies are added, this would do better as a dictionary
     [SerializeField]
     List<GameObject> enemyList;
 
@@ -27,15 +44,11 @@ public class GameManagerScript : MonoBehaviour
     void SpawnAttacker()
     {
         Spawner selectedSpawner = spawnerList[Random.Range(0, spawnerList.Count)];
-        // Ground enemy
+
         if(selectedSpawner.spawnerType == SpawnerType.GROUND)
             Instantiate(enemyList[0], selectedSpawner.spawner.transform.position, Quaternion.identity);
         else if(selectedSpawner.spawnerType == SpawnerType.AIR)
             Instantiate(enemyList[1], selectedSpawner.spawner.transform.position, Quaternion.identity);
-    }
-
-    void Start()
-    {
     }
 
     void Update()
@@ -53,18 +66,4 @@ public class GameManagerScript : MonoBehaviour
 
         spawnTimeCtr += Time.deltaTime;
     }
-}
-
-public enum SpawnerType
-{
-    GROUND,
-    AIR
-}
-
-[System.Serializable]
-struct Spawner
-{
-    public GameObject spawner;
-    public SpawnerType spawnerType;
-    public float enableTime;
 }
