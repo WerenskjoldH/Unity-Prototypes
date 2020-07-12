@@ -27,9 +27,11 @@ No
 
 I created this project to practice producing a short prototype in my some of my free-time off work. This included using blender to make my own 3D models, Adobe Photoshop to hand draw and produce all my own art assets, as well as produce a Quake III Arena style movement system with various improvements to tailor the design to my idea.
 
- The aesthetic of this project was probably my favourite to design. I knew I wanted to contrast the *difficult* platforming with a soothing oceanscape reminiscent of the good-ole N64 days with a very visually guiding easy to interpret level design. 
+<p align="center"><img width=100% src="media/swapShotLevelTwo.PNG"></p>
 
- Of the prototypes in this repository, I think this is my favourite. 
+ The aesthetic of this project was probably my favourite to design. I knew I wanted to contrast the *difficult* platforming with a soothing oceanscape reminiscent of the good-ole N64 days with a very visually guiding easy to interpret level design.
+
+ Of the prototypes in this repository, I think this is my favourite. Also check out my hand-painted skybox! I'm quite proud of it, try to spot the puppy cloud :) 
 
 ---
 
