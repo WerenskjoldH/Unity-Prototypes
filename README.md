@@ -92,6 +92,10 @@ All three projects take advantage of the open-source Unity [DOTween library](htt
 
 All three of these projects also use [Cinemachine](https://unity.com/unity/features/editor/art-and-design/cinemachine), which is a fantastic asset for creating more dynamic cameras in Unity. I highly suggest giving it a look if you are tired of constantly adapting Unity's default cameras to do your bidding.
 
+I would also like to give notice to [Roy Stan](https://roystan.net/) for his fantastic article on creating a toon shader. I converted his approach into shader graph, as practice with Shader Graph, for the _Katamari Gameplay_ prototype.
+
+Additionally, shoutout to [Ciro Continisio](https://connect.unity.com/p/zelda-inspired-toon-shading-in-shadergraph)'s article which discussed how to create a custom HLSL lighting node for use in Shader Graph.
+
 ---
 
 ## Support
