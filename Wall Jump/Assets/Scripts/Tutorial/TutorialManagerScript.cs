@@ -44,8 +44,8 @@ public class TutorialManagerScript : MonoBehaviour
 
     void Update()
     {
-        // This is going to be/get terrible, hopefully we can find a way to get around this
-        // Maybe function chaining?
+        // THE SUPER IF!
+        // There are better approaches, but like, it's okay
         if (tutorialStep == 0)
         {
             if (playerFirstClick == false && Input.GetMouseButtonUp(0))
@@ -129,12 +129,12 @@ public class TutorialManagerScript : MonoBehaviour
         else if(tutorialStep == 7)
         {
             playerScript.EnableGrinding();
-            textArea.text = "If you hold <color=#d95763>Right Mouse Button</color> while moving you will start to <color=#df7126>grind</color>!\nThis recovers jumps on the fly!";
+            textArea.text = "If you hold <color=#d95763>Left Mouse Button</color> while moving you will start to <color=#df7126>grind</color>!\nThis recovers jumps on the fly!";
             StartCoroutine(WaitToMoveToNextStep(4.0f, 8));
         }
         else if(tutorialStep == 8)
         {
-            textArea.text = "Holding <color=#d95763>Right Mouse Button</color> while moving will start a <color=#df7126>grind</color>\nTry grinding <color=#df7126>" +
+            textArea.text = "Holding <color=#d95763>Left Mouse Button</color> while moving will start a <color=#df7126>grind</color>\nTry grinding <color=#df7126>" +
                 (requiredGrinds - playerScript.GetNumberGrindsMade()) + "</color> more time(s)";
             if(requiredGrinds - playerScript.GetNumberGrindsMade() <= 0)
             {
