@@ -118,6 +118,6 @@ If you are looking for support please send a non-spammy looking email to Rillide
 
 **A**: Well sometimes it's a stylistic choice, and other times it is because I enjoy making all my own assets and shaders (when viable). However, this does infact hinder what I can do and how attractive I can make my projects look. I try to make up for this by adding lots of _juice_!
 
-### _Q_: What is up with the Swap Shot prototypes name?
+### _Q_: What is up with the Swap Shot prototype's name?
 
 **A**: The original design of the prototype was to create a game that would have you speed running through a level by swapping between various enemies that scatter the level by "shooting your consciousness". However, as I began developing the project, my already limited free time was being devoured by creating assets. So, I put the mechanic on hold until I have the proper time to give its implementation.
