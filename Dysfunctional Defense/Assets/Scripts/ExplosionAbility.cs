@@ -8,6 +8,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/Abilities/ExplosionAbility")]
 class ExplosionAbility : AbilityAbstract
 {
+    [SerializeField]
+    GameObject explosionObject;
+
     ExplosionAbility()
     {
         // Empty For Now
@@ -15,8 +18,10 @@ class ExplosionAbility : AbilityAbstract
 
     public override void InvokeAbility()
     {
-        // Instantiate Explosion Game Object
-        Debug.Log("Imagine an explosion now!");
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+
+        Instantiate(explosionObject, mousePos, Quaternion.Euler(0.0f, 0.0f, UnityEngine.Random.Range(0.0f, 360.0f)));
         throw new NotImplementedException();
     }
 }
