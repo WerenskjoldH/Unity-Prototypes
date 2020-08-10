@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WeaponSelectorScript : MonoBehaviour
+public class AbilitySelectorScript : MonoBehaviour
 {
     private bool isPaused = true;
     Vector3 startingPosition;
@@ -16,8 +16,13 @@ public class WeaponSelectorScript : MonoBehaviour
     [SerializeField]
     float speedModifier = 1.0f;
 
+    // To-Do: This should be scalable in the future
     [SerializeField]
-    int numberOfAbilities = 5;
+    static int numberOfAbilities = 5;
+
+    // As of now this must be manually kept to the number of abilities
+    [SerializeField]
+    List<AbilityAbstract> abilities;
 
     float currentSelectionIndex = 0;
 
@@ -26,9 +31,15 @@ public class WeaponSelectorScript : MonoBehaviour
         isPaused = !isPaused;
     }
 
-    public int GetCurrentAbilityIndex()
+    int GetCurrentAbilityIndex()
     {
-        return (int)math.ceil(numberOfAbilities * (0.5f * (currentSelectionIndex + 1)));
+        return (int)math.ceil(numberOfAbilities * (0.5f * (currentSelectionIndex + 1))) - 1;
+    }
+
+    public AbilityAbstract GetCurrentAbility()
+    {
+        Debug.Log(GetCurrentAbilityIndex());
+        return abilities[GetCurrentAbilityIndex()];
     }
 
     void Start()
