@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class ExplosionScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    float explosionRadius = 1.0f;
+
+    Animator animator;
+
+    bool IsAnimationPlaying()
     {
-        
+        return animator.GetCurrentAnimatorStateInfo(0).length > animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     void Update()
     {
-        
+        if (!IsAnimationPlaying())
+            Destroy(gameObject);
+
+
     }
 }

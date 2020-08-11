@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Explosion Ability
   cooldownTime: 1
-  abilitySprite: {fileID: 0}
+  abilitySprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  explosionObject: {fileID: 7230121402294478039, guid: 1e75c272b99b3a3418b5e503397220da, type: 3}

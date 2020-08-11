@@ -22,6 +22,5 @@ class ExplosionAbility : AbilityAbstract
         mousePos.z = 0;
 
         Instantiate(explosionObject, mousePos, Quaternion.Euler(0.0f, 0.0f, UnityEngine.Random.Range(0.0f, 360.0f)));
-        throw new NotImplementedException();
     }
 }

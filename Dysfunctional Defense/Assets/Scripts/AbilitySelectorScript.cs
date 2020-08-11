@@ -5,6 +5,7 @@ using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class AbilitySelectorScript : MonoBehaviour
 {
@@ -16,13 +17,21 @@ public class AbilitySelectorScript : MonoBehaviour
     [SerializeField]
     float speedModifier = 1.0f;
 
-    // To-Do: This should be scalable in the future
+    int numberOfAbilities = 0;
+
     [SerializeField]
-    static int numberOfAbilities = 5;
+    GameObject uiPanel;
+    [SerializeField]
+    UnityEngine.UI.Image uiIcon;
+    [SerializeField]
+    UnityEngine.UI.Image uiDivider;
 
     // As of now this must be manually kept to the number of abilities
     [SerializeField]
     List<AbilityAbstract> abilities;
+
+    List<UnityEngine.UI.Image> uiAbilityIcons;
+    List<UnityEngine.UI.Image> uiDividers;
 
     float currentSelectionIndex = 0;
 
@@ -42,9 +51,42 @@ public class AbilitySelectorScript : MonoBehaviour
         return abilities[GetCurrentAbilityIndex()];
     }
 
+    // If abilities are changed, this must be called to refresh icons and placements
+    void BuildUI()
+    {
+        float doubleBoundsDistance = 2.0f * boundsDistance;
+
+        float dividerSpacing = doubleBoundsDistance * (1.0f/(numberOfAbilities));
+        float dividerStartingPos = -boundsDistance + dividerSpacing;
+
+        //float iconSpacing = doubleBoundsDistance * (1.0f/(numberOfAbilities+1));
+        float iconStartingPos = -boundsDistance + dividerSpacing - (dividerSpacing/2.0f); 
+
+        Transform panelTransform = uiPanel.transform;
+
+        // Place Icons
+        for (int i = 0; i < numberOfAbilities; i++)
+        {
+            RectTransform rectTran = Instantiate<UnityEngine.UI.Image>(uiIcon, panelTransform).GetComponent<RectTransform>();
+            rectTran.anchoredPosition = new Vector2(iconStartingPos + (i * dividerSpacing), 0);
+        }
+
+        // Place Dividers
+        for (int i = 0; i < numberOfAbilities-1; i++)
+        {
+            RectTransform rectTran = Instantiate<UnityEngine.UI.Image>(uiDivider, panelTransform).GetComponent<RectTransform>();
+            rectTran.anchoredPosition = new Vector2(dividerStartingPos + (i * dividerSpacing), 0);
+        }
+
+        transform.SetAsLastSibling();
+    }
+
     void Start()
     {
         startingPosition = transform.position;
+        numberOfAbilities = abilities.Count;
+
+        BuildUI();
 
         TogglePause();
     }
