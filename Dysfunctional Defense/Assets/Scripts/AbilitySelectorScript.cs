@@ -67,8 +67,10 @@ public class AbilitySelectorScript : MonoBehaviour
         // Place Icons
         for (int i = 0; i < numberOfAbilities; i++)
         {
-            RectTransform rectTran = Instantiate<UnityEngine.UI.Image>(uiIcon, panelTransform).GetComponent<RectTransform>();
+            GameObject uiGameObject = Instantiate<UnityEngine.UI.Image>(uiIcon, panelTransform).gameObject;
+            RectTransform rectTran = uiGameObject.GetComponent<RectTransform>();
             rectTran.anchoredPosition = new Vector2(iconStartingPos + (i * dividerSpacing), 0);
+            uiGameObject.GetComponent<UnityEngine.UI.Image>().sprite = abilities[i].abilitySprite;
         }
 
         // Place Dividers
