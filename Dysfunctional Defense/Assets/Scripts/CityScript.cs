@@ -2,15 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CityScript : MonoBehaviour
+public class CityScript : BuildingAbstract
 {
-    // Start is called before the first frame update
+
+    public CityScript() : base(BuildingType.CITY)
+    {
+
+    }
+
+    protected override void OnDestroy()
+    {
+        throw new System.NotImplementedException();
+    }
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         
