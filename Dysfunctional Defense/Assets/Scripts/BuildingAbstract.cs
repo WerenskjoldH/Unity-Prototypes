@@ -10,7 +10,7 @@ public enum BuildingType
     UNKNOWN
 }
 
-public abstract class BuildingAbstract : MonoBehaviour
+public abstract class BuildingAbstract : MonoBehaviour, WorldObjectInterface
 {
     public BuildingType buildingType { get; protected set; } = BuildingType.UNKNOWN;
     public bool isDestroyed { get; protected set; } = true;
@@ -29,10 +29,10 @@ public abstract class BuildingAbstract : MonoBehaviour
 
 
         // One hit should typically destroy a building
-        OnDestroy();
+        OnBuildingDestroy();
     }
 
-    protected abstract void OnDestroy();
+    protected abstract void OnBuildingDestroy();
 
 
 }

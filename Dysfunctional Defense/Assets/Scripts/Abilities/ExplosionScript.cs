@@ -5,7 +5,7 @@ using UnityEngine;
 public class ExplosionScript : MonoBehaviour
 {
     [SerializeField]
-    float explosionRadius = 1.0f;
+    float explosionRadius = 0.25f;
 
     Animator animator;
 
@@ -17,6 +17,16 @@ public class ExplosionScript : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+
+        RaycastHit2D[] hitObjects = Physics2D.CircleCastAll(transform.position, explosionRadius, Vector2.one);
+        foreach (RaycastHit2D hit in hitObjects)
+        {
+            Debug.Log(hit.collider.name);
+            if(hit.collider.gameObject.CompareTag("WorldObject"))
+            {
+                hit.collider.gameObject.GetComponent<WorldObjectInterface>().Hit();
+            }
+        }
     }
 
     void Update()

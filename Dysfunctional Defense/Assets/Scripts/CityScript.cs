@@ -10,9 +10,9 @@ public class CityScript : BuildingAbstract
 
     }
 
-    protected override void OnDestroy()
+    protected override void OnBuildingDestroy()
     {
-        throw new System.NotImplementedException();
+        GetComponent<SpriteRenderer>().color = Color.red;
     }
 
     void Start()
