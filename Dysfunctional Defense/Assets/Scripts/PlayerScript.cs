@@ -7,7 +7,9 @@ public class PlayerScript : MonoBehaviour
 {
     [SerializeField]
     AbilitySelectorScript abilitySelector;
-    
+
+    [SerializeField]
+    List<BuildingAbstract> cityGameObjects;
 
     void Start()
     {

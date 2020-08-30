@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ExplosionScript : MonoBehaviour
 {
-    [SerializeField]
-    float explosionRadius = 0.25f;
+    public float explosionRadius { get; set; } = 0.25f;
 
     Animator animator;
 

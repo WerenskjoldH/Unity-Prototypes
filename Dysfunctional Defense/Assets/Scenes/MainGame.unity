@@ -672,11 +672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 270c9bcdfcec4ea4e9f5dd067b079274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  cityGameObjects:
-  - {fileID: 2131511339}
-  - {fileID: 332325669}
-  - {fileID: 1331701734}
+  player: {fileID: 2006025489}
 --- !u!4 &731138736
 Transform:
   m_ObjectHideFlags: 0
@@ -1731,6 +1727,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilitySelector: {fileID: 200365043}
+  cityGameObjects:
+  - {fileID: 2131511339}
+  - {fileID: 332325669}
+  - {fileID: 1331701734}
 --- !u!4 &2006025490
 Transform:
   m_ObjectHideFlags: 0

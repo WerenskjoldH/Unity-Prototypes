@@ -4,17 +4,14 @@ using UnityEngine;
 
 public abstract class ProjectileAbstract : MonoBehaviour, WorldObjectInterface
 {
-    [SerializeField]
-    PlayerScript playerScript;
-
     public void Hit()
     {
         // ... Do what ever needs to be done on hit
 
 
-        // One hit should typically destroy a building
-        OnProjectileDestroy();
+        // One hit should normally detonate a projectile
+        Detonate();
     }
 
-    protected abstract void OnProjectileDestroy();
+    protected abstract void Detonate();
 }
