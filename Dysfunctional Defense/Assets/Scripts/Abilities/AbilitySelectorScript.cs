@@ -47,7 +47,6 @@ public class AbilitySelectorScript : MonoBehaviour
 
     public AbilityAbstract GetCurrentAbility()
     {
-        Debug.Log(GetCurrentAbilityIndex());
         return abilities[GetCurrentAbilityIndex()];
     }
 

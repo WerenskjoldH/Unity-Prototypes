@@ -1,6 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+
+/*
+ *  To-Do:
+ * 
+ *      - Trail Renderer should be placed on a child and unparented on destruction so that the trail does not immediately disappear when the missile is detonated
+ */
+
 
 public class MissileScript : ProjectileAbstract
 {
@@ -15,7 +23,7 @@ public class MissileScript : ProjectileAbstract
     [SerializeField]
     float explosionRadius = 0.1f;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.collider.CompareTag("WorldObject"))
         {
@@ -35,6 +43,8 @@ public class MissileScript : ProjectileAbstract
         position += targetDirection * speed * Time.deltaTime;
 
         transform.position = position;
+
+        transform.rotation = Quaternion.LookRotation(targetDirection);
     }
 
     protected override void Detonate()
@@ -42,9 +52,11 @@ public class MissileScript : ProjectileAbstract
         ExplosionScript explosionScript = Instantiate(
             explosionObject, 
             transform.position, 
-            Quaternion.Euler(0.0f, 0.0f, UnityEngine.Random.Range(0.0f, 360.0f))
+            Quaternion.identity
             ).GetComponent<ExplosionScript>();
 
         explosionScript.explosionRadius = explosionRadius;
+
+        Destroy(gameObject);
     }
 }

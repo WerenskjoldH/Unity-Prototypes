@@ -17,13 +17,12 @@ public class ExplosionScript : MonoBehaviour
     {
         animator = GetComponent<Animator>();
 
-        RaycastHit2D[] hitObjects = Physics2D.CircleCastAll(transform.position, explosionRadius, Vector2.one);
-        foreach (RaycastHit2D hit in hitObjects)
+        Collider2D[] hitObjects = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+        foreach (Collider2D hit in hitObjects)
         {
-            Debug.Log(hit.collider.name);
-            if(hit.collider.gameObject.CompareTag("WorldObject"))
+            if(hit.gameObject.CompareTag("WorldObject"))
             {
-                hit.collider.gameObject.GetComponent<WorldObjectInterface>().Hit();
+                hit.gameObject.GetComponent<WorldObjectInterface>().Hit();
             }
         }
     }
