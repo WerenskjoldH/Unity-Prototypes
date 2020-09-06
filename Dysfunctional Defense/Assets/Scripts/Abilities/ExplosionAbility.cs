@@ -11,6 +11,9 @@ class ExplosionAbility : AbilityAbstract
     [SerializeField]
     GameObject explosionObject;
 
+    [SerializeField]
+    float explosionRadius = 0.5f;
+
     ExplosionAbility()
     {
         // Empty For Now
@@ -21,6 +24,7 @@ class ExplosionAbility : AbilityAbstract
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
 
-        Instantiate(explosionObject, mousePos, Quaternion.Euler(0.0f, 0.0f, UnityEngine.Random.Range(0.0f, 360.0f)));
+        ExplosionScript explosionScript = Instantiate(explosionObject, mousePos, Quaternion.Euler(0.0f, 0.0f, UnityEngine.Random.Range(0.0f, 360.0f))).GetComponent<ExplosionScript>();
+        explosionScript.explosionRadius = explosionRadius;
     }
 }
