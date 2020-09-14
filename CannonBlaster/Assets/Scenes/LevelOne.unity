@@ -295,7 +295,7 @@ Light:
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
+  m_CookieSize: 90.88
   m_Shadows:
     m_Type: 1
     m_Resolution: -1
@@ -322,7 +322,7 @@ Light:
       e32: 0
       e33: 1
     m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
+  m_Cookie: {fileID: 2800000, guid: 7fdb2cb24e9d32a4cac8749fda2851cf, type: 3}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 0
@@ -367,9 +367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cloudTextureResolution: 256
-  xOrg: 0
-  yOrg: 0
-  scale: 100
+  cloudSpeed: 0.5
 --- !u!1001 &923817745
 PrefabInstance:
   m_ObjectHideFlags: 0

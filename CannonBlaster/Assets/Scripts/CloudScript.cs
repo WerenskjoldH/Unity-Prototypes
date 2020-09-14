@@ -10,6 +10,8 @@ public class CloudScript : MonoBehaviour
     int cloudTextureResolution = 256;
     Texture2D cloudTexture;
 
+    [SerializeField]
+    float cloudSpeed = 0.5f;
 
     // Look into using a command buffer, we should be able to get real-time dynamic cloud shadows working through that
     void InitializeCloudTexture()
@@ -50,6 +52,6 @@ public class CloudScript : MonoBehaviour
     {
         //CalcNoise();
         //light.cookie = cloudTexture;
-        transform.position = transform.position + new Vector3(1.25f * Time.deltaTime, 0, 0);
+        transform.position = transform.position + new Vector3(cloudSpeed * Time.deltaTime, 0, 0);
     }
 }

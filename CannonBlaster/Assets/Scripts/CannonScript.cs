@@ -30,6 +30,8 @@ public class CannonScript : MonoBehaviour
             float clampedXRotation = Mathf.Clamp(xRotation, minimumAngle, maximumAngle);
             newRotation = Quaternion.Euler(clampedXRotation, newRotation.eulerAngles.y, newRotation.eulerAngles.z);
 
+            // Add interpolation between rotations to smooth out movement
+
             transform.rotation = newRotation;
         }
     }
