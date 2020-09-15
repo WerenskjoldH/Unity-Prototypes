@@ -9,6 +9,9 @@ public class CannonScript : MonoBehaviour
     [SerializeField]
     float maximumAngle = 90;
 
+    [SerializeField]
+    float rotationSmoothing = 10.0f;
+
     void Start()
     {
         
@@ -30,9 +33,7 @@ public class CannonScript : MonoBehaviour
             float clampedXRotation = Mathf.Clamp(xRotation, minimumAngle, maximumAngle);
             newRotation = Quaternion.Euler(clampedXRotation, newRotation.eulerAngles.y, newRotation.eulerAngles.z);
 
-            // Add interpolation between rotations to smooth out movement
-
-            transform.rotation = newRotation;
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, Time.deltaTime * rotationSmoothing);
         }
     }
 }
