@@ -240,8 +240,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 542584756}
-  m_Layer: 0
-  m_Name: CannonEnd
+  m_Layer: 2
+  m_Name: End Of Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1028,7 +1028,7 @@ GameObject:
   - component: {fileID: 8795936637389954582}
   - component: {fileID: 4308303021154045106}
   - component: {fileID: 3004394612046265197}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1049,6 +1049,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimumAngle: -85
   maximumAngle: 15
+  rotationSmoothing: 175
+  endOfBarrel: {fileID: 542584756}
 --- !u!23 &4308303021154045106
 MeshRenderer:
   m_ObjectHideFlags: 0
