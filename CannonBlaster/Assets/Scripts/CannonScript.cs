@@ -5,29 +5,37 @@ using UnityEngine;
 public class CannonScript : MonoBehaviour
 {
     [SerializeField]
-    float minimumAngle = 15;
+    float minimumPitchAngle = 15;
     [SerializeField]
-    float maximumAngle = 90;
+    float maximumPitchAngle = 90;
 
     [SerializeField]
-    float rotationSmoothing = 10.0f;
+    float rotationSmoothing = 150.0f;
 
     [SerializeField]
     Transform endOfBarrel;
 
     [SerializeField]
-    GameObject hitLocationObject;
+    GameObject hitLocationTestObject;
 
+    // This is used for ensuring the mouse is targetting somewhere in the world, this is an edge case, but a good one to cover
+    bool mouseIntersectsWorld = false;
     Vector3 mouseWorldPosition;
 
     bool cannonFiring = false;
     RaycastHit cannonHit;
 
+    void FireCannon()
+    {
+        Instantiate(hitLocationTestObject, cannonHit.point, Quaternion.identity);
+        cannonFiring = false;
+    }
+
     void FixedUpdate()
     {
         Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit mouseHit;
-
+        
         if (Physics.Raycast(mouseRay, out mouseHit))
         {
             if (cannonFiring)
@@ -35,30 +43,37 @@ public class CannonScript : MonoBehaviour
                 Ray barrelDirection = new Ray(endOfBarrel.position, endOfBarrel.position - transform.position);
 
                 if (Physics.Raycast(barrelDirection, out cannonHit))
-                {
-                    Instantiate(hitLocationObject, cannonHit.point, Quaternion.identity);
-
-                    cannonFiring = false;
-                }
+                    FireCannon();
             }
 
+            mouseIntersectsWorld = true;
             mouseWorldPosition = mouseHit.point;
         }
+        else
+        {
+            mouseIntersectsWorld = false;
+        }
+
     }
 
-    void Update()
+    void CannonRotation()
     {
-        if(Input.GetMouseButtonDown(0) && !cannonFiring)
-            cannonFiring = true;
-
         Vector3 aimDirection = mouseWorldPosition - transform.position;
         Quaternion newRotation = Quaternion.LookRotation(aimDirection, Vector3.up);
 
         float xRotation = newRotation.eulerAngles.x > 90 ? newRotation.eulerAngles.x - 360 : newRotation.eulerAngles.x;
 
-        float clampedXRotation = Mathf.Clamp(xRotation, minimumAngle, maximumAngle);
+        float clampedXRotation = Mathf.Clamp(xRotation, minimumPitchAngle, maximumPitchAngle);
         newRotation = Quaternion.Euler(clampedXRotation, newRotation.eulerAngles.y, newRotation.eulerAngles.z);
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, Time.deltaTime * rotationSmoothing);
+    }
+
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0) && mouseIntersectsWorld && !cannonFiring)
+            cannonFiring = true;
+
+        CannonRotation();
     }
 }
