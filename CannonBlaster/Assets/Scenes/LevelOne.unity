@@ -1047,8 +1047,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c319ab58be7ca7840b9abfa3b0e0e161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimumAngle: -85
-  maximumAngle: 15
+  minimumPitchAngle: 15
+  maximumPitchAngle: -90
   rotationSmoothing: 175
   endOfBarrel: {fileID: 542584756}
   hitLocationTestObject: {fileID: 1763543798141632050, guid: a7d01f5e1871adf40af1813be3dd97f6,
